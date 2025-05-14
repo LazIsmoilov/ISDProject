@@ -34,7 +34,6 @@ public class OrderDBManager {
         }
         throw new SQLException("Creating order failed, no ID obtained.");
     }
-
     /**
      * 根据 userId 查询该用户的所有订单
      */

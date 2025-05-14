@@ -1,13 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="uts.isd.model.User" %>
-<%@ page import="uts.isd.model.dao.*" %>
+<%@ page import="uts.isd.model.dao.DAO" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="jakarta.servlet.ServletException" %>
 
 <%
-    // Retrieving the logged-in user from session (if any)
-    DAO db = (DAO)session.getAttribute("db");
-
+    // —— 懒初始化 DAO，保证 db 不为 null ——
+    DAO db = (DAO) session.getAttribute("db");
+    if (db == null) {
+        try {
+            db = new DAO();
+            session.setAttribute("db", db);
+        } catch (SQLException e) {
+            throw new ServletException("Cannot initialize database connection", e);
+        }
+    }
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +51,7 @@
 </div>
 
 <br>
-<p>Registered Users: <%=db.Users().getUserCount()%></p>
+<p>Registered Users: <%= db.Users().getUserCount() %></p>
 <br>
 
 <div class="main-content">

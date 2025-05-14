@@ -2,7 +2,6 @@ package uts.isd.controller;
 
 import uts.isd.model.User;
 import uts.isd.model.dao.DAO;
-import uts.isd.model.dao.DBManager;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,15 +22,25 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DAO db = (DAO) req.getSession().getAttribute("db");
         HttpSession session = req.getSession();
 
-        String name = req.getParameter("name");
-        String email = req.getParameter("email");
-        String password = req.getParameter("password");
-        String dob = req.getParameter("dob");
-        String gender = req.getParameter("gender");
-        boolean agreed = req.getParameter("tos") != null;
+        // —— 新增：确保 session 里有 db ——
+        DAO db = (DAO) session.getAttribute("db");
+        if (db == null) {
+            try {
+                db = new DAO();
+                session.setAttribute("db", db);
+            } catch (SQLException e) {
+                throw new ServletException("Unable to create DAO", e);
+            }
+        }
+
+        String name      = req.getParameter("name");
+        String email     = req.getParameter("email");
+        String password  = req.getParameter("password");
+        String dob       = req.getParameter("dob");
+        String gender    = req.getParameter("gender");
+        boolean agreed   = req.getParameter("tos") != null;
 
         session.setAttribute("name", name);
 
@@ -41,10 +50,11 @@ public class RegisterServlet extends HttpServlet {
             try {
                 db.Users().add(user);
             } catch (SQLException e) {
-                e.printStackTrace();
+                throw new ServletException("Error adding user", e);
             }
         }
         resp.sendRedirect("welcome.jsp");
     }
 }
+
 

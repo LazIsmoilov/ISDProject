@@ -17,7 +17,7 @@ public class DBConnector {
         }
         System.out.println(">> Working dir = " + new java.io.File(".").getAbsolutePath());
 
-        String url = "jdbc:sqlite:D:/ISDProject/iotBayDatabase.db?journal_mode=WAL";
+        String url = "jdbc:sqlite:IotBayDB.db";
 
 
         try {

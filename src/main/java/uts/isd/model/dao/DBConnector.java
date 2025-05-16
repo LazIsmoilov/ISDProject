@@ -1,7 +1,6 @@
 package uts.isd.model.dao;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -9,41 +8,26 @@ public class DBConnector {
     private Connection connection;
 
     public DBConnector() {
-        System.setProperty("org.sqlite.lib.verbose", "true");
         try {
-            Class.forName("org.sqlite.JDBC");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println(">> Working dir = " + new java.io.File(".").getAbsolutePath());
-
-        String url = "jdbc:sqlite:IotBayDB.db";
-
-
-        try {
-            connection = DriverManager.getConnection(url);
-            connection.setAutoCommit(true);
-            System.out.println("Connected to database");
-        }
-        catch (SQLException e) {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/iotbay";
+            String user = "root";
+            String password = "your_password"; // replace with your actual password
+            this.connection = DriverManager.getConnection(url, user, password);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public Connection getConnection() {
-        return connection;
+    public Connection openConnection() {
+        return this.connection;
     }
 
     public void closeConnection() {
         try {
-            if (connection != null) {
-                connection.close();
-                System.out.println("Connection closed");
-            }
-        }
-        catch (SQLException e) {
+            if (this.connection != null) this.connection.close();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
 }

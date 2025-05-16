@@ -9,7 +9,8 @@ public class DAO {
 
     public DAO() throws SQLException {
         tables = new ArrayList<>();
-        Connection connection = new DBConnector().getConnection();
+        Connection connection = new DBConnector().openConnection();
+
         try {
             tables.add(new UserDBManager(connection));
         }

@@ -1,18 +1,53 @@
 <!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
   <servlet>
     <servlet-name>OrderServlet</servlet-name>
     <servlet-class>uts.isd.controller.OrderServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CreateShipmentServlet</servlet-name>
+    <servlet-class>uts.isd.controller.CreateShipmentServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteShipmentServlet</servlet-name>
+    <servlet-class>uts.isd.controller.DeleteShipmentServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ViewShipmentServlet</servlet-name>
+    <servlet-class>uts.isd.controller.ViewShipmentServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UpdateShipmentServlet</servlet-name>
+    <servlet-class>uts.isd.controller.UpdateShipmentServlet</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>OrderServlet</servlet-name>
     <url-pattern>/order</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CreateShipmentServlet</servlet-name>
+    <url-pattern>/createShipment</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteShipmentServlet</servlet-name>
+    <url-pattern>/deleteShipment</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ViewShipmentServlet</servlet-name>
+    <url-pattern>/viewShipment</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateShipmentServlet</servlet-name>
+    <url-pattern>/updateShipment</url-pattern>
+  </servlet-mapping>
 
-  <!-- Add if there are other servlets -->
 
 </web-app>
+
+

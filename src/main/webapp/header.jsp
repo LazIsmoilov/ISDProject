@@ -56,7 +56,8 @@
                     <ul class="items">
                         <li><a href="index.jsp">HOME</a></li>
                         <li><a href="register.jsp">REGISTER</a></li>
-                        <li><a href="order?action=list">🧾 MY ORDERS</a></li>
+                        <li><a href="cart.jsp"> CART</a></li>
+                        <li><a href="order?action=list"> MY ORDERS</a></li>
                         <li><a href="#">ABOUT</a></li>
                         <li><a href="#">CONTACT</a></li>
                     </ul>

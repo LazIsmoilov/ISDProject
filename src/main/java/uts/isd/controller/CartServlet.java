@@ -30,6 +30,6 @@ public class CartServlet extends HttpServlet {
         session.setAttribute("cart", cart);
 
         // 重定向回购物车或下单页
-        resp.sendRedirect("createOrder.jsp");
+        resp.sendRedirect("main.jsp");
     }
 }

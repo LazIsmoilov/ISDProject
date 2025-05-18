@@ -1,33 +1,35 @@
+package uts.isd.model;
+
 public class Shipment {
-    private int id;
+    private int shipmentId;
     private int orderId;
-    private String shipmentMethod;
+    private String method;
     private String shipmentDate;
-    private String shippingAddress;
+    private String address;
+
+    public Shipment(int shipmentId, int orderId, String method, String shipmentDate, String address) {
+        this.shipmentId = shipmentId;
+        this.orderId = orderId;
+        this.method = method;
+        this.shipmentDate = shipmentDate;
+        this.address = address;
+    }
 
     public Shipment() {}
 
-    public Shipment(int id, int orderId, String shipmentMethod, String shipmentDate, String shippingAddress) {
-        this.id = id;
-        this.orderId = orderId;
-        this.shipmentMethod = shipmentMethod;
-        this.shipmentDate = shipmentDate;
-        this.shippingAddress = shippingAddress;
-    }
-
-    // Getters and setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    // Getters and Setters
+    public int getShipmentId() { return shipmentId; }
+    public void setShipmentId(int shipmentId) { this.shipmentId = shipmentId; }
 
     public int getOrderId() { return orderId; }
     public void setOrderId(int orderId) { this.orderId = orderId; }
 
-    public String getShipmentMethod() { return shipmentMethod; }
-    public void setShipmentMethod(String shipmentMethod) { this.shipmentMethod = shipmentMethod; }
+    public String getMethod() { return method; }
+    public void setMethod(String method) { this.method = method; }
 
     public String getShipmentDate() { return shipmentDate; }
     public void setShipmentDate(String shipmentDate) { this.shipmentDate = shipmentDate; }
 
-    public String getShippingAddress() { return shippingAddress; }
-    public void setShippingAddress(String shippingAddress) { this.shippingAddress = shippingAddress; }
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
 }

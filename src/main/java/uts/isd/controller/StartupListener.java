@@ -19,8 +19,7 @@ public class StartupListener implements ServletContextListener {
         ctx.setAttribute("dbConnector", connector);
 
         // 2. 从连接器拿到 JDBC Connection
-        Connection conn = connector.openConnection();
-
+        Connection conn = connector.getConnection();
 
         // 3. 创建各模块的 DBManager
         try {

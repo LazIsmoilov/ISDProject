@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ page import="uts.isd.model.User, java.util.List, uts.isd.model.Order" %>
+<%@ page import="java.util.List, uts.isd.model.Order" %>
 <jsp:include page="header.jsp" />
 <pref-header></pref-header>
 <style>
@@ -16,12 +16,6 @@
 </style>
 
 <h2>My Orders</h2>
-<%
-  User currentUser = (User) session.getAttribute("user");
-  List<Order> orders = (List<Order>) request.getAttribute("orders");
-%>
-<p>当前用户 ID：<%= currentUser.getId() %></p>
-<p>查询到的订单数：<%= orders == null ? 0 : orders.size() %></p>
 
 <table>
   <tr>
@@ -32,7 +26,8 @@
     <th>Actions</th>
   </tr>
   <%
-
+    // 用脚本式循环替代 JSTL
+    List<Order> orders = (List<Order>) request.getAttribute("orders");
     if (orders != null) {
       for (Order o : orders) {
   %>
@@ -46,7 +41,9 @@
       <% if (!"Cancelled".equals(o.getStatus())) { %>
       | <a href="order?action=cancel&id=<%= o.getId() %>"
            onclick="return confirm('Cancel order #<%= o.getId() %>?');">Cancel</a>
-      | <a href="shipment.jsp?orderId=<%= o.getId() %>">Shipment</a>
+      | <a href="shipment.jsp?orderId=<%= o.getId() %>">Shipment</a> <!-- ✅ 新增 -->
+      <!--int orderId = Integer.parseInt(request.getParameter("orderId"));
+
       <% } else { %>
       | <span style="color: gray;">Cancelled</span>
       <% } %>

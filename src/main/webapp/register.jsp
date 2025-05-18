@@ -1,44 +1,59 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: laz
-  Date: 30/4/2025
-  Time: 4:04 pm
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html lang="en">
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false"%>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Register - IoT Bay</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+  <title>Login</title>
 </head>
-<body>
-<%@ include file="header.jsp" %>
-<div class="register-form">
-  <h2>Register</h2>
-  <form action="RegisterServlet" method="post">
-    <label for="name"></label><label for="name">Full Name:</label>
-    <input id="name" type="text" name="name" required><br><br>
-    <label for="email">Email:</label>
-    <input id="email" type="email" name="email" required><br><br>
-    <label for="password">Password:</label>
-    <input id="password" type="password" name="password" required><br><br>
-    <label for="dob">Date of Birth:</label>
-    <input id="dob" type="date" name="dob" required><br><br>
-    <label for="gender">Gender:</label>
-    <select name="gender" id="gender" required>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-      <option value="Other">Other</option>
-    </select><br><br>
-    <br>
-    <label for="tos">Agree to our <span style="color: dodgerblue; cursor: pointer">Terms of Service</span></label>
-    <input type="checkbox" id="tos" name="tos">
-    <br>
-    <input type="submit" value="Register">
-  </form>
+<body class="container mt-5">
+<div class="row justify-content-center">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="mb-4">User Register</h2>
+        <c:if test="${not empty error}">
+          <div class="alert alert-danger">${error}</div>
+        </c:if>
+        <form action="${pageContext.request.contextPath}/register" method="post">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="fullName" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" required minlength="8">
+          </div>
+
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" name="phone" class="form-control" required pattern="[0-9]{10}">
+            <small class="form-text text-muted">Enter a 10-digit number(04**-***-***)</small>
+          </div>
+
+          <div class="form-group">
+            <label>role</label>
+            <select name="role" class="form-control" required>
+              <option value=""></option>
+              <option value="customer">customer</option>
+              <option value="staff">staff</option>
+              <option value="admin">admin</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Register</button>
+          <a class="btn btn-success btn-block" href="${pageContext.request.contextPath}/login.jsp" >back</a>
+
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 </body>
 </html>

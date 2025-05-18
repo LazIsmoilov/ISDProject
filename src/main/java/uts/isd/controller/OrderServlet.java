@@ -32,14 +32,13 @@ public class OrderServlet extends HttpServlet {
         // ====== START TEMP TEST USER CODE - REMOVE BEFORE PRODUCTION ======
         User user = (User) session.getAttribute("user");
         if (user == null) {
-            user = new User(
-                    1,                   // 临时测试用户 ID
-                    "Test User",         // 临时测试用户名
-                    "test@example.com",  // 临时测试邮箱
-                    "password",          // 临时测试密码
-                    "2000-01-01",        // 临时测试生日
-                    "M"                  // 临时测试性别
-            );
+            user = new User();
+            user.setUserId(1);
+            user.setFullName("Test User");
+            user.setEmail("test@example.com");
+            user.setPassword("password");
+            user.setPhone("0000000000");
+            user.setRole("Customer");
             session.setAttribute("user", user);
         }
         // ====== END TEMP TEST USER CODE ======
@@ -60,10 +59,7 @@ public class OrderServlet extends HttpServlet {
                 resp.sendRedirect("order?action=list");
 
             } else {
-                List<Order> list = orderDB.getOrdersByUserId(user.getId());
-                System.out.println(">>> 当前用户ID: " + user.getId());
-                System.out.println(">>> Order detected: " + list.size());
-
+                List<Order> list = orderDB.getOrdersByUserId(user.getUserId());
                 req.setAttribute("orders", list);
                 req.getRequestDispatcher("orderList.jsp").forward(req, resp);
             }
@@ -75,25 +71,30 @@ public class OrderServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        HttpSession session = req.getSession();
+        HttpSession session = req.getSession(); // 确保 session 存在
 
         // ====== START TEMP TEST USER CODE - REMOVE BEFORE PRODUCTION ======
         User user = (User) session.getAttribute("user");
         if (user == null) {
-            user = new User(1, "Test User", "test@example.com", "password", "2000-01-01", "M");
+            user = new User();
+            user.setUserId(1);
+            user.setFullName("Test User");
+            user.setEmail("test@example.com");
+            user.setPassword("password");
+            user.setPhone("0000000000");
+            user.setRole("Customer");
             session.setAttribute("user", user);
         }
         // ====== END TEMP TEST USER CODE ======
 
         try {
             double totalPrice = Double.parseDouble(req.getParameter("totalPrice"));
-            Order order = new Order(0, user.getId(), totalPrice, "Pending", null);
+            Order order = new Order(0, user.getUserId(), totalPrice, "Pending", null);
             int orderId = orderDB.addOrder(order);
 
             String[] prodIds = req.getParameterValues("productId");
             String[] qtys    = req.getParameterValues("quantity");
             String[] prices  = req.getParameterValues("unitPrice");
-
             if (prodIds != null) {
                 for (int i = 0; i < prodIds.length; i++) {
                     OrderItem item = new OrderItem(
@@ -107,16 +108,9 @@ public class OrderServlet extends HttpServlet {
                 }
             }
 
-            // 清空购物车
-            session.removeAttribute("cart");
-
-            // 跳转至订单列表（或 shipment.jsp）
             resp.sendRedirect("order?action=list");
-
-        } catch (SQLException | NumberFormatException e) {
-            e.printStackTrace(); // 可选：输出到控制台
-            throw new ServletException("Failed to place order: " + e.getMessage(), e);
+        } catch (SQLException e) {
+            throw new ServletException(e);
         }
     }
-
 }

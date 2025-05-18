@@ -12,35 +12,49 @@ public class MyTest {
     public void testExample() {
         assertTrue("JUnit test is running!", true);
     }
+
     @Test
     public void testUserCreation() {
-        User user = new User("Alice", "alice@example.com", "securePass", "2000-01-01", "Female");
-        assertEquals("Alice", user.getName());
+        User user = new User("Alice", "alice@example.com", "securePass", "1234567890", "customer");
+        assertEquals("Alice", user.getFullName());
         assertEquals("alice@example.com", user.getEmail());
         assertEquals("securePass", user.getPassword());
-        assertEquals("2000-01-01", user.getDob());
-        assertEquals("Female", user.getGender());
+        assertEquals("1234567890", user.getPhone());
+        assertEquals("customer", user.getRole());
     }
+
     @Test
     public void testSetters() {
-        User user = new User("Alice", "alice@example.com", "securePass", "2000-01-01", "Female");
-        user.setName("Bob");
+        User user = new User("Alice", "alice@example.com", "securePass", "1234567890", "customer");
+        user.setFullName("Bob");
         user.setEmail("bob@example.com");
-        assertEquals("Bob", user.getName());
+        user.setPhone("0987654321");
+        user.setRole("admin");
+
+        assertEquals("Bob", user.getFullName());
         assertEquals("bob@example.com", user.getEmail());
-    }
-    @Test
-    public void testPasswordHashing() {
-        User user = new User("Alice", "alice@example.com", "hashedPass123", "2000-01-01", "Female");
-        assertNotEquals("securePass", user.getPassword()); // Ensuring it's not plain text
+        assertEquals("0987654321", user.getPhone());
+        assertEquals("admin", user.getRole());
     }
 
-    private void assertNotEquals(String securePass, String password) {
-    }
     @Test
-    public void testEmailValidation() {
-        User user = new User("Alice", "invalid-email", "securePass", "2000-01-01", "Female");
-        assertFalse(user.getEmail().contains("@")); // Basic validation check
+    public void testInvalidEmail() {
+        try {
+            User user = new User("Alice", "invalid-email", "securePass", "1234567890", "customer");
+            // 如果构造函数未抛出异常，这里是失败
+            assertFalse("Email should be invalid", true);
+        } catch (IllegalArgumentException e) {
+            assertTrue("Caught expected exception for invalid email", true);
+        }
     }
 
+    @Test
+    public void testShortPassword() {
+        try {
+            User user = new User("Alice", "alice@example.com", "123", "1234567890", "customer");
+            assertFalse("Password should be too short", true);
+        } catch (IllegalArgumentException e) {
+            assertTrue("Caught expected exception for short password", true);
+        }
+    }
 }

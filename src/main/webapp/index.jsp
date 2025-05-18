@@ -1,17 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="uts.isd.model.dao.DAO" %>
+<%@ page import="uts.isd.model.dao.UserDBManager" %>
+<%@ page import="uts.isd.model.dao.DBConnector" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="jakarta.servlet.ServletException" %>
 
 <%
-    // —— 懒初始化 DAO，保证 db 不为 null ——
-    DAO db = (DAO) session.getAttribute("db");
+    // —— 懒初始化 UserDBManager，保证 db 不为 null ——
+    UserDBManager db = (UserDBManager) session.getAttribute("db");
     if (db == null) {
         try {
-            db = new DAO();
+            uts.isd.model.dao.DBConnector connector = new uts.isd.model.dao.DBConnector();
+            db = new UserDBManager(connector.getConnection());
             session.setAttribute("db", db);
         } catch (SQLException e) {
-            throw new ServletException("Cannot initialize database connection", e);
+            throw new ServletException("Cannot initialize UserDBManager", e);
         }
     }
 %>
@@ -51,11 +53,19 @@
 </div>
 
 <br>
-<p>Registered Users: <%= db.Users().getUserCount() %></p>
+<p>Registered Users:
+    <%
+        try {
+            out.print(db.getUserCount());
+        } catch (SQLException e) {
+            out.print("Error fetching count.");
+        }
+    %>
+</p>
 <br>
 
 <div class="main-content">
-    <a href="register.jsp"><button>ENTER</button></a>
+    <a href="login.jsp"><button>ENTER</button></a>
 </div>
 
 <script>

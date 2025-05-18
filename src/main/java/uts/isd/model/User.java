@@ -1,58 +1,38 @@
 package uts.isd.model;
 
-import java.io.Serializable;
-
-public class User implements Serializable {
-
-    private int id;
-    private String name;
+public class User {
+    private int userId;
+    private String fullName;
     private String email;
     private String password;
-    private String dob;
-    private String gender;
+    private String phone;
+    private String role;
 
-    // Default constructor
     public User() {
     }
 
-    // Constructor with all fields
-    public User(int id, String name, String email, String password, String dob, String gender) {
-        this.id = id;
-        this.name = name;
+    public User(String fullName, String email, String password, String phone, String role) {
+        this.fullName = fullName;
         this.email = email;
         this.password = password;
-        this.dob = dob;
-        this.gender = gender;
+        this.phone = phone;
+        this.role = role;
     }
 
-    // Constructor without ID (for new users before persistence)
-    public User(String name, String email, String password, String dob, String gender) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.dob = dob;
-        this.gender = gender;
+    public int getUserId() {
+        return userId;
     }
 
-    // Getters and Setters
-    public int getId() {
-        return id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getFullName() {
+        return fullName;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        if (name != null && !name.trim().isEmpty()) {
-            this.name = name;
-        } else {
-            throw new IllegalArgumentException("Name cannot be empty.");
-        }
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -60,11 +40,7 @@ public class User implements Serializable {
     }
 
     public void setEmail(String email) {
-        if (email != null && email.contains("@")) {
-            this.email = email;
-        } else {
-            throw new IllegalArgumentException("Invalid email format.");
-        }
+        this.email = email;
     }
 
     public String getPassword() {
@@ -72,43 +48,22 @@ public class User implements Serializable {
     }
 
     public void setPassword(String password) {
-        if (password != null && password.length() >= 6) { // Basic validation
-            this.password = password;
-        } else {
-            throw new IllegalArgumentException("Password must be at least 6 characters.");
-        }
+        this.password = password;
     }
 
-    public String getDob() {
-        return dob;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setDob(String dob) {
-        this.dob = dob;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getGender() {
-        return gender;
+    public String getRole() {
+        return role;
     }
 
-    public void setGender(String gender) {
-        if (gender.equalsIgnoreCase("Male") || gender.equalsIgnoreCase("Female") || gender.equalsIgnoreCase("Other")) {
-            this.gender = gender;
-        } else {
-            throw new IllegalArgumentException("Invalid gender value.");
-        }
-    }
-
-    // Override toString() for better object representation
-    @Override
-    public String toString() {
-        return "User { " +
-                "ID=" + id +
-                ", Name='" + name + '\'' +
-                ", Email='" + email + '\'' +
-                ", DOB='" + dob + '\'' +
-                ", Gender='" + gender + '\'' +
-                " }";
+    public void setRole(String role) {
+        this.role = role;
     }
 }
-

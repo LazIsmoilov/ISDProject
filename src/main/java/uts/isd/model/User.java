@@ -3,6 +3,9 @@ package uts.isd.model;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    public enum UserType {
+        CUSTOMER, STAFF, ADMIN
+    }
 
     private int id;
     private String name;
@@ -10,12 +13,50 @@ public class User implements Serializable {
     private String password;
     private String dob;
     private String gender;
+    private UserType type; // Enum instead of String
+    private String phoneNumber;
+    private boolean isActive;
 
     // Default constructor
     public User() {
+        this.isActive = true; // Default to active
     }
 
     // Constructor with all fields
+    public User(int id, String name, String email, String password, String dob, String gender,
+                UserType type, String phoneNumber, boolean isActive) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.dob = dob;
+        this.gender = gender;
+        this.type = type;
+        this.phoneNumber = phoneNumber;
+        this.isActive = isActive;
+    }
+
+    // Constructor without ID
+    public User(String name, String email, String password, String dob, String gender,
+                UserType type, String phoneNumber) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.dob = dob;
+        this.gender = gender;
+        this.type = type;
+        this.phoneNumber = phoneNumber;
+        this.isActive = true; // Default to active
+    }
+
+    public User(String name, String email, String password, String dob, String gender) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.dob = dob;
+        this.gender = gender;
+    }
+
     public User(int id, String name, String email, String password, String dob, String gender) {
         this.id = id;
         this.name = name;
@@ -25,16 +66,40 @@ public class User implements Serializable {
         this.gender = gender;
     }
 
-    // Constructor without ID (for new users before persistence)
-    public User(String name, String email, String password, String dob, String gender) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.dob = dob;
-        this.gender = gender;
+    // Getters and Setters
+    public UserType getType() {
+        return type;
     }
 
-    // Getters and Setters
+    public void setType(UserType type) {
+        if (type != null) {
+            this.type = type;
+        } else {
+            throw new IllegalArgumentException("User type cannot be null.");
+        }
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        if (phoneNumber != null && phoneNumber.matches("\\d{10}")) { // Example: 10-digit phone
+            this.phoneNumber = phoneNumber;
+        } else {
+            throw new IllegalArgumentException("Invalid phone number format.");
+        }
+    }
+
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    // Existing getters/setters (id, name, email, password, dob, gender) remain unchanged
     public int getId() {
         return id;
     }
@@ -99,7 +164,20 @@ public class User implements Serializable {
         }
     }
 
-    // Override toString() for better object representation
+    // Role checking methods
+    public boolean isAdmin() {
+        return type == UserType.ADMIN;
+    }
+
+    public boolean isCustomer() {
+        return type == UserType.CUSTOMER;
+    }
+
+    public boolean isStaff() {
+        return type == UserType.STAFF;
+    }
+
+    // Update toString() to include new fields
     @Override
     public String toString() {
         return "User { " +
@@ -108,7 +186,9 @@ public class User implements Serializable {
                 ", Email='" + email + '\'' +
                 ", DOB='" + dob + '\'' +
                 ", Gender='" + gender + '\'' +
+                ", Type='" + type + '\'' +
+                ", PhoneNumber='" + phoneNumber + '\'' +
+                ", IsActive=" + isActive +
                 " }";
     }
 }
-

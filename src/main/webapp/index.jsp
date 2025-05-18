@@ -47,7 +47,8 @@
 <br>
 
 <div class="main-content">
-    <a href="register.jsp"><button>ENTER</button></a>
+    <a href="register.jsp"><button>Register</button></a>
+    <a href="login.jsp"><button>Login</button></a>
 </div>
 
 <script>

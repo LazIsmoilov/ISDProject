@@ -1,0 +1,13 @@
+0:0:0:0:0:0:0:1 - - [16/May/2025:10:12:45 +1000] "GET /ISDProject HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [16/May/2025:10:12:45 +1000] "GET /ISDProject/ HTTP/1.1" 200 3525
+0:0:0:0:0:0:0:1 - - [16/May/2025:10:12:45 +1000] "GET /ISDProject/style.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/May/2025:10:12:45 +1000] "GET /favicon.ico HTTP/1.1" 404 683
+0:0:0:0:0:0:0:1 - - [16/May/2025:10:12:45 +1000] "GET /apple-touch-icon.png HTTP/1.1" 404 683
+0:0:0:0:0:0:0:1 - - [16/May/2025:10:12:45 +1000] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 683
+0:0:0:0:0:0:0:1 - - [16/May/2025:10:12:47 +1000] "GET /ISDProject/register.jsp HTTP/1.1" 200 3929
+0:0:0:0:0:0:0:1 - - [16/May/2025:10:13:13 +1000] "GET /favicon.ico HTTP/1.1" 404 683
+0:0:0:0:0:0:0:1 - - [16/May/2025:10:13:13 +1000] "GET /apple-touch-icon.png HTTP/1.1" 404 683
+0:0:0:0:0:0:0:1 - - [16/May/2025:10:13:13 +1000] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 683
+0:0:0:0:0:0:0:1 - - [16/May/2025:10:13:16 +1000] "GET /apple-touch-icon.png HTTP/1.1" 404 683
+0:0:0:0:0:0:0:1 - - [16/May/2025:10:13:16 +1000] "GET /favicon.ico HTTP/1.1" 404 683
+0:0:0:0:0:0:0:1 - - [16/May/2025:10:13:16 +1000] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 683

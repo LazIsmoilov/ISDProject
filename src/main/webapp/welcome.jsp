@@ -26,6 +26,8 @@
   <h1>Welcome to IoT Bay, <%= userName %>!</h1>
   <p>Your premier destination for high-quality IoT devices and technology solutions. Explore our extensive collection of smart devices, components, and accessories that will transform your digital experience.</p>
   <p><a href="main.jsp">Explore More Devices</a></p>
+  <p><a href="edit.jsp">Edit</a> </p>
+  <p><a href="logout.jsp">Logout</a></p>
 </div>
 </body>
 </html>

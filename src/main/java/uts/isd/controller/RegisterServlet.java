@@ -15,12 +15,6 @@ import java.sql.SQLException;
 
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // No logic for GET
-    }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         DAO db = (DAO) req.getSession().getAttribute("db");
@@ -31,15 +25,25 @@ public class RegisterServlet extends HttpServlet {
         String password = req.getParameter("password");
         String dob = req.getParameter("dob");
         String gender = req.getParameter("gender");
+        String typeParam = req.getParameter("type");
+        String phone = req.getParameter("phone");
         boolean agreed = req.getParameter("tos") != null;
 
-        session.setAttribute("name", name);
+        // Default UserType to CUSTOMER if null
+        User.UserType type = (typeParam != null) ? User.UserType.valueOf(typeParam.toUpperCase()) : User.UserType.CUSTOMER;
 
         if (agreed) {
-            User user = new User(name, email, password, dob, gender);
+            User user = new User(name, email, password, dob, gender, type, phone);
             session.setAttribute("loggedInUser", user);
             try {
                 db.Users().add(user);
+
+                if (user.getType() == User.UserType.ADMIN) {
+                    resp.sendRedirect("admin.jsp");
+                } else {
+                    resp.sendRedirect("welcome.jsp");
+                }
+                return;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -47,4 +51,5 @@ public class RegisterServlet extends HttpServlet {
         resp.sendRedirect("welcome.jsp");
     }
 }
+
 

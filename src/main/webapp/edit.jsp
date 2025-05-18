@@ -27,7 +27,7 @@
 <%@ include file="header.jsp" %>
 <div class="form-container">
   <h1>Edit Profile</h1>
-  <form method="post" action="${pageContext.request.contextPath}/EditServlet">
+  <form action="EditServlet" method="post">
     <div class="form-group">
       <label for="name">Full Name</label>
       <input type="text" id="name" name="name" value="<%= user.getName() %>" required>

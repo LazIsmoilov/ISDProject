@@ -61,6 +61,9 @@ public class OrderServlet extends HttpServlet {
 
             } else {
                 List<Order> list = orderDB.getOrdersByUserId(user.getId());
+                System.out.println(">>> 当前用户ID: " + user.getId());
+                System.out.println(">>> Order detected: " + list.size());
+
                 req.setAttribute("orders", list);
                 req.getRequestDispatcher("orderList.jsp").forward(req, resp);
             }
@@ -72,19 +75,12 @@ public class OrderServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        HttpSession session = req.getSession(); // 确保 session 存在
+        HttpSession session = req.getSession();
 
         // ====== START TEMP TEST USER CODE - REMOVE BEFORE PRODUCTION ======
         User user = (User) session.getAttribute("user");
         if (user == null) {
-            user = new User(
-                    1,
-                    "Test User",
-                    "test@example.com",
-                    "password",
-                    "2000-01-01",
-                    "M"
-            );
+            user = new User(1, "Test User", "test@example.com", "password", "2000-01-01", "M");
             session.setAttribute("user", user);
         }
         // ====== END TEMP TEST USER CODE ======
@@ -97,6 +93,7 @@ public class OrderServlet extends HttpServlet {
             String[] prodIds = req.getParameterValues("productId");
             String[] qtys    = req.getParameterValues("quantity");
             String[] prices  = req.getParameterValues("unitPrice");
+
             if (prodIds != null) {
                 for (int i = 0; i < prodIds.length; i++) {
                     OrderItem item = new OrderItem(
@@ -110,9 +107,16 @@ public class OrderServlet extends HttpServlet {
                 }
             }
 
+            // 清空购物车
+            session.removeAttribute("cart");
+
+            // 跳转至订单列表（或 shipment.jsp）
             resp.sendRedirect("order?action=list");
-        } catch (SQLException e) {
-            throw new ServletException(e);
+
+        } catch (SQLException | NumberFormatException e) {
+            e.printStackTrace(); // 可选：输出到控制台
+            throw new ServletException("Failed to place order: " + e.getMessage(), e);
         }
     }
+
 }

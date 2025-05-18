@@ -23,7 +23,7 @@
   </label><br>
   <button type="submit">Add to Cart</button>
 </form>
-<p><a href="createOrder.jsp">Go to Checkout</a></p>
+<p><a href="order.jsp">Go to Checkout</a></p>
 </body>
 </html>
 

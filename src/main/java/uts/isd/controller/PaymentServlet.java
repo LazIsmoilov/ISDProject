@@ -15,12 +15,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import uts.isd.model.Payment;
+import uts.isd.model.User;
 import uts.isd.model.dao.OrderDBManager;
 import uts.isd.model.dao.PaymentDBManager;
 
 public class PaymentServlet extends HttpServlet {
     private PaymentDBManager paymentDB;
     private OrderDBManager orderDB;
+    private static final Logger LOGGER = Logger.getLogger(PaymentServlet.class.getName());
     
     @Override
     public void init() {
@@ -28,7 +30,7 @@ public class PaymentServlet extends HttpServlet {
             paymentDB = (PaymentDBManager) getServletContext().getAttribute("paymentDB");
             orderDB = (OrderDBManager) getServletContext().getAttribute("orderDB");
         } catch (Exception e) {
-            Logger.getLogger(PaymentServlet.class.getName()).log(Level.SEVERE, null, e);
+            LOGGER.log(Level.SEVERE, "Error initializing PaymentServlet", e);
         }
     }
     
@@ -147,6 +149,7 @@ public class PaymentServlet extends HttpServlet {
     }
     
     private void processPayment(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException, SQLException {
+        User user = (User) session.getAttribute("user");
         int orderId = Integer.parseInt(request.getParameter("orderId"));
         double amount = Double.parseDouble(request.getParameter("amount"));
         String paymentMethod = request.getParameter("paymentMethod");
@@ -180,6 +183,7 @@ public class PaymentServlet extends HttpServlet {
         
         // Set success message and redirect to confirmation
         session.setAttribute("payment", payment);
+        session.setAttribute("paymentSuccess", "Payment processed successfully!");
         response.sendRedirect("paymentConfirmation.jsp");
     }
     
@@ -193,6 +197,8 @@ public class PaymentServlet extends HttpServlet {
             
             // Update order status back to pending
             orderDB.updateOrderStatus(payment.getOrderId(), "Pending");
+            
+            session.setAttribute("paymentSuccess", "Payment cancelled successfully!");
         }
         
         response.sendRedirect("payment?action=search");

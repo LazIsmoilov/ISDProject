@@ -13,13 +13,15 @@ public class Payment implements Serializable {
     private String cvv;
     private double amount;
     private Date paymentDate;
-    private String status;  // e.g., "pending", "completed", "cancelled"
+    private PaymentStatus status;
 
-    public Payment() { }
+    public Payment() {
+        this.status = PaymentStatus.PENDING;
+    }
 
     public Payment(int id, int orderId, String paymentMethod, String cardNumber, 
                   String cardHolderName, String expiryDate, String cvv, 
-                  double amount, Date paymentDate, String status) {
+                  double amount, Date paymentDate, PaymentStatus status) {
         this.id = id;
         this.orderId = orderId;
         this.paymentMethod = paymentMethod;
@@ -105,12 +107,16 @@ public class Payment implements Serializable {
         this.paymentDate = paymentDate;
     }
 
-    public String getStatus() {
+    public PaymentStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(PaymentStatus status) {
         this.status = status;
+    }
+
+    public String getStatusDisplay() {
+        return status.getDisplayName();
     }
 
     @Override
@@ -125,7 +131,7 @@ public class Payment implements Serializable {
                 ", cvv='" + cvv + '\'' +
                 ", amount=" + amount +
                 ", paymentDate=" + paymentDate +
-                ", status='" + status + '\'' +
+                ", status='" + status.getDisplayName() + '\'' +
                 '}';
     }
 } 

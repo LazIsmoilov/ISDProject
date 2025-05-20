@@ -72,6 +72,7 @@
             </div>
             
             <div style="text-align: center; margin-top: 20px;">
+                <a href="payment?action=receipt&paymentId=<%= payment.getId() %>"><button class="buttons">View Receipt</button></a>
                 <a href="payment?action=search"><button class="buttons">View Payment History</button></a>
                 <a href="order?action=list"><button class="buttons">Back to Orders</button></a>
             </div>

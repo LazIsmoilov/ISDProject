@@ -1,6 +1,7 @@
 package uts.isd.model.dao;
 
 import uts.isd.model.Payment;
+import uts.isd.model.PaymentStatus;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class PaymentDBManager {
             ps.setString(6, payment.getCvv());
             ps.setDouble(7, payment.getAmount());
             ps.setTimestamp(8, new Timestamp(payment.getPaymentDate().getTime()));
-            ps.setString(9, payment.getStatus());
+            ps.setString(9, payment.getStatus().getDisplayName());
             ps.executeUpdate();
             try (ResultSet keys = ps.getGeneratedKeys()) {
                 if (keys.next()) {
@@ -61,7 +62,7 @@ public class PaymentDBManager {
                         rs.getString("cvv"),
                         rs.getDouble("amount"),
                         rs.getTimestamp("paymentDate"),
-                        rs.getString("status")
+                        PaymentStatus.fromString(rs.getString("status"))
                     );
                     payments.add(payment);
                 }
@@ -89,7 +90,7 @@ public class PaymentDBManager {
                         rs.getString("cvv"),
                         rs.getDouble("amount"),
                         rs.getTimestamp("paymentDate"),
-                        rs.getString("status")
+                        PaymentStatus.fromString(rs.getString("status"))
                     );
                 }
             }
@@ -111,7 +112,7 @@ public class PaymentDBManager {
             ps.setString(5, payment.getCvv());
             ps.setDouble(6, payment.getAmount());
             ps.setTimestamp(7, new Timestamp(payment.getPaymentDate().getTime()));
-            ps.setString(8, payment.getStatus());
+            ps.setString(8, payment.getStatus().getDisplayName());
             ps.setInt(9, payment.getId());
             ps.executeUpdate();
         }
@@ -149,7 +150,7 @@ public class PaymentDBManager {
                         rs.getString("cvv"),
                         rs.getDouble("amount"),
                         rs.getTimestamp("paymentDate"),
-                        rs.getString("status")
+                        PaymentStatus.fromString(rs.getString("status"))
                     );
                     payments.add(payment);
                 }

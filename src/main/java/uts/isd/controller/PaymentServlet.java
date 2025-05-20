@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import uts.isd.model.Payment;
+import uts.isd.model.PaymentStatus;
 import uts.isd.model.User;
 import uts.isd.model.dao.OrderDBManager;
 import uts.isd.model.dao.PaymentDBManager;
@@ -34,7 +35,11 @@ public class PaymentServlet extends HttpServlet {
         }
     }
     
-    private boolean validateCardNumber(String cardNumber) {
+    protected boolean validateCardNumber(String cardNumber) {
+        if (cardNumber == null || cardNumber.trim().isEmpty()) {
+            return false;
+        }
+        
         // Remove spaces and dashes
         cardNumber = cardNumber.replaceAll("[\\s-]", "");
         
@@ -63,7 +68,11 @@ public class PaymentServlet extends HttpServlet {
         return (sum % 10 == 0);
     }
     
-    private boolean validateExpiryDate(String expiryDate) {
+    protected boolean validateExpiryDate(String expiryDate) {
+        if (expiryDate == null || expiryDate.trim().isEmpty()) {
+            return false;
+        }
+        
         // Check format MM/YY
         if (!expiryDate.matches("\\d{2}/\\d{2}")) {
             return false;
@@ -90,13 +99,16 @@ public class PaymentServlet extends HttpServlet {
         return true;
     }
     
-    private boolean validateCVV(String cvv) {
+    protected boolean validateCVV(String cvv) {
+        if (cvv == null || cvv.trim().isEmpty()) {
+            return false;
+        }
         // Check if CVV is 3 or 4 digits
         return cvv.matches("\\d{3,4}");
     }
     
-    private boolean validatePaymentAmount(double amount) {
-        return amount > 0;
+    protected boolean validatePaymentAmount(double amount) {
+        return amount > 0 && amount <= 999999.99; // Add maximum amount limit
     }
     
     private List<String> validatePayment(Payment payment) {
@@ -165,26 +177,54 @@ public class PaymentServlet extends HttpServlet {
         payment.setExpiryDate(expiryDate);
         payment.setCvv(cvv);
         payment.setPaymentDate(new Date(System.currentTimeMillis()));
-        payment.setStatus("Completed");
         
         // Validate payment
         List<String> errors = validatePayment(payment);
         if (!errors.isEmpty()) {
             session.setAttribute("paymentError", String.join(", ", errors));
+            session.setAttribute("paymentRetry", payment); // Store payment details for retry
             response.sendRedirect("payment.jsp?orderId=" + orderId);
             return;
         }
         
-        // Process payment
-        paymentDB.addPayment(payment);
-        
-        // Update order status
-        orderDB.updateOrderStatus(orderId, "Paid");
-        
-        // Set success message and redirect to confirmation
-        session.setAttribute("payment", payment);
-        session.setAttribute("paymentSuccess", "Payment processed successfully!");
-        response.sendRedirect("paymentConfirmation.jsp");
+        try {
+            // Simulate payment processing (replace with actual payment gateway integration)
+            boolean paymentSuccessful = processPaymentWithGateway(payment);
+            
+            if (paymentSuccessful) {
+                payment.setStatus(PaymentStatus.COMPLETED);
+                paymentDB.addPayment(payment);
+                
+                // Update order status
+                orderDB.updateOrderStatus(orderId, "Paid");
+                
+                // Set success message and redirect to confirmation
+                session.setAttribute("payment", payment);
+                session.setAttribute("paymentSuccess", "Payment processed successfully!");
+                response.sendRedirect("paymentConfirmation.jsp");
+            } else {
+                payment.setStatus(PaymentStatus.FAILED);
+                paymentDB.addPayment(payment);
+                
+                session.setAttribute("paymentError", "Payment was declined. Please check your card details and try again.");
+                session.setAttribute("paymentRetry", payment); // Store payment details for retry
+                response.sendRedirect("payment.jsp?orderId=" + orderId);
+            }
+        } catch (Exception e) {
+            payment.setStatus(PaymentStatus.FAILED);
+            paymentDB.addPayment(payment);
+            
+            session.setAttribute("paymentError", "An error occurred while processing your payment. Please try again.");
+            session.setAttribute("paymentRetry", payment); // Store payment details for retry
+            response.sendRedirect("payment.jsp?orderId=" + orderId);
+        }
+    }
+    
+    private boolean processPaymentWithGateway(Payment payment) {
+        // Simulate payment gateway processing
+        // In a real implementation, this would integrate with a payment gateway
+        // For testing, we'll randomly succeed or fail
+        return Math.random() > 0.3; // 70% success rate for testing
     }
     
     private void cancelPayment(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException, SQLException {
@@ -192,7 +232,7 @@ public class PaymentServlet extends HttpServlet {
         Payment payment = paymentDB.getPaymentById(paymentId);
         
         if (payment != null) {
-            payment.setStatus("Cancelled");
+            payment.setStatus(PaymentStatus.CANCELLED);
             paymentDB.updatePayment(payment);
             
             // Update order status back to pending

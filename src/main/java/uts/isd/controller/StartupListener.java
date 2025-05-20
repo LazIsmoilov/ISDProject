@@ -8,6 +8,7 @@ import uts.isd.model.dao.DBConnector;
 import uts.isd.model.dao.UserDBManager;
 import uts.isd.model.dao.OrderDBManager;
 import uts.isd.model.dao.OrderItemDBManager;
+import uts.isd.model.dao.PaymentDBManager;
 import java.sql.Connection;
 @WebListener
 public class StartupListener implements ServletContextListener {
@@ -26,9 +27,11 @@ public class StartupListener implements ServletContextListener {
             UserDBManager     userDB  = new UserDBManager(conn);
             OrderDBManager    orderDB = new OrderDBManager(conn);
             OrderItemDBManager itemDB = new OrderItemDBManager(conn);
+            PaymentDBManager  paymentDB = new PaymentDBManager(conn);
             ctx.setAttribute("userDBManager",     userDB);
             ctx.setAttribute("orderDBManager",    orderDB);
             ctx.setAttribute("orderItemDBManager", itemDB);
+            ctx.setAttribute("paymentDBManager",  paymentDB);
             System.out.println("[StartupListener] DBManagers initialized");
         } catch (Exception e) {
             throw new RuntimeException("初始化 DBManager 失败", e);

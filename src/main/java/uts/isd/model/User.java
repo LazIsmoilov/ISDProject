@@ -8,9 +8,18 @@ public class User {
     private String phone;
     private String role;
 
-    public User() {
+    // ✅ Default constructor (for frameworks, JSPs, etc.)
+    public User() {}
+
+    // ✅ Constructor for RegisterServlet (no phone)
+    public User(String fullName, String email, String password, String role) {
+        this.fullName = fullName;
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
 
+    // ✅ Constructor for test and full details (matches your MyTest.java)
     public User(String fullName, String email, String password, String phone, String role) {
         this.fullName = fullName;
         this.email = email;
@@ -19,6 +28,17 @@ public class User {
         this.role = role;
     }
 
+    // ✅ Full constructor with user ID
+    public User(int userId, String fullName, String email, String password, String phone, String role) {
+        this.userId = userId;
+        this.fullName = fullName;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.role = role;
+    }
+
+    // ✅ Getters and Setters
     public int getUserId() {
         return userId;
     }

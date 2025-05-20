@@ -4,46 +4,55 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
+
 import uts.isd.model.dao.DBConnector;
 import uts.isd.model.dao.UserDBManager;
 import uts.isd.model.dao.OrderDBManager;
 import uts.isd.model.dao.OrderItemDBManager;
+import uts.isd.model.dao.DeviceDBManager;
+
 import java.sql.Connection;
+
 @WebListener
 public class StartupListener implements ServletContextListener {
+
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext ctx = sce.getServletContext();
-        // 1. 初始化连接器
+
+        // 1. Initialize DBConnector
         DBConnector connector = new DBConnector();
         ctx.setAttribute("dbConnector", connector);
 
-        // 2. 从连接器拿到 JDBC Connection
+        // 2. Get JDBC Connection
         Connection conn = connector.getConnection();
 
-        // 3. 创建各模块的 DBManager
+        // 3. Create and store DBManagers
         try {
-            UserDBManager     userDB  = new UserDBManager(conn);
-            OrderDBManager    orderDB = new OrderDBManager(conn);
+            UserDBManager userDB = new UserDBManager(conn);
+            OrderDBManager orderDB = new OrderDBManager(conn);
             OrderItemDBManager itemDB = new OrderItemDBManager(conn);
-            ctx.setAttribute("userDBManager",     userDB);
-            ctx.setAttribute("orderDBManager",    orderDB);
+            DeviceDBManager deviceDB = new DeviceDBManager(conn); // ← add this
+
+            ctx.setAttribute("userDBManager", userDB);
+            ctx.setAttribute("orderDBManager", orderDB);
             ctx.setAttribute("orderItemDBManager", itemDB);
-            System.out.println("[StartupListener] DBManagers initialized");
+            ctx.setAttribute("deviceManager", deviceDB); // ← and this line
+
+            System.out.println("[StartupListener] All DBManagers initialized");
         } catch (Exception e) {
-            throw new RuntimeException("初始化 DBManager 失败", e);
+            throw new RuntimeException("Failed to initialize DBManagers", e);
         }
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         ServletContext ctx = sce.getServletContext();
-        // 关闭底层连接
+
         DBConnector connector = (DBConnector) ctx.getAttribute("dbConnector");
-        if(connector != null) {
+        if (connector != null) {
             connector.closeConnection();
             System.out.println("[StartupListener] DBConnector closed");
         }
     }
 }
-

@@ -1,61 +1,52 @@
-<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false"%>
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
-<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <title>Register</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
-  <title>Login</title>
 </head>
-<body class="container mt-5">
-<div class="row justify-content-center">
-  <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <h2 class="mb-4">User Register</h2>
-        <c:if test="${not empty error}">
-          <div class="alert alert-danger">${error}</div>
-        </c:if>
-        <form action="${pageContext.request.contextPath}/register" method="post">
-          <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" name="fullName" class="form-control" required>
-          </div>
+<body>
 
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" name="email" class="form-control" required>
-          </div>
+<div class="container mt-5">
+  <h2>Register</h2>
 
-          <div class="form-group">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control" required minlength="8">
-          </div>
+  <c:if test="${not empty sessionScope.registerError}">
+    <div class="alert alert-danger">${sessionScope.registerError}</div>
+  </c:if>
+  <c:if test="${not empty sessionScope.registerSuccess}">
+    <div class="alert alert-success">${sessionScope.registerSuccess}</div>
+  </c:if>
 
-          <div class="form-group">
-            <label>Phone</label>
-            <input type="tel" name="phone" class="form-control" required pattern="[0-9]{10}">
-            <small class="form-text text-muted">Enter a 10-digit number(04**-***-***)</small>
-          </div>
-
-          <div class="form-group">
-            <label>role</label>
-            <select name="role" class="form-control" required>
-              <option value=""></option>
-              <option value="customer">customer</option>
-              <option value="staff">staff</option>
-              <option value="admin">admin</option>
-            </select>
-          </div>
-
-          <button type="submit" class="btn btn-primary btn-block">Register</button>
-          <a class="btn btn-success btn-block" href="${pageContext.request.contextPath}/login.jsp" >back</a>
-
-        </form>
-      </div>
+  <form action="register" method="post">
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input type="text" class="form-control" name="fullName" required>
     </div>
-  </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" name="password" required>
+    </div>
+
+    <div class="form-group">
+      <label for="role">Role</label>
+      <select class="form-control" name="role" required>
+        <option value="customer">Customer</option>
+        <option value="staff">Staff</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+
+  <p class="mt-3">Already have an account? <a href="login.jsp">Login here</a></p>
 </div>
+
 </body>
 </html>
-
-

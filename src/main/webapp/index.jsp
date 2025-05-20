@@ -2,18 +2,17 @@
 <%@ page import="uts.isd.model.dao.UserDBManager" %>
 <%@ page import="uts.isd.model.dao.DBConnector" %>
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="jakarta.servlet.ServletException" %>
 
 <%
-    // —— 懒初始化 UserDBManager，保证 db 不为 null ——
+    // Lazy initialize UserDBManager to ensure 'db' is available
     UserDBManager db = (UserDBManager) session.getAttribute("db");
     if (db == null) {
         try {
-            uts.isd.model.dao.DBConnector connector = new uts.isd.model.dao.DBConnector();
+            DBConnector connector = new DBConnector();
             db = new UserDBManager(connector.getConnection());
             session.setAttribute("db", db);
-        } catch (SQLException e) {
-            throw new ServletException("Cannot initialize UserDBManager", e);
+        } catch (Exception e) {
+            throw new RuntimeException("Cannot initialize UserDBManager", e);
         }
     }
 %>
@@ -28,6 +27,7 @@
     <%@ include file="header.jsp" %>
 </head>
 <body>
+
 <pref-header></pref-header>
 
 <div class="content">
@@ -73,5 +73,6 @@
         window.location.href = "logout.jsp";
     }
 </script>
+
 </body>
 </html>

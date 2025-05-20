@@ -59,6 +59,7 @@
                         <li><a href="order?action=list">🧾 MY ORDERS</a></li>
                         <li><a href="#">ABOUT</a></li>
                         <li><a href="#">CONTACT</a></li>
+                        <li><a href="main.jsp">MAIN</a></li>
                     </ul>
                     <div>
                         <h2>Logged in user:

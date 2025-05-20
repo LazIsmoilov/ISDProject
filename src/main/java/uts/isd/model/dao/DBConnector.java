@@ -1,9 +1,9 @@
 package uts.isd.model.dao;
 
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.io.File;
 
 public class DBConnector {
     private Connection connection;
@@ -15,18 +15,17 @@ public class DBConnector {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
         System.out.println(">> Working dir = " + new java.io.File(".").getAbsolutePath());
 
+        String url = "jdbc:sqlite:IotBayDB.db";
 
-        String dbPath = "/Users/qinhaoranzhou/Desktop/ISDProject-main/iotBayDatabase.db";
-        String url = "jdbc:sqlite:" + dbPath;
 
         try {
             connection = DriverManager.getConnection(url);
             connection.setAutoCommit(true);
-            System.out.println("Connected to database at: " + dbPath);
-        } catch (SQLException e) {
+            System.out.println("Connected to database");
+        }
+        catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -41,8 +40,10 @@ public class DBConnector {
                 connection.close();
                 System.out.println("Connection closed");
             }
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 }

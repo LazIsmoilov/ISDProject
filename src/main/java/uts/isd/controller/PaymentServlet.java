@@ -15,7 +15,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import uts.isd.model.Payment;
-import uts.isd.model.Order;
 import uts.isd.model.dao.OrderDBManager;
 import uts.isd.model.dao.PaymentDBManager;
 
@@ -214,6 +213,9 @@ public class PaymentServlet extends HttpServlet {
                 case "search":
                     searchPayments(request, response, session);
                     break;
+                case "receipt":
+                    generateReceipt(request, response, session);
+                    break;
                 default:
                     response.sendRedirect("order?action=list");
             }
@@ -239,5 +241,18 @@ public class PaymentServlet extends HttpServlet {
         session.setAttribute("payments", payments);
         
         response.sendRedirect("paymentHistory.jsp");
+    }
+    
+    private void generateReceipt(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws SQLException, IOException {
+        int paymentId = Integer.parseInt(request.getParameter("paymentId"));
+        Payment payment = paymentDB.getPaymentById(paymentId);
+        
+        if (payment != null) {
+            session.setAttribute("payment", payment);
+            response.sendRedirect("paymentReceipt.jsp");
+        } else {
+            session.setAttribute("paymentError", "Payment not found");
+            response.sendRedirect("payment?action=search");
+        }
     }
 } 

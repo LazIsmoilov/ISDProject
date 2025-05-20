@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="uts.isd.model.User" %>
 <%@ page import="uts.isd.model.Payment" %>
+<%@ page import="uts.isd.model.PaymentStatus" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Collections" %>
@@ -44,14 +45,39 @@
             padding: 12px;
             border-bottom: 1px solid #ddd;
         }
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-block;
+            text-align: center;
+            min-width: 100px;
+        }
         .status-completed {
-            color: #4CAF50;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #2e7d32;
         }
         .status-cancelled {
-            color: #f44336;
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #c62828;
         }
         .status-pending {
-            color: #ff9800;
+            background-color: #fff3e0;
+            color: #ef6c00;
+            border: 1px solid #ef6c00;
+        }
+        .status-failed {
+            background-color: #fce4ec;
+            color: #c2185b;
+            border: 1px solid #c2185b;
+        }
+        .status-refunded {
+            background-color: #e3f2fd;
+            color: #1565c0;
+            border: 1px solid #1565c0;
         }
     </style>
     <script>
@@ -155,9 +181,11 @@
                         <label for="statusFilter">Status:</label>
                         <select id="statusFilter" class="form-control" onchange="filterTable()">
                             <option value="">All</option>
-                            <option value="Completed">Completed</option>
-                            <option value="Cancelled">Cancelled</option>
-                            <option value="Pending">Pending</option>
+                            <option value="COMPLETED">Completed</option>
+                            <option value="CANCELLED">Cancelled</option>
+                            <option value="PENDING">Pending</option>
+                            <option value="FAILED">Failed</option>
+                            <option value="REFUNDED">Refunded</option>
                         </select>
                     </div>
                     <div class="filter-group">
@@ -190,10 +218,16 @@
                             <td>$<%= String.format("%.2f", payment.getAmount()) %></td>
                             <td><%= payment.getPaymentMethod() %></td>
                             <td><%= dateFormat.format(payment.getPaymentDate()) %></td>
-                            <td class="status-<%= payment.getStatus().toLowerCase() %>"><%= payment.getStatus() %></td>
                             <td>
-                                <a href="payment?action=receipt&paymentId=<%= payment.getId() %>" class="buttons">View Receipt</a>
-                                <% if ("Completed".equals(payment.getStatus())) { %>
+                                <span class="status-badge status-<%= payment.getStatus().toString().toLowerCase() %>">
+                                    <%= payment.getStatus().getDisplayName() %>
+                                </span>
+                            </td>
+                            <td>
+                                <% if (payment.getStatus() == PaymentStatus.COMPLETED) { %>
+                                    <a href="payment?action=receipt&paymentId=<%= payment.getId() %>" class="buttons">View Receipt</a>
+                                <% } %>
+                                <% if (payment.getStatus() == PaymentStatus.PENDING) { %>
                                     <form action="payment" method="post" style="display: inline;">
                                         <input type="hidden" name="action" value="cancel">
                                         <input type="hidden" name="paymentId" value="<%= payment.getId() %>">

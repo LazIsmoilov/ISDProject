@@ -21,12 +21,14 @@ public class AccessLogServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+//        get current user if null return login
         User user = (User) request.getSession().getAttribute("user");
         if (user == null) {
             response.sendRedirect("login.jsp");
             return;
         }
 
+//        change date from jsp to java date
         Date filterDate = null;
         try {
             String dateParam = request.getParameter("date");
@@ -35,7 +37,10 @@ public class AccessLogServlet extends HttpServlet {
                 filterDate = sdf.parse(dateParam);
             }
 
+//            use accesslogdao filter id and date, if null return all logs or show the chosen day
             List<AccessLog> logs = new AccessLogDAO().getLogsByUser(user.getUserId(), filterDate);
+
+//            give the value to jsp
             request.setAttribute("logs", logs);
             request.getRequestDispatcher("logs.jsp").forward(request, response);
 

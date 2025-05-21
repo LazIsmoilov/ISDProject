@@ -1,52 +1,78 @@
-<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false"%>
-<%@ taglib uri="jakarta.tags.core" prefix="c" %>
-<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
-<html>
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <title>Edit Profile</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
-  <title>Profile</title>
+  <%@ include file="header.jsp" %>
 </head>
-<body class="container mt-5">
+<body>
+<pref-header></pref-header>
+<div class="container">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="${pageContext.request.contextPath}/profile-main.jsp">My Info</a>
-    <div class="d-flex">
-      <span class="text-white me-3">Welcome, ${sessionScope.user.fullName}</span>
-      <a href="${pageContext.request.contextPath}/logout" class="btn btn-outline-light">Logout</a>
-    </div>
-  </div>
-</nav>
 
-<div class="row justify-content-center">
-  <div class="container mt-4">
-    <div class="card mb-4">
-      <div class="card-body">
+  <div class="profile-container">
+    <h2 class="mb-4">Edit Profile</h2>
 
-        <!-- ✅ 修改部分：添加成功提示 + 清除 -->
-        <c:if test="${not empty success}">
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
-              ${success}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-          <c:remove var="success" scope="request"/> <!-- ✅ 防止刷新后重复显示 -->
-        </c:if>
-        <!-- ✅ 修改结束 -->
+    <!-- Success/Error -->
+    <c:if test="${not empty success}">
+      <div class="alert alert-success alert-dismissible fade show">${success}</div>
+    </c:if>
+    <c:if test="${not empty error}">
+      <div class="alert alert-danger alert-dismissible fade show">${error}</div>
+    </c:if>
 
-        <h5 class="card-title">Profile Information</h5>
-        <p>Name: ${user.fullName}</p>
-        <p>Email: ${user.email}</p>
-        <p>Phone: ${user.phone}</p>
-        <a href="${pageContext.request.contextPath}/profile" class="btn btn-primary">Edit Profile</a>
-        <a href="${pageContext.request.contextPath}/profile-main.jsp" class="btn btn-success ms-2">Back</a>
+    <!-- Save Changes Form -->
+    <form action="${pageContext.request.contextPath}/profile" method="post" id="profileForm">
+      <input type="hidden" name="userId" value="${user.userId}">
 
+      <div class="form-group required">
+        <label for="fullName">Full Name</label>
+        <input type="text" class="form-control" id="fullName" name="fullName"
+               value="${user.fullName}" required>
       </div>
+
+      <div class="form-group required">
+        <label for="email">Email Address</label>
+        <input type="email" class="form-control" id="email" name="email"
+               value="${user.email}" required readonly>
+        <small class="form-text text-muted">Cannot be changed once registered</small>
+      </div>
+
+      <div class="form-group required">
+        <label for="phone">Phone Number</label>
+        <input type="tel" class="form-control" id="phone" name="phone"
+               value="${user.phone}" required pattern="[0-9]{10}">
+        <small class="form-text text-muted">Enter a 10-digit number(04**-***-***)</small>
+      </div>
+
+      <div class="form-group">
+        <label for="newPassword">New Password</label>
+        <input type="password" class="form-control" id="newPassword"
+               name="newPassword" minlength="8">
+      </div>
+
+
+      <div class="form-group mt-4 d-flex justify-content-between">
+        <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+      </div>
+    </form>
+
+    <!-- Delete Form -->
+    <form action="${pageContext.request.contextPath}/delete" method="post"
+          onsubmit="return confirm('Are you sure you want to delete your account? This action is irreversible.');"
+          class="mt-2">
+      <button type="submit" class="btn btn-danger btn-block">Delete Account</button>
+    </form>
+
+    <!-- Back Button -->
+    <div class="mt-2">
+      <a class="btn btn-success btn-block" href="${pageContext.request.contextPath}/profile-dashboard.jsp">Back</a>
     </div>
   </div>
 </div>
-
-<!-- ✅ 引入 Bootstrap 以支持 alert dismiss -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

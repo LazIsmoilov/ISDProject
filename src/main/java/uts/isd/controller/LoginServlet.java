@@ -1,11 +1,8 @@
 package uts.isd.controller;
 
+import uts.isd.model.dao.AccessLogDAO;
+import uts.isd.model.dao.UserDAO;
 import uts.isd.model.User;
-import uts.isd.model.dao.DBConnector;
-import uts.isd.model.dao.UserDBManager;
-
-import java.io.IOException;
-import java.sql.SQLException;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,42 +11,33 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        HttpSession session = request.getSession();
-        UserDBManager db = (UserDBManager) session.getAttribute("db");
-
-        // ✅ Re-initialize db if it was cleared by logout
-        if (db == null) {
-            try {
-                DBConnector connector = new DBConnector();
-                db = new UserDBManager(connector.getConnection());
-                session.setAttribute("db", db);
-            } catch (Exception e) {
-                throw new ServletException("Cannot initialize UserDBManager", e);
-            }
-        }
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
         try {
-            User user = db.findUser(email, password);
+            UserDAO userDAO = new UserDAO();
+            User user = userDAO.authenticate(email, password);
 
             if (user != null) {
+                new AccessLogDAO().logLogin(user.getUserId());
+                HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                response.sendRedirect("main.jsp");
+                response.sendRedirect("welcome.jsp");
             } else {
-                session.setAttribute("loginError", "Invalid email or password.");
-                response.sendRedirect("login.jsp");
+                request.setAttribute("error", "Invalid user");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-            session.setAttribute("loginError", "Login failed: " + e.getMessage());
-            response.sendRedirect("login.jsp");
+            throw new ServletException("Database error", e);
         }
     }
 }

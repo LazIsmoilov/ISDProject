@@ -5,25 +5,18 @@
 <head>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
   <title>Access Logs</title>
+  <%@ include file="header.jsp" %>
 </head>
-<body class="container mt-4">
+<body>
+<pref-header></pref-header>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="${pageContext.request.contextPath}/profile-main.jsp">My Info</a>
-    <div class="d-flex">
-      <span class="text-white me-3">Welcome, ${sessionScope.user.fullName}</span>
-
-    </div>
-  </div>
-</nav>
-
-<div class="mb-4">
+<div>
   <h2>Access Logs</h2>
-  <form class="form-inline" action="${pageContext.request.contextPath}/logs">
-    <input type="date" name="date" class="form-control mr-2"  value="${param.date}">
+  <form class="form-inline mb-3" action="${pageContext.request.contextPath}/logs" method="get">
+    <input type="date" name="date" class="form-control mr-2" value="${param.date}" required>
     <button type="submit" class="btn btn-primary">Filter</button>
-    <a class="btn btn-success" href="${pageContext.request.contextPath}/profile-main.jsp" style="margin-left: 5px">back</a>
+    <a class="btn btn-secondary ml-2" href="${pageContext.request.contextPath}/logs">Clear</a>
+    <a class="btn btn-success ml-2" href="${pageContext.request.contextPath}/profile-dashboard.jsp">Back</a>
   </form>
 </div>
 
@@ -32,13 +25,14 @@
   <tr>
     <th>Login Time</th>
     <th>Logout Time</th>
-    <th>Duration</th>
   </tr>
   </thead>
+
+  <%--show logs from back-end--%>
   <tbody>
   <c:forEach items="${logs}" var="log">
     <tr>
-      <td><fmt:formatDate value="${log.loginTime}" pattern="yyyy-MM-dd HH:mm"/></td>
+      <td><fmt:formatDate value="${log.loginTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
       <td>
         <c:choose>
           <c:when test="${not empty log.logoutTime}">
@@ -46,11 +40,6 @@
           </c:when>
           <c:otherwise>N/A</c:otherwise>
         </c:choose>
-      </td>
-      <td>
-        <c:if test="${not empty log.logoutTime}">
-          ${(log.logoutTime.time - log.loginTime.time) / (1000 * 60)} mins
-        </c:if>
       </td>
     </tr>
   </c:forEach>

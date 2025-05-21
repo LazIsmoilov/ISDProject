@@ -123,7 +123,7 @@ public class PaymentTest {
         // Test searching payments
         Date startDate = new Date(System.currentTimeMillis() - 86400000); // 24 hours ago
         Date endDate = new Date();
-        List<Payment> payments = paymentDB.searchPaymentsByDateRange(startDate, endDate);
+        List<Payment> payments = paymentDB.searchPaymentsByDateRange((java.sql.Date) startDate, (java.sql.Date) endDate);
         assertFalse(payments.isEmpty());
         
         // Test getting payments by order ID

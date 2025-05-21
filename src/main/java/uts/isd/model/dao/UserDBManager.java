@@ -3,13 +3,14 @@ package uts.isd.model.dao;
 import uts.isd.model.User;
 
 import java.sql.*;
+import java.util.List;
 
 public class UserDBManager {
-    private Connection conn;
+    private Connection connection;
     private UserDAO userDAO;
 
     public UserDBManager(Connection conn) {
-        this.conn = conn;
+        this.connection = conn;
         this.userDAO = new UserDAO(conn); // Uses the constructor that accepts a connection
     }
 
@@ -26,7 +27,7 @@ public class UserDBManager {
     // ✅ Get total number of registered users (for index.jsp)
     public int getUserCount() throws SQLException {
         String query = "SELECT COUNT(*) FROM users";
-        PreparedStatement stmt = conn.prepareStatement(query);
+        PreparedStatement stmt = connection.prepareStatement(query);
         ResultSet rs = stmt.executeQuery();
 
         int count = 0;
@@ -37,5 +38,24 @@ public class UserDBManager {
         rs.close();
         stmt.close();
         return count;
+    }
+
+
+    public List<User> searchUsers(String name, String phone) {
+
+        return List.of();
+    }
+
+    public void toggleActiveStatus(int userId) {
+
+    }
+
+    public List<User> getAllUsers() {
+
+        return List.of();
+    }
+
+    public void delete(User user) {
+
     }
 }

@@ -35,7 +35,7 @@ public class PaymentServlet extends HttpServlet {
         }
     }
     
-    protected boolean validateCardNumber(String cardNumber) {
+    public boolean validateCardNumber(String cardNumber) {
         if (cardNumber == null || cardNumber.trim().isEmpty()) {
             return false;
         }
@@ -68,7 +68,7 @@ public class PaymentServlet extends HttpServlet {
         return (sum % 10 == 0);
     }
     
-    protected boolean validateExpiryDate(String expiryDate) {
+    public boolean validateExpiryDate(String expiryDate) {
         if (expiryDate == null || expiryDate.trim().isEmpty()) {
             return false;
         }
@@ -99,7 +99,7 @@ public class PaymentServlet extends HttpServlet {
         return true;
     }
     
-    protected boolean validateCVV(String cvv) {
+    public boolean validateCVV(String cvv) {
         if (cvv == null || cvv.trim().isEmpty()) {
             return false;
         }
@@ -107,7 +107,7 @@ public class PaymentServlet extends HttpServlet {
         return cvv.matches("\\d{3,4}");
     }
     
-    protected boolean validatePaymentAmount(double amount) {
+    public boolean validatePaymentAmount(double amount) {
         return amount > 0 && amount <= 999999.99; // Add maximum amount limit
     }
     

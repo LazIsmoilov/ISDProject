@@ -59,14 +59,13 @@
                         <li><a href="order?action=list">🧾 MY ORDERS</a></li>
                         <li><a href="#">ABOUT</a></li>
                         <li><a href="#">CONTACT</a></li>
-                        <li><a href="main.jsp">MAIN</a></li>
                     </ul>
                     <div>
                         <h2>Logged in user:
                             <%
                                 User loggedInUser = (User) session.getAttribute("user");
                                 if (loggedInUser != null) {
-                                    out.print(loggedInUser.getFullName());
+                                    out.print(loggedInUser.getEmail());
                                 } else {
                                     out.print("Guest");
                                 }
@@ -75,8 +74,8 @@
                     </div>
                     <% if (session.getAttribute("user") != null) { %>
                     <div class="user-box">
-                        <a href="profile-main.jsp"><button class="header-button">My Info</button></a>
-                        <a href="logout.jsp"><button class="header-button">LOGOUT</button></a>
+                        <a href="profile-dashboard.jsp"><button class="header-button">My Info</button></a>
+                        <a href="logout"><button class="header-button">LOGOUT</button></a>
                     </div>
                     <% } %>
                 </div>

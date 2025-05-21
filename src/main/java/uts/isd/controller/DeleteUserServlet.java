@@ -18,12 +18,14 @@ public class DeleteUserServlet extends HttpServlet {
 
         response.setContentType("text/html;charset=UTF-8");
 
+//        get user info from session
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("user") == null) {
             response.sendRedirect("login.jsp");
             return;
         }
 
+//        update dao
         User user = (User) session.getAttribute("user");
         UserDAO userDAO = new UserDAO();
 

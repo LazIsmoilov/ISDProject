@@ -5,32 +5,37 @@
   <meta charset="UTF-8">
   <title>Login</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+  <%@ include file="header.jsp" %>
 </head>
 <body>
+<pref-header></pref-header>
 
 <div class="container mt-5">
-  <h2>Login</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="mb-4">User Login</h2>
 
-  <c:if test="${not empty sessionScope.loginError}">
-    <div class="alert alert-danger">${sessionScope.loginError}</div>
-  </c:if>
 
-  <form action="login" method="post">
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" class="form-control" name="email" required>
+      <c:if test="${not empty error}">
+        <div class="alert alert-danger">${error}</div>
+      </c:if>
+
+
+      <form action="${pageContext.request.contextPath}/login" method="post">
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="email" name="email" class="form-control" required placeholder="Enter your email" >
+        </div>
+
+        <div class="form-group">
+          <label>Password:</label>
+          <input type="password" name="password" class="form-control" required placeholder="Enter your password">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <a href="${pageContext.request.contextPath}/register.jsp" class="btn btn-link">Register</a>
+      </form>
     </div>
-
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" name="password" required>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Login</button>
-  </form>
-
-  <p class="mt-3">Don’t have an account? <a href="register.jsp">Register here</a></p>
+  </div>
 </div>
-
 </body>
 </html>

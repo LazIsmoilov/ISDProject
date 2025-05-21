@@ -56,6 +56,7 @@
                     <ul class="items">
                         <li><a href="index.jsp">HOME</a></li>
                         <li><a href="register.jsp">REGISTER</a></li>
+                        <li><a href="order?action=list">🧾 MY ORDERS</a></li>
                         <li><a href="#">ABOUT</a></li>
                         <li><a href="#">CONTACT</a></li>
                     </ul>
@@ -64,7 +65,7 @@
                             <%
                                 User loggedInUser = (User) session.getAttribute("user");
                                 if (loggedInUser != null) {
-                                    out.print(loggedInUser.getName());
+                                    out.print(loggedInUser.getFullName());
                                 } else {
                                     out.print("Guest");
                                 }
@@ -73,7 +74,7 @@
                     </div>
                     <% if (session.getAttribute("user") != null) { %>
                     <div class="user-box">
-                        <a href="edit.jsp"><button class="header-button">EDIT DETAILS</button></a>
+                        <a href="profile-main.jsp"><button class="header-button">My Info</button></a>
                         <a href="logout.jsp"><button class="header-button">LOGOUT</button></a>
                     </div>
                     <% } %>

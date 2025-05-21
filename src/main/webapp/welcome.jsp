@@ -10,7 +10,7 @@
 <%@ page session="true" %>
 <%
   User user = (User) session.getAttribute("loggedInUser");
-  String userName = (user != null && user.getName() != null) ? user.getName() : "Guest";
+  String userName = (user != null && user.getFullName() != null) ? user.getFullName() : "Guest";
 %>
 <!DOCTYPE html>
 <html lang="en">

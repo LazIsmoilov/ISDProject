@@ -15,7 +15,11 @@ public class DBConnector {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        String url = "jdbc:sqlite:iotBayDatabase.db";
+        System.out.println(">> Working dir = " + new java.io.File(".").getAbsolutePath());
+
+        String url = "jdbc:sqlite:IotBayDB.db";
+
+
         try {
             connection = DriverManager.getConnection(url);
             connection.setAutoCommit(true);

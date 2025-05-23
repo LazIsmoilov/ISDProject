@@ -5,17 +5,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DAO {
-    public ArrayList<DBManager<?>> tables;
+    public ArrayList<UserDBManager> tables;
 
     public DAO() throws SQLException {
         tables = new ArrayList<>();
         Connection connection = new DBConnector().getConnection();
-        try {
-            tables.add(new UserDBManager(connection));
-        }
-        catch (SQLException ex) {
-            System.out.println("Error initializing DBManagers");
-        }
+        tables.add(new UserDBManager(connection));
     }
 
     public UserDBManager Users() {

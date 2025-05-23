@@ -42,6 +42,7 @@
     <select name="type" id="type">
       <option value="CUSTOMER">Customer</option>
       <option value="STAFF">Staff</option>
+      <option value="ADMIN">Admin</option>
     </select><br><br>
 
     <label for="phone">Phone Number:</label>

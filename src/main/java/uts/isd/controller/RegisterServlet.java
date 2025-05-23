@@ -37,12 +37,7 @@ public class RegisterServlet extends HttpServlet {
             session.setAttribute("loggedInUser", user);
             try {
                 db.Users().add(user);
-
-                if (user.getType() == User.UserType.ADMIN) {
-                    resp.sendRedirect("admin.jsp");
-                } else {
-                    resp.sendRedirect("welcome.jsp");
-                }
+                resp.sendRedirect("welcome.jsp");
                 return;
             } catch (SQLException e) {
                 e.printStackTrace();

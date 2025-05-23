@@ -1,0 +1,7 @@
+22-May-2025 00:25:56.396 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+22-May-2025 00:25:56.398 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+22-May-2025 00:25:56.400 INFO [Thread-1] uts.isd.controller.StartupListener.contextDestroyed Server Stopped
+22-May-2025 00:25:56.401 INFO [Thread-1] uts.isd.controller.StartupListener.contextDestroyed Database connection closed
+22-May-2025 00:25:56.403 WARNING [Thread-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ISDProject] registered the JDBC driver [org.sqlite.JDBC] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+22-May-2025 00:25:56.406 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+22-May-2025 00:25:56.409 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]

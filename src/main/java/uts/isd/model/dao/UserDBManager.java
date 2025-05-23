@@ -16,14 +16,6 @@ public class UserDBManager extends DBManager<User> {
         super(connection);
     }
 
-    // Get total user count
-    public int getUserCount() throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(*) FROM USERS");
-        ResultSet resultSet = preparedStatement.executeQuery();
-        resultSet.next();
-        return resultSet.getInt(1);
-    }
-
     // CREATE: Add a new user
     public User add(User user) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(
@@ -63,12 +55,68 @@ public class UserDBManager extends DBManager<User> {
                     resultSet.getString("Password"),
                     resultSet.getString("DOB"),
                     resultSet.getString("Gender"),
-                    UserType.valueOf(resultSet.getString("Type")),
+                    UserType.valueOf(resultSet.getString("Type").toUpperCase()), //Write this for defect log (toUpperCase implemented)
                     resultSet.getString("PhoneNumber"),
                     resultSet.getInt("IsActive") == 1
             );
         }
         return null;
+    }
+
+    // UPDATE: Update user details
+    public void update(User oldUser, User newUser) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "UPDATE USERS SET Name = ?, Email = ?, Password = ?, DOB = ?, Gender = ?, Type = ?, PhoneNumber = ?, IsActive = ? WHERE Id = ?"
+        );
+        preparedStatement.setString(1, newUser.getName());
+        preparedStatement.setString(2, newUser.getEmail());
+        preparedStatement.setString(3, newUser.getPassword());
+        preparedStatement.setString(4, newUser.getDob());
+        preparedStatement.setString(5, newUser.getGender());
+        preparedStatement.setString(6, newUser.getType().name().toUpperCase());
+        preparedStatement.setString(7, newUser.getPhoneNumber());
+        preparedStatement.setInt(8, newUser.getIsActive() ? 1 : 0);
+        preparedStatement.setInt(9, oldUser.getId());
+        preparedStatement.executeUpdate();
+    }
+
+    // DELETE: Delete a user
+    public void delete(User user) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "DELETE FROM USERS WHERE Id = ?"
+        );
+        preparedStatement.setInt(1, user.getId());
+        preparedStatement.executeUpdate();
+    }
+
+    public User getById(int id) throws SQLException {
+        String sql = "SELECT * FROM users WHERE id = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new User(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("email"),
+                        rs.getString("password"), // Should be hashed in practice
+                        rs.getString("dob"),
+                        rs.getString("gender"),
+                        UserType.valueOf(rs.getString("type").toUpperCase()),
+                        rs.getString("phoneNumber"),
+                        rs.getInt("isActive") == 1
+                );
+            }
+            return null;
+        }
+    }
+
+    // Get total user count
+    public int getUserCount() throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(*) FROM USERS");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+        return resultSet.getInt(1);
     }
 
     // READ: Get all users
@@ -84,7 +132,7 @@ public class UserDBManager extends DBManager<User> {
                     resultSet.getString("Password"),
                     resultSet.getString("DOB"),
                     resultSet.getString("Gender"),
-                    UserType.valueOf(resultSet.getString("Type")),
+                    UserType.valueOf(resultSet.getString("Type").toUpperCase()),
                     resultSet.getString("PhoneNumber"),
                     resultSet.getInt("IsActive") == 1
             ));
@@ -118,29 +166,12 @@ public class UserDBManager extends DBManager<User> {
                     resultSet.getString("Password"),
                     resultSet.getString("DOB"),
                     resultSet.getString("Gender"),
-                    UserType.valueOf(resultSet.getString("Type")),
+                    UserType.valueOf(resultSet.getString("Type").toUpperCase()),
                     resultSet.getString("PhoneNumber"),
                     resultSet.getInt("IsActive") == 1
             ));
         }
         return users;
-    }
-
-    // UPDATE: Update user details
-    public void update(User oldUser, User newUser) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement(
-                "UPDATE USERS SET Name = ?, Email = ?, Password = ?, DOB = ?, Gender = ?, Type = ?, PhoneNumber = ?, IsActive = ? WHERE Id = ?"
-        );
-        preparedStatement.setString(1, newUser.getName());
-        preparedStatement.setString(2, newUser.getEmail());
-        preparedStatement.setString(3, newUser.getPassword());
-        preparedStatement.setString(4, newUser.getDob());
-        preparedStatement.setString(5, newUser.getGender());
-        preparedStatement.setString(6, newUser.getType().name());
-        preparedStatement.setString(7, newUser.getPhoneNumber());
-        preparedStatement.setInt(8, newUser.getIsActive() ? 1 : 0);
-        preparedStatement.setInt(9, oldUser.getId());
-        preparedStatement.executeUpdate();
     }
 
     // UPDATE: Toggle active status
@@ -153,15 +184,6 @@ public class UserDBManager extends DBManager<User> {
         User user = new User();
         user.setId(userId);
         return get(user); // Fetch updated user
-    }
-
-    // DELETE: Delete a user
-    public void delete(User user) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement(
-                "DELETE FROM USERS WHERE Id = ?"
-        );
-        preparedStatement.setInt(1, user.getId());
-        preparedStatement.executeUpdate();
     }
 
     // READ: Find user by email and password
@@ -180,7 +202,7 @@ public class UserDBManager extends DBManager<User> {
                     resultSet.getString("Password"),
                     resultSet.getString("DOB"),
                     resultSet.getString("Gender"),
-                    UserType.valueOf(resultSet.getString("Type")),
+                    UserType.valueOf(resultSet.getString("Type").toUpperCase()),
                     resultSet.getString("PhoneNumber"),
                     resultSet.getInt("IsActive") == 1
             );

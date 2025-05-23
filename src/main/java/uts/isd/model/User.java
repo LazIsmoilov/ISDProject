@@ -3,6 +3,7 @@ package uts.isd.model;
 import java.io.Serializable;
 
 public class User implements Serializable {
+
     public enum UserType {
         CUSTOMER, STAFF, ADMIN
     }
@@ -13,7 +14,7 @@ public class User implements Serializable {
     private String password;
     private String dob;
     private String gender;
-    private UserType type; // Enum instead of String
+    private UserType type;
     private String phoneNumber;
     private boolean isActive;
 
@@ -21,7 +22,7 @@ public class User implements Serializable {
     public User() {
         this.isActive = true; // Default to active
     }
-
+    
     // Constructor with all fields
     public User(int id, String name, String email, String password, String dob, String gender,
                 UserType type, String phoneNumber, boolean isActive) {
@@ -47,6 +48,18 @@ public class User implements Serializable {
         this.type = type;
         this.phoneNumber = phoneNumber;
         this.isActive = true; // Default to active
+    }
+
+    public User(int userIdToEdit, String name, String email, String password, String dob, String gender, UserType userType, String phoneNumber) {
+        this.id = userIdToEdit;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.dob = dob;
+        this.gender = gender;
+        this.type = userType;
+        this.phoneNumber = phoneNumber;
+        this.isActive = true;
     }
 
     public User(String name, String email, String password, String dob, String gender) {
@@ -84,7 +97,7 @@ public class User implements Serializable {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        if (phoneNumber != null && phoneNumber.matches("\\d{10}")) { // Example: 10-digit phone
+        if (phoneNumber != null && phoneNumber.matches("\\d{10}")) {
             this.phoneNumber = phoneNumber;
         } else {
             throw new IllegalArgumentException("Invalid phone number format.");
@@ -99,7 +112,6 @@ public class User implements Serializable {
         this.isActive = isActive;
     }
 
-    // Existing getters/setters (id, name, email, password, dob, gender) remain unchanged
     public int getId() {
         return id;
     }
@@ -137,7 +149,7 @@ public class User implements Serializable {
     }
 
     public void setPassword(String password) {
-        if (password != null && password.length() >= 6) { // Basic validation
+        if (password != null && password.length() >= 6) {
             this.password = password;
         } else {
             throw new IllegalArgumentException("Password must be at least 6 characters.");
@@ -177,7 +189,8 @@ public class User implements Serializable {
         return type == UserType.STAFF;
     }
 
-    // Update toString() to include new fields
+
+    // toString method
     @Override
     public String toString() {
         return "User { " +

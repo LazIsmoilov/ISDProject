@@ -16,13 +16,13 @@ CREATE TABLE users (
 
 -- Insert a built-in admin user
 INSERT INTO users (name, email, password, dob, gender, type, phoneNumber, isActive)
-VALUES ('Admin User', 'admin@system.com', 'admin123', '1980-01-01', 'Other', 'admin', '1234567890', 1);
+VALUES ('Admin User', 'admin@system.com', 'admin123', '1980-01-01', 'Other', 'ADMIN', '1234567890', 1);
 
 -- Insert example users
 INSERT INTO users (name, email, password, dob, gender, type, phoneNumber, isActive)
 VALUES
-    ('John Doe', 'john@example.com', 'securepassword123', '1990-01-01', 'Male', 'customer', '0987654321', 1),
-    ('Jane Smith', 'jane@example.com', 'password456', '1985-05-15', 'Female', 'staff', '1122334455', 1);
+    ('John Doe', 'john@example.com', 'securepassword123', '1990-01-01', 'Male', 'CUSTOMER', '0987654321', 1),
+    ('Jane Smith', 'jane@example.com', 'password456', '1985-05-15', 'Female', 'STAFF', '1122334455', 1);
 
 -- Select all users to verify
 SELECT * FROM users;

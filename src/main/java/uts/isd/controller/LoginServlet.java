@@ -24,14 +24,24 @@ public class LoginServlet extends HttpServlet {
         try {
             User user = db.Users().find(email, password);
             if (user != null) {
+                if (!user.getIsActive()) {
+                    session.setAttribute("error", "Account is deactivated. Contact an administrator.");
+                    resp.sendRedirect("login.jsp");
+                    return;
+                }
                 session.setAttribute("loggedInUser", user);
-                resp.sendRedirect("welcome.jsp");
+                if (user.isAdmin()) {
+                    resp.sendRedirect("admin.jsp");
+                } else {
+                    resp.sendRedirect("welcome.jsp");
+                }
             } else {
-                session.setAttribute("error", "Invalid username or password");
+                session.setAttribute("error", "Invalid email or password");
                 resp.sendRedirect("login.jsp");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            session.setAttribute("error", "Database error. Please try again later.");
+            resp.sendRedirect("login.jsp");
         }
     }
 }

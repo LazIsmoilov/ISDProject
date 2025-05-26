@@ -1,13 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: laz
-  Date: 30/4/2025
-  Time: 4:03 pm
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page import="uts.isd.model.User" %>
 <%@ page import="uts.isd.model.User.UserType" %>
 <%@ page import="uts.isd.model.dao.UserDBManager" %>
+<%@ page import="uts.isd.model.dao.DAO" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%
   User loggedInUser = (User) session.getAttribute("loggedInUser");
@@ -15,43 +9,55 @@
     response.sendRedirect("login.jsp");
     return;
   }
-  boolean isAdmin = loggedInUser.isAdmin();
-  String userIdParam = request.getParameter("userId");
-  int idToEdit = loggedInUser.getId();
-  if (isAdmin && userIdParam != null && !userIdParam.trim().isEmpty()) {
-    try {
-      idToEdit = Integer.parseInt(userIdParam);
-    } catch (NumberFormatException e) {
-      session.setAttribute("error", "Invalid user ID: " + userIdParam);
+
+  int idToEdit = loggedInUser.getUserId();
+
+  DAO dao = (DAO) session.getAttribute("db");
+  if (dao == null) {
+    session.setAttribute("error", "Database not initialized in session");
+    response.sendRedirect("index.jsp");
+    return;
+  }
+
+  UserDBManager userDbManager = dao.Users();
+  if (userDbManager == null) {
+    session.setAttribute("error", "UserDBManager not initialized");
+    response.sendRedirect("index.jsp");
+    return;
+  }
+
+  User userToEdit;
+  try {
+    userToEdit = userDbManager.getById(idToEdit);
+    if (userToEdit == null) {
+      session.setAttribute("error", "User not found for ID: " + idToEdit);
       response.sendRedirect("index.jsp");
       return;
     }
-  }
-  UserDBManager userDbManager = (UserDBManager) application.getAttribute("userDBManager");
-  if (userDbManager == null) {
-    session.setAttribute("error", "Database not initialized");
+  } catch (Exception e) {
+    session.setAttribute("error", "Database error: " + e.getMessage());
     response.sendRedirect("index.jsp");
     return;
   }
-  User userToEdit = userDbManager.getById(idToEdit);
-  if (userToEdit == null) {
-    session.setAttribute("error", "User not found for ID: " + idToEdit);
-    response.sendRedirect("index.jsp");
-    return;
-  }
+
+  // Debugging logs
+  System.out.println("DAO: " + dao);
+  System.out.println("UserDBManager: " + userDbManager);
+  System.out.println("LoggedInUser ID: " + loggedInUser.getUserId());
+  System.out.println("UserToEdit: " + userToEdit);
 %>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Edit User</title>
-  <link rel="stylesheet" href="admin.css">
+  <title>Edit Profile</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h2>Edit User Profile (ID: <%= userToEdit.getId() %>, Name: <%= userToEdit.getName() %>)</h2>
+<h2>Edit Your Profile (ID: <%= userToEdit.getUserId() %>, Name: <%= userToEdit.getFullName() %>)</h2>
 <form action="EditServlet" method="post">
-  <input type="hidden" name="userId" value="<%= userToEdit.getId() %>">
+  <input type="hidden" name="userId" value="<%= userToEdit.getUserId() %>">
   <label>Name:</label>
-  <input type="text" name="name" value="<%= userToEdit.getName() %>" required><br>
+  <input type="text" name="name" value="<%= userToEdit.getFullName() %>" required><br>
   <label>Email:</label>
   <input type="email" name="email" value="<%= userToEdit.getEmail() %>" required><br>
   <label>Password:</label>
@@ -64,22 +70,16 @@
     <option value="Female" <%= "Female".equalsIgnoreCase(userToEdit.getGender()) ? "selected" : "" %>>Female</option>
     <option value="Other" <%= "Other".equalsIgnoreCase(userToEdit.getGender()) ? "selected" : "" %>>Other</option>
   </select><br>
-  <% if (isAdmin) { %>
   <label>Phone Number:</label>
-  <input type="text" name="phoneNumber" value="<%= userToEdit.getPhoneNumber() != null ? userToEdit.getPhoneNumber() : "" %>"><br>
+  <input type="text" name="phone" value="<%= userToEdit.getPhone() %>"><br>
   <label>User Type:</label>
-  <select name="userType">
-    <option value="CUSTOMER" <%= userToEdit.getType() == UserType.CUSTOMER ? "selected" : "" %>>Customer</option>
-    <option value="STAFF" <%= userToEdit.getType() == UserType.STAFF ? "selected" : "" %>>Staff</option>
-    <option value="ADMIN" <%= userToEdit.getType() == UserType.ADMIN ? "selected" : "" %>>Admin</option>
+  <select name="role">
+    <option value="customer" <%= userToEdit.getType() == UserType.CUSTOMER ? "selected" : "" %>>Customer</option>
+    <option value="staff" <%= userToEdit.getType() == UserType.STAFF ? "selected" : "" %>>Staff</option>
   </select><br>
   <label>Is Active:</label>
   <input type="checkbox" name="isActive" <%= userToEdit.getIsActive() ? "checked" : "" %>><br>
-  <% } else { %>
-  <input type="hidden" name="phoneNumber" value="<%= userToEdit.getPhoneNumber() != null ? userToEdit.getPhoneNumber() : "" %>">
-  <input type="hidden" name="userType" value="<%= userToEdit.getType().name() %>">
-  <input type="hidden" name="isActive" value="<%= userToEdit.getIsActive() ? "true" : "false" %>">
-  <% } %>
+
   <button type="submit">Update</button>
 </form>
 <a href="index.jsp">Back to Home</a>

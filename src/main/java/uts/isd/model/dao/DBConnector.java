@@ -17,7 +17,7 @@ public class DBConnector {
         }
         System.out.println(">> Working dir = " + new java.io.File(".").getAbsolutePath());
 
-        String url = "jdbc:sqlite:IotBayDB.db";
+        String url = "jdbc:sqlite:iotBayDatabase.db";
 
 
         try {
@@ -45,5 +45,4 @@ public class DBConnector {
             e.printStackTrace();
         }
     }
-
 }

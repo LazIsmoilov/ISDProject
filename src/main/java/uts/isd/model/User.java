@@ -5,130 +5,77 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     public enum UserType {
-        CUSTOMER, STAFF, ADMIN
+        CUSTOMER, STAFF, ADMIN;
+
+        public static UserType fromString(String role) {
+            try {
+                return UserType.valueOf(role.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                return null;
+            }
+        }
     }
 
-    private int id;
-    private String name;
+    private int userId;
+    private String fullName;
     private String email;
     private String password;
     private String dob;
     private String gender;
+    private String phone;
     private UserType type;
-    private String phoneNumber;
     private boolean isActive;
 
     // Default constructor
     public User() {
-        this.isActive = true; // Default to active
+        this.isActive = true;
     }
-    
+
     // Constructor with all fields
-    public User(int id, String name, String email, String password, String dob, String gender,
-                UserType type, String phoneNumber, boolean isActive) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
+    public User(int userId, String fullName, String email, String password, String dob, String gender,
+                String phone, String role, boolean isActive) {
+        this.userId = userId;
+        setFullName(fullName);
+        setEmail(email);
+        setPassword(password);
         this.dob = dob;
-        this.gender = gender;
-        this.type = type;
-        this.phoneNumber = phoneNumber;
+        setGender(gender);
+        setPhone(phone);
+        setRole(role);
         this.isActive = isActive;
     }
 
     // Constructor without ID
-    public User(String name, String email, String password, String dob, String gender,
-                UserType type, String phoneNumber) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
+    public User(String fullName, String email, String password, String dob, String gender,
+                String phone, String role) {
+        setFullName(fullName);
+        setEmail(email);
+        setPassword(password);
         this.dob = dob;
-        this.gender = gender;
-        this.type = type;
-        this.phoneNumber = phoneNumber;
-        this.isActive = true; // Default to active
-    }
-
-    public User(int userIdToEdit, String name, String email, String password, String dob, String gender, UserType userType, String phoneNumber) {
-        this.id = userIdToEdit;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.dob = dob;
-        this.gender = gender;
-        this.type = userType;
-        this.phoneNumber = phoneNumber;
+        setGender(gender);
+        setPhone(phone);
+        setRole(role);
         this.isActive = true;
     }
 
-    public User(String name, String email, String password, String dob, String gender) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.dob = dob;
-        this.gender = gender;
+    // Getters and setters
+    public int getUserId() {
+        return userId;
     }
 
-    public User(int id, String name, String email, String password, String dob, String gender) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.dob = dob;
-        this.gender = gender;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    // Getters and Setters
-    public UserType getType() {
-        return type;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setType(UserType type) {
-        if (type != null) {
-            this.type = type;
+    public void setFullName(String fullName) {
+        if (fullName != null) {
+            this.fullName = fullName;
         } else {
-            throw new IllegalArgumentException("User type cannot be null.");
-        }
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        if (phoneNumber != null && phoneNumber.matches("\\d{10}")) {
-            this.phoneNumber = phoneNumber;
-        } else {
-            throw new IllegalArgumentException("Invalid phone number format.");
-        }
-    }
-
-    public boolean getIsActive() {
-        return isActive;
-    }
-
-    public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        if (name != null && !name.trim().isEmpty()) {
-            this.name = name;
-        } else {
-            throw new IllegalArgumentException("Name cannot be empty.");
+            throw new IllegalArgumentException("Full name cannot be empty.");
         }
     }
 
@@ -169,6 +116,9 @@ public class User implements Serializable {
     }
 
     public void setGender(String gender) {
+        if (gender == null || gender.isEmpty()) {
+            throw new IllegalArgumentException("Gender cannot be empty.");
+        }
         if (gender.equalsIgnoreCase("Male") || gender.equalsIgnoreCase("Female") || gender.equalsIgnoreCase("Other")) {
             this.gender = gender;
         } else {
@@ -176,7 +126,52 @@ public class User implements Serializable {
         }
     }
 
-    // Role checking methods
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        if (phone != null && phone.matches("\\d{10}")) {
+            this.phone = phone;
+        } else {
+            throw new IllegalArgumentException("Phone number must be 10 digits.");
+        }
+    }
+
+    public UserType getType() {
+        return type;
+    }
+
+    public void setType(UserType type) {
+        if (type != null) {
+            this.type = type;
+        } else {
+            throw new IllegalArgumentException("User type cannot be null.");
+        }
+    }
+
+    public void setRole(String role) {
+        UserType parsed = UserType.fromString(role);
+        if (parsed != null) {
+            this.type = parsed;
+        } else {
+            throw new IllegalArgumentException("Invalid role value: " + role);
+        }
+    }
+
+    public String getRole() {
+        return (type != null) ? type.name() : null;
+    }
+
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    // Role checks
     public boolean isAdmin() {
         return type == UserType.ADMIN;
     }
@@ -189,99 +184,17 @@ public class User implements Serializable {
         return type == UserType.STAFF;
     }
 
-
-    // toString method
     @Override
     public String toString() {
-        return "User { " +
-                "ID=" + id +
-                ", Name='" + name + '\'' +
+        return "User {" +
+                "ID=" + userId +
+                ", FullName='" + fullName + '\'' +
                 ", Email='" + email + '\'' +
                 ", DOB='" + dob + '\'' +
                 ", Gender='" + gender + '\'' +
-                ", Type='" + type + '\'' +
-                ", PhoneNumber='" + phoneNumber + '\'' +
+                ", Phone='" + phone + '\'' +
+                ", Role='" + getRole() + '\'' +
                 ", IsActive=" + isActive +
-                " }";
-    }
-
-    public void setId(int userId) {
+                '}';
     }
 }
-
-
-//package uts.isd.model;
-//
-//public class User {
-//    private int userId;
-//    private String fullName;
-//    private String email;
-//    private String password;
-//    private String phone;
-//    private String role;
-//
-//    public User() {
-//    }
-//
-//    public User(String fullName, String email, String password, String phone, String role) {
-//        if (!email.contains("@")) {
-//            throw new IllegalArgumentException("Email must contain '@'");
-//        }
-//        if (password.length() < 8) {
-//            throw new IllegalArgumentException("Password must longer than 8 characters ");
-//        }
-//        this.fullName = fullName;
-//        this.email = email;
-//        this.password = password;
-//        this.phone = phone;
-//        this.role = role;
-//    }
-//
-//    public int getUserId() {
-//        return userId;
-//    }
-//
-//    public void setUserId(int userId) {
-//        this.userId = userId;
-//    }
-//
-//    public String getFullName() {
-//        return fullName;
-//    }
-//
-//    public void setFullName(String fullName) {
-//        this.fullName = fullName;
-//    }
-//
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
-//
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
-//
-//    public String getPhone() {
-//        return phone;
-//    }
-//
-//    public void setPhone(String phone) {
-//        this.phone = phone;
-//    }
-//
-//    public String getRole() {
-//        return role;
-//    }
-//
-//    public void setRole(String role) {
-//        this.role = role;
-//    }
-//}

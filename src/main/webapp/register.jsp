@@ -19,8 +19,8 @@
 <div class="register-form">
   <h2>Register</h2>
   <form action="RegisterServlet" method="post">
-    <label for="name">Full Name:</label>
-    <input id="name" type="text" name="name" required><br><br>
+    <label for="fullName">Full Name:</label>
+    <input id="fullName" type="text" name="fullName" required><br><br>
 
     <label for="email">Email:</label>
     <input id="email" type="email" name="email" required><br><br>
@@ -38,11 +38,10 @@
       <option value="Other">Other</option>
     </select><br><br>
 
-    <label for="type">User Type:</label>
-    <select name="type" id="type">
+    <label for="role">User Type:</label>
+    <select name="role" id="role">
       <option value="CUSTOMER">Customer</option>
       <option value="STAFF">Staff</option>
-      <option value="ADMIN">Admin</option>
     </select><br><br>
 
     <label for="phone">Phone Number:</label>

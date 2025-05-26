@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Order implements Serializable {
-    private int id;
+    private int orderId;
     private int userId;
     private double totalPrice;
     private String status;
@@ -12,8 +12,8 @@ public class Order implements Serializable {
 
     public Order() { }
 
-    public Order(int id, int userId, double totalPrice, String status, Date orderDate) {
-        this.id = id;
+    public Order(int orderId, int userId, double totalPrice, String status, Date orderDate) {
+        this.orderId = orderId;
         this.userId = userId;
         this.totalPrice = totalPrice;
         this.status = status;
@@ -21,11 +21,11 @@ public class Order implements Serializable {
     }
 
     // —— Getter / Setter ——
-    public int getId() {
-        return id;
+    public int getOrderId() {
+        return orderId;
     }
-    public void setId(int id) {
-        this.id = id;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public int getUserId() {
@@ -59,7 +59,7 @@ public class Order implements Serializable {
     @Override
     public String toString() {
         return "Order{" +
-                "id=" + id +
+                "id=" + orderId +
                 ", userId=" + userId +
                 ", totalPrice=" + totalPrice +
                 ", status='" + status + '\'' +

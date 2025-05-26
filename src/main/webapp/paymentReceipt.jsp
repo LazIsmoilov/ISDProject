@@ -81,7 +81,7 @@
                 </tr>
                 <tr>
                     <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Customer:</strong></td>
-                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><%= user.getFirstName() %> <%= user.getLastName() %></td>
+                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><%= user.getFullName() %></td>
                 </tr>
                 <tr>
                     <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Email:</strong></td>

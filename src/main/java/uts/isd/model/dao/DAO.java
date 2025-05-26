@@ -5,15 +5,43 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DAO {
-    public ArrayList<UserDBManager> tables;
+    private Connection connection;
+    private UserDBManager userDBManager;
+    private DeviceDBManager deviceDBManager;
+    private OrderDBManager orderDBManager;
+    private OrderItemDBManager orderItemDBManager;
+    private PaymentDBManager paymentDBManager;
 
     public DAO() throws SQLException {
-        tables = new ArrayList<>();
-        Connection connection = new DBConnector().getConnection();
-        tables.add(new UserDBManager(connection));
+        this.connection = new DBConnector().getConnection();
+        try {
+            this.userDBManager = new UserDBManager(connection);
+            this.deviceDBManager = new DeviceDBManager(connection);
+            this.orderDBManager = new OrderDBManager(connection);
+            this.orderItemDBManager = new OrderItemDBManager(connection);
+            this.paymentDBManager = new PaymentDBManager(connection);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public Connection getConnection() {
+        return connection;
     }
 
     public UserDBManager Users() {
-        return (UserDBManager) tables.get(0);
+        return userDBManager;
+    }
+    public DeviceDBManager Devices() {
+        return deviceDBManager;
+    }
+    public OrderDBManager Orders() {
+        return orderDBManager;
+    }
+    public OrderItemDBManager OrderItems() {
+        return orderItemDBManager;
+    }
+    public PaymentDBManager Payments() {
+        return paymentDBManager;
     }
 }

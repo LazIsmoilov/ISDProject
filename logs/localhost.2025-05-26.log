@@ -1,9 +1,8 @@
-20-May-2025 00:46:38.397 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.LoginServlet] in context with path [/ISDProject] threw exception
-	java.lang.IllegalArgumentException: No enum constant uts.isd.model.User.UserType.admin
-		at java.base/java.lang.Enum.valueOf(Enum.java:293)
-		at uts.isd.model.User$UserType.valueOf(User.java:6)
-		at uts.isd.model.dao.UserDBManager.find(UserDBManager.java:183)
-		at uts.isd.controller.LoginServlet.doPost(LoginServlet.java:25)
+26-May-2025 16:03:30.499 SEVERE [http-nio-8080-exec-6] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
@@ -28,12 +27,11 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 00:52:14.287 SEVERE [http-nio-8080-exec-6] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.LoginServlet] in context with path [/ISDProject] threw exception
-	java.lang.IllegalArgumentException: No enum constant uts.isd.model.User.UserType.admin
-		at java.base/java.lang.Enum.valueOf(Enum.java:293)
-		at uts.isd.model.User$UserType.valueOf(User.java:6)
-		at uts.isd.model.dao.UserDBManager.find(UserDBManager.java:183)
-		at uts.isd.controller.LoginServlet.doPost(LoginServlet.java:25)
+26-May-2025 16:03:39.906 SEVERE [http-nio-8080-exec-5] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
@@ -58,12 +56,11 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 00:52:17.104 SEVERE [http-nio-8080-exec-9] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.LoginServlet] in context with path [/ISDProject] threw exception
-	java.lang.IllegalArgumentException: No enum constant uts.isd.model.User.UserType.admin
-		at java.base/java.lang.Enum.valueOf(Enum.java:293)
-		at uts.isd.model.User$UserType.valueOf(User.java:6)
-		at uts.isd.model.dao.UserDBManager.find(UserDBManager.java:183)
-		at uts.isd.controller.LoginServlet.doPost(LoginServlet.java:25)
+26-May-2025 17:20:10.371 SEVERE [http-nio-8080-exec-8] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
@@ -88,12 +85,11 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 00:52:27.854 SEVERE [http-nio-8080-exec-8] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.LoginServlet] in context with path [/ISDProject] threw exception
-	java.lang.IllegalArgumentException: No enum constant uts.isd.model.User.UserType.admin
-		at java.base/java.lang.Enum.valueOf(Enum.java:293)
-		at uts.isd.model.User$UserType.valueOf(User.java:6)
-		at uts.isd.model.dao.UserDBManager.find(UserDBManager.java:183)
-		at uts.isd.controller.LoginServlet.doPost(LoginServlet.java:25)
+26-May-2025 17:21:56.337 SEVERE [http-nio-8080-exec-10] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
@@ -118,12 +114,11 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 00:52:54.218 SEVERE [http-nio-8080-exec-7] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.LoginServlet] in context with path [/ISDProject] threw exception
-	java.lang.IllegalArgumentException: No enum constant uts.isd.model.User.UserType.admin
-		at java.base/java.lang.Enum.valueOf(Enum.java:293)
-		at uts.isd.model.User$UserType.valueOf(User.java:6)
-		at uts.isd.model.dao.UserDBManager.find(UserDBManager.java:183)
-		at uts.isd.controller.LoginServlet.doPost(LoginServlet.java:25)
+26-May-2025 17:21:59.764 SEVERE [http-nio-8080-exec-9] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
@@ -148,12 +143,11 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 00:53:33.087 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.LoginServlet] in context with path [/ISDProject] threw exception
-	java.lang.IllegalArgumentException: No enum constant uts.isd.model.User.UserType.admin
-		at java.base/java.lang.Enum.valueOf(Enum.java:293)
-		at uts.isd.model.User$UserType.valueOf(User.java:6)
-		at uts.isd.model.dao.UserDBManager.find(UserDBManager.java:183)
-		at uts.isd.controller.LoginServlet.doPost(LoginServlet.java:25)
+26-May-2025 17:22:09.753 SEVERE [http-nio-8080-exec-2] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
@@ -178,12 +172,11 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 00:53:44.453 SEVERE [http-nio-8080-exec-2] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.LoginServlet] in context with path [/ISDProject] threw exception
-	java.lang.IllegalArgumentException: No enum constant uts.isd.model.User.UserType.admin
-		at java.base/java.lang.Enum.valueOf(Enum.java:293)
-		at uts.isd.model.User$UserType.valueOf(User.java:6)
-		at uts.isd.model.dao.UserDBManager.find(UserDBManager.java:183)
-		at uts.isd.controller.LoginServlet.doPost(LoginServlet.java:25)
+26-May-2025 17:22:14.698 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
@@ -208,12 +201,11 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 00:53:56.534 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.LoginServlet] in context with path [/ISDProject] threw exception
-	java.lang.IllegalArgumentException: No enum constant uts.isd.model.User.UserType.admin
-		at java.base/java.lang.Enum.valueOf(Enum.java:293)
-		at uts.isd.model.User$UserType.valueOf(User.java:6)
-		at uts.isd.model.dao.UserDBManager.find(UserDBManager.java:183)
-		at uts.isd.controller.LoginServlet.doPost(LoginServlet.java:25)
+26-May-2025 17:24:37.360 SEVERE [http-nio-8080-exec-5] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
@@ -238,12 +230,11 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 00:54:02.002 SEVERE [http-nio-8080-exec-5] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.LoginServlet] in context with path [/ISDProject] threw exception
-	java.lang.IllegalArgumentException: No enum constant uts.isd.model.User.UserType.admin
-		at java.base/java.lang.Enum.valueOf(Enum.java:293)
-		at uts.isd.model.User$UserType.valueOf(User.java:6)
-		at uts.isd.model.dao.UserDBManager.find(UserDBManager.java:183)
-		at uts.isd.controller.LoginServlet.doPost(LoginServlet.java:25)
+26-May-2025 17:24:41.626 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
@@ -268,12 +259,11 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 01:07:11.444 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.LoginServlet] in context with path [/ISDProject] threw exception
-	java.lang.IllegalArgumentException: No enum constant uts.isd.model.User.UserType.admin
-		at java.base/java.lang.Enum.valueOf(Enum.java:293)
-		at uts.isd.model.User$UserType.valueOf(User.java:6)
-		at uts.isd.model.dao.UserDBManager.find(UserDBManager.java:183)
-		at uts.isd.controller.LoginServlet.doPost(LoginServlet.java:25)
+26-May-2025 17:25:28.771 SEVERE [http-nio-8080-exec-5] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
@@ -298,12 +288,11 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 01:07:17.308 SEVERE [http-nio-8080-exec-2] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.LoginServlet] in context with path [/ISDProject] threw exception
-	java.lang.IllegalArgumentException: No enum constant uts.isd.model.User.UserType.admin
-		at java.base/java.lang.Enum.valueOf(Enum.java:293)
-		at uts.isd.model.User$UserType.valueOf(User.java:6)
-		at uts.isd.model.dao.UserDBManager.find(UserDBManager.java:183)
-		at uts.isd.controller.LoginServlet.doPost(LoginServlet.java:25)
+26-May-2025 17:25:32.976 SEVERE [http-nio-8080-exec-6] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
@@ -328,12 +317,11 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 01:08:16.552 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.LoginServlet] in context with path [/ISDProject] threw exception
-	java.lang.IllegalArgumentException: No enum constant uts.isd.model.User.UserType.admin
-		at java.base/java.lang.Enum.valueOf(Enum.java:293)
-		at uts.isd.model.User$UserType.valueOf(User.java:6)
-		at uts.isd.model.dao.UserDBManager.find(UserDBManager.java:183)
-		at uts.isd.controller.LoginServlet.doPost(LoginServlet.java:25)
+26-May-2025 17:25:36.996 SEVERE [http-nio-8080-exec-7] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
@@ -358,12 +346,11 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 01:08:20.433 SEVERE [http-nio-8080-exec-2] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.LoginServlet] in context with path [/ISDProject] threw exception
-	java.lang.IllegalArgumentException: No enum constant uts.isd.model.User.UserType.admin
-		at java.base/java.lang.Enum.valueOf(Enum.java:293)
-		at uts.isd.model.User$UserType.valueOf(User.java:6)
-		at uts.isd.model.dao.UserDBManager.find(UserDBManager.java:183)
-		at uts.isd.controller.LoginServlet.doPost(LoginServlet.java:25)
+26-May-2025 17:27:34.157 SEVERE [http-nio-8080-exec-5] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
@@ -388,12 +375,11 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 01:08:43.627 SEVERE [http-nio-8080-exec-5] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.LoginServlet] in context with path [/ISDProject] threw exception
-	java.lang.IllegalArgumentException: No enum constant uts.isd.model.User.UserType.customer
-		at java.base/java.lang.Enum.valueOf(Enum.java:293)
-		at uts.isd.model.User$UserType.valueOf(User.java:6)
-		at uts.isd.model.dao.UserDBManager.find(UserDBManager.java:183)
-		at uts.isd.controller.LoginServlet.doPost(LoginServlet.java:25)
+26-May-2025 17:27:38.497 SEVERE [http-nio-8080-exec-6] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
@@ -418,12 +404,11 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 01:08:47.614 SEVERE [http-nio-8080-exec-4] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.LoginServlet] in context with path [/ISDProject] threw exception
-	java.lang.IllegalArgumentException: No enum constant uts.isd.model.User.UserType.customer
-		at java.base/java.lang.Enum.valueOf(Enum.java:293)
-		at uts.isd.model.User$UserType.valueOf(User.java:6)
-		at uts.isd.model.dao.UserDBManager.find(UserDBManager.java:183)
-		at uts.isd.controller.LoginServlet.doPost(LoginServlet.java:25)
+26-May-2025 17:27:45.397 SEVERE [http-nio-8080-exec-7] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
@@ -448,12 +433,11 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 01:10:25.158 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.LoginServlet] in context with path [/ISDProject] threw exception
-	java.lang.IllegalArgumentException: No enum constant uts.isd.model.User.UserType.admin
-		at java.base/java.lang.Enum.valueOf(Enum.java:293)
-		at uts.isd.model.User$UserType.valueOf(User.java:6)
-		at uts.isd.model.dao.UserDBManager.find(UserDBManager.java:183)
-		at uts.isd.controller.LoginServlet.doPost(LoginServlet.java:25)
+26-May-2025 17:28:00.796 SEVERE [http-nio-8080-exec-8] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
@@ -478,12 +462,11 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 01:18:01.073 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.LoginServlet] in context with path [/ISDProject] threw exception
-	java.lang.IllegalArgumentException: No enum constant uts.isd.model.User.UserType.admin
-		at java.base/java.lang.Enum.valueOf(Enum.java:293)
-		at uts.isd.model.User$UserType.valueOf(User.java:6)
-		at uts.isd.model.dao.UserDBManager.find(UserDBManager.java:183)
-		at uts.isd.controller.LoginServlet.doPost(LoginServlet.java:25)
+26-May-2025 17:28:03.995 SEVERE [http-nio-8080-exec-9] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
@@ -508,176 +491,12 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 01:56:28.926 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [jsp] in context with path [/ISDProject] threw exception [Unable to compile class for JSP: 
-
-An error occurred at line: [34] in the jsp file: [/edit.jsp]
-user cannot be resolved
-31:   <form action="EditServlet" method="post">
-32:     <div class="form-group">
-33:       <label for="name">Full Name</label>
-34:       <input type="text" userId="name" name="name" value="<%= user.getName() %>" required>
-35:     </div>
-36:     <div class="form-group">
-37:       <label for="email">Email Address</label>
-
-
-An error occurred at line: [38] in the jsp file: [/edit.jsp]
-user cannot be resolved
-35:     </div>
-36:     <div class="form-group">
-37:       <label for="email">Email Address</label>
-38:       <input type="email" userId="email" name="email" value="<%= user.getEmail() %>" required>
-39:     </div>
-40:     <div class="form-group">
-41:       <label for="password">Password</label>
-
-
-An error occurred at line: [42] in the jsp file: [/edit.jsp]
-user cannot be resolved
-39:     </div>
-40:     <div class="form-group">
-41:       <label for="password">Password</label>
-42:       <input type="password" userId="password" name="password" value="<%= user.getPassword() %>" required>
-43:     </div>
-44:     <div class="form-group">
-45:       <label for="dob">Date of Birth</label>
-
-
-An error occurred at line: [46] in the jsp file: [/edit.jsp]
-user cannot be resolved
-43:     </div>
-44:     <div class="form-group">
-45:       <label for="dob">Date of Birth</label>
-46:       <input type="date" userId="dob" name="dob" value="<%= user.getDob() %>" required>
-47:     </div>
-48:     <div class="form-group">
-49:       <label for="gender">Gender</label>
-
-
-An error occurred at line: [51] in the jsp file: [/edit.jsp]
-user cannot be resolved
-48:     <div class="form-group">
-49:       <label for="gender">Gender</label>
-50:       <select userId="gender" name="gender" required>
-51:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-52:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-53:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-54:       </select>
-
-
-An error occurred at line: [52] in the jsp file: [/edit.jsp]
-user cannot be resolved
-49:       <label for="gender">Gender</label>
-50:       <select userId="gender" name="gender" required>
-51:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-52:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-53:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-54:       </select>
-55:     </div>
-
-
-An error occurred at line: [53] in the jsp file: [/edit.jsp]
-user cannot be resolved
-50:       <select userId="gender" name="gender" required>
-51:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-52:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-53:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-54:       </select>
-55:     </div>
-56:     <div style="text-align: center;">
-
-
-Stacktrace:] with root cause
-	org.apache.jasper.JasperException: Unable to compile class for JSP: 
-
-An error occurred at line: [34] in the jsp file: [/edit.jsp]
-user cannot be resolved
-31:   <form action="EditServlet" method="post">
-32:     <div class="form-group">
-33:       <label for="name">Full Name</label>
-34:       <input type="text" userId="name" name="name" value="<%= user.getName() %>" required>
-35:     </div>
-36:     <div class="form-group">
-37:       <label for="email">Email Address</label>
-
-
-An error occurred at line: [38] in the jsp file: [/edit.jsp]
-user cannot be resolved
-35:     </div>
-36:     <div class="form-group">
-37:       <label for="email">Email Address</label>
-38:       <input type="email" userId="email" name="email" value="<%= user.getEmail() %>" required>
-39:     </div>
-40:     <div class="form-group">
-41:       <label for="password">Password</label>
-
-
-An error occurred at line: [42] in the jsp file: [/edit.jsp]
-user cannot be resolved
-39:     </div>
-40:     <div class="form-group">
-41:       <label for="password">Password</label>
-42:       <input type="password" userId="password" name="password" value="<%= user.getPassword() %>" required>
-43:     </div>
-44:     <div class="form-group">
-45:       <label for="dob">Date of Birth</label>
-
-
-An error occurred at line: [46] in the jsp file: [/edit.jsp]
-user cannot be resolved
-43:     </div>
-44:     <div class="form-group">
-45:       <label for="dob">Date of Birth</label>
-46:       <input type="date" userId="dob" name="dob" value="<%= user.getDob() %>" required>
-47:     </div>
-48:     <div class="form-group">
-49:       <label for="gender">Gender</label>
-
-
-An error occurred at line: [51] in the jsp file: [/edit.jsp]
-user cannot be resolved
-48:     <div class="form-group">
-49:       <label for="gender">Gender</label>
-50:       <select userId="gender" name="gender" required>
-51:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-52:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-53:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-54:       </select>
-
-
-An error occurred at line: [52] in the jsp file: [/edit.jsp]
-user cannot be resolved
-49:       <label for="gender">Gender</label>
-50:       <select userId="gender" name="gender" required>
-51:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-52:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-53:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-54:       </select>
-55:     </div>
-
-
-An error occurred at line: [53] in the jsp file: [/edit.jsp]
-user cannot be resolved
-50:       <select userId="gender" name="gender" required>
-51:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-52:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-53:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-54:       </select>
-55:     </div>
-56:     <div style="text-align: center;">
-
-
-Stacktrace:
-		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
-		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
-		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:524)
-		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
-		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
-		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
-		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:603)
-		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:396)
-		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
-		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+26-May-2025 17:28:13.208 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name can be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
 		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
@@ -701,176 +520,12 @@ Stacktrace:
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 01:56:51.534 SEVERE [http-nio-8080-exec-8] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [jsp] in context with path [/ISDProject] threw exception [Unable to compile class for JSP: 
-
-An error occurred at line: [34] in the jsp file: [/edit.jsp]
-user cannot be resolved
-31:   <form action="EditServlet" method="post">
-32:     <div class="form-group">
-33:       <label for="name">Full Name</label>
-34:       <input type="text" userId="name" name="name" value="<%= user.getName() %>" required>
-35:     </div>
-36:     <div class="form-group">
-37:       <label for="email">Email Address</label>
-
-
-An error occurred at line: [38] in the jsp file: [/edit.jsp]
-user cannot be resolved
-35:     </div>
-36:     <div class="form-group">
-37:       <label for="email">Email Address</label>
-38:       <input type="email" userId="email" name="email" value="<%= user.getEmail() %>" required>
-39:     </div>
-40:     <div class="form-group">
-41:       <label for="password">Password</label>
-
-
-An error occurred at line: [42] in the jsp file: [/edit.jsp]
-user cannot be resolved
-39:     </div>
-40:     <div class="form-group">
-41:       <label for="password">Password</label>
-42:       <input type="password" userId="password" name="password" value="<%= user.getPassword() %>" required>
-43:     </div>
-44:     <div class="form-group">
-45:       <label for="dob">Date of Birth</label>
-
-
-An error occurred at line: [46] in the jsp file: [/edit.jsp]
-user cannot be resolved
-43:     </div>
-44:     <div class="form-group">
-45:       <label for="dob">Date of Birth</label>
-46:       <input type="date" userId="dob" name="dob" value="<%= user.getDob() %>" required>
-47:     </div>
-48:     <div class="form-group">
-49:       <label for="gender">Gender</label>
-
-
-An error occurred at line: [51] in the jsp file: [/edit.jsp]
-user cannot be resolved
-48:     <div class="form-group">
-49:       <label for="gender">Gender</label>
-50:       <select userId="gender" name="gender" required>
-51:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-52:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-53:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-54:       </select>
-
-
-An error occurred at line: [52] in the jsp file: [/edit.jsp]
-user cannot be resolved
-49:       <label for="gender">Gender</label>
-50:       <select userId="gender" name="gender" required>
-51:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-52:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-53:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-54:       </select>
-55:     </div>
-
-
-An error occurred at line: [53] in the jsp file: [/edit.jsp]
-user cannot be resolved
-50:       <select userId="gender" name="gender" required>
-51:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-52:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-53:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-54:       </select>
-55:     </div>
-56:     <div style="text-align: center;">
-
-
-Stacktrace:] with root cause
-	org.apache.jasper.JasperException: Unable to compile class for JSP: 
-
-An error occurred at line: [34] in the jsp file: [/edit.jsp]
-user cannot be resolved
-31:   <form action="EditServlet" method="post">
-32:     <div class="form-group">
-33:       <label for="name">Full Name</label>
-34:       <input type="text" userId="name" name="name" value="<%= user.getName() %>" required>
-35:     </div>
-36:     <div class="form-group">
-37:       <label for="email">Email Address</label>
-
-
-An error occurred at line: [38] in the jsp file: [/edit.jsp]
-user cannot be resolved
-35:     </div>
-36:     <div class="form-group">
-37:       <label for="email">Email Address</label>
-38:       <input type="email" userId="email" name="email" value="<%= user.getEmail() %>" required>
-39:     </div>
-40:     <div class="form-group">
-41:       <label for="password">Password</label>
-
-
-An error occurred at line: [42] in the jsp file: [/edit.jsp]
-user cannot be resolved
-39:     </div>
-40:     <div class="form-group">
-41:       <label for="password">Password</label>
-42:       <input type="password" userId="password" name="password" value="<%= user.getPassword() %>" required>
-43:     </div>
-44:     <div class="form-group">
-45:       <label for="dob">Date of Birth</label>
-
-
-An error occurred at line: [46] in the jsp file: [/edit.jsp]
-user cannot be resolved
-43:     </div>
-44:     <div class="form-group">
-45:       <label for="dob">Date of Birth</label>
-46:       <input type="date" userId="dob" name="dob" value="<%= user.getDob() %>" required>
-47:     </div>
-48:     <div class="form-group">
-49:       <label for="gender">Gender</label>
-
-
-An error occurred at line: [51] in the jsp file: [/edit.jsp]
-user cannot be resolved
-48:     <div class="form-group">
-49:       <label for="gender">Gender</label>
-50:       <select userId="gender" name="gender" required>
-51:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-52:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-53:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-54:       </select>
-
-
-An error occurred at line: [52] in the jsp file: [/edit.jsp]
-user cannot be resolved
-49:       <label for="gender">Gender</label>
-50:       <select userId="gender" name="gender" required>
-51:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-52:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-53:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-54:       </select>
-55:     </div>
-
-
-An error occurred at line: [53] in the jsp file: [/edit.jsp]
-user cannot be resolved
-50:       <select userId="gender" name="gender" required>
-51:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-52:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-53:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-54:       </select>
-55:     </div>
-56:     <div style="text-align: center;">
-
-
-Stacktrace:
-		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
-		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
-		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:524)
-		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
-		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
-		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
-		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:603)
-		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:396)
-		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
-		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+26-May-2025 17:28:17.362 SEVERE [http-nio-8080-exec-2] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name can be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
 		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
@@ -894,242 +549,12 @@ Stacktrace:
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 02:00:53.992 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [jsp] in context with path [/ISDProject] threw exception [Unable to compile class for JSP: 
-
-An error occurred at line: [26] in the jsp file: [/edit.jsp]
-The method equalsIgnoreCase(String) is undefined for the type User.UserType
-23:   int userIdToEdit = (idParam != null) ? Integer.parseInt(idParam) : loggedInUser.getId();
-24: 
-25:   // Admin can edit any user; normal users can only edit themselves
-26:   if (!loggedInUser.getType().equalsIgnoreCase("admin") && userIdToEdit != loggedInUser.getId()) {
-27:     out.println("You are not authorized to edit other users' profiles.");
-28:     return;
-29:   }
-
-
-An error occurred at line: [35] in the jsp file: [/edit.jsp]
-The method findById(int) is undefined for the type UserDBManager
-32:   User userToEdit = null;
-33: 
-34:   try {
-35:     userToEdit = db.Users().findById(userIdToEdit);
-36:     if (userToEdit == null) {
-37:       out.println("User not found");
-38:       return;
-
-
-An error occurred at line: [65] in the jsp file: [/header.jsp]
-Duplicate local variable loggedInUser
-62:                     <div>
-63:                         <h2>Logged in user:
-64:                             <%
-65:                                 User loggedInUser = (User) session.getAttribute("user");
-66:                                 if (loggedInUser != null) {
-67:                                     out.print(loggedInUser.getName());
-68:                                 } else {
-
-
-An error occurred at line: [62] in the jsp file: [/edit.jsp]
-user cannot be resolved
-59:   <form action="EditServlet" method="post">
-60:     <div class="form-group">
-61:       <label for="name">Full Name</label>
-62:       <input type="text" userId="name" name="name" value="<%= user.getName() %>" required>
-63:     </div>
-64:     <div class="form-group">
-65:       <label for="email">Email Address</label>
-
-
-An error occurred at line: [66] in the jsp file: [/edit.jsp]
-user cannot be resolved
-63:     </div>
-64:     <div class="form-group">
-65:       <label for="email">Email Address</label>
-66:       <input type="email" userId="email" name="email" value="<%= user.getEmail() %>" required>
-67:     </div>
-68:     <div class="form-group">
-69:       <label for="password">Password</label>
-
-
-An error occurred at line: [70] in the jsp file: [/edit.jsp]
-user cannot be resolved
-67:     </div>
-68:     <div class="form-group">
-69:       <label for="password">Password</label>
-70:       <input type="password" userId="password" name="password" value="<%= user.getPassword() %>" required>
-71:     </div>
-72:     <div class="form-group">
-73:       <label for="dob">Date of Birth</label>
-
-
-An error occurred at line: [74] in the jsp file: [/edit.jsp]
-user cannot be resolved
-71:     </div>
-72:     <div class="form-group">
-73:       <label for="dob">Date of Birth</label>
-74:       <input type="date" userId="dob" name="dob" value="<%= user.getDob() %>" required>
-75:     </div>
-76:     <div class="form-group">
-77:       <label for="gender">Gender</label>
-
-
-An error occurred at line: [79] in the jsp file: [/edit.jsp]
-user cannot be resolved
-76:     <div class="form-group">
-77:       <label for="gender">Gender</label>
-78:       <select userId="gender" name="gender" required>
-79:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-80:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-81:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-82:       </select>
-
-
-An error occurred at line: [80] in the jsp file: [/edit.jsp]
-user cannot be resolved
-77:       <label for="gender">Gender</label>
-78:       <select userId="gender" name="gender" required>
-79:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-80:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-81:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-82:       </select>
-83:     </div>
-
-
-An error occurred at line: [81] in the jsp file: [/edit.jsp]
-user cannot be resolved
-78:       <select userId="gender" name="gender" required>
-79:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-80:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-81:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-82:       </select>
-83:     </div>
-84:     <div style="text-align: center;">
-
-
-Stacktrace:] with root cause
-	org.apache.jasper.JasperException: Unable to compile class for JSP: 
-
-An error occurred at line: [26] in the jsp file: [/edit.jsp]
-The method equalsIgnoreCase(String) is undefined for the type User.UserType
-23:   int userIdToEdit = (idParam != null) ? Integer.parseInt(idParam) : loggedInUser.getId();
-24: 
-25:   // Admin can edit any user; normal users can only edit themselves
-26:   if (!loggedInUser.getType().equalsIgnoreCase("admin") && userIdToEdit != loggedInUser.getId()) {
-27:     out.println("You are not authorized to edit other users' profiles.");
-28:     return;
-29:   }
-
-
-An error occurred at line: [35] in the jsp file: [/edit.jsp]
-The method findById(int) is undefined for the type UserDBManager
-32:   User userToEdit = null;
-33: 
-34:   try {
-35:     userToEdit = db.Users().findById(userIdToEdit);
-36:     if (userToEdit == null) {
-37:       out.println("User not found");
-38:       return;
-
-
-An error occurred at line: [65] in the jsp file: [/header.jsp]
-Duplicate local variable loggedInUser
-62:                     <div>
-63:                         <h2>Logged in user:
-64:                             <%
-65:                                 User loggedInUser = (User) session.getAttribute("user");
-66:                                 if (loggedInUser != null) {
-67:                                     out.print(loggedInUser.getName());
-68:                                 } else {
-
-
-An error occurred at line: [62] in the jsp file: [/edit.jsp]
-user cannot be resolved
-59:   <form action="EditServlet" method="post">
-60:     <div class="form-group">
-61:       <label for="name">Full Name</label>
-62:       <input type="text" userId="name" name="name" value="<%= user.getName() %>" required>
-63:     </div>
-64:     <div class="form-group">
-65:       <label for="email">Email Address</label>
-
-
-An error occurred at line: [66] in the jsp file: [/edit.jsp]
-user cannot be resolved
-63:     </div>
-64:     <div class="form-group">
-65:       <label for="email">Email Address</label>
-66:       <input type="email" userId="email" name="email" value="<%= user.getEmail() %>" required>
-67:     </div>
-68:     <div class="form-group">
-69:       <label for="password">Password</label>
-
-
-An error occurred at line: [70] in the jsp file: [/edit.jsp]
-user cannot be resolved
-67:     </div>
-68:     <div class="form-group">
-69:       <label for="password">Password</label>
-70:       <input type="password" userId="password" name="password" value="<%= user.getPassword() %>" required>
-71:     </div>
-72:     <div class="form-group">
-73:       <label for="dob">Date of Birth</label>
-
-
-An error occurred at line: [74] in the jsp file: [/edit.jsp]
-user cannot be resolved
-71:     </div>
-72:     <div class="form-group">
-73:       <label for="dob">Date of Birth</label>
-74:       <input type="date" userId="dob" name="dob" value="<%= user.getDob() %>" required>
-75:     </div>
-76:     <div class="form-group">
-77:       <label for="gender">Gender</label>
-
-
-An error occurred at line: [79] in the jsp file: [/edit.jsp]
-user cannot be resolved
-76:     <div class="form-group">
-77:       <label for="gender">Gender</label>
-78:       <select userId="gender" name="gender" required>
-79:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-80:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-81:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-82:       </select>
-
-
-An error occurred at line: [80] in the jsp file: [/edit.jsp]
-user cannot be resolved
-77:       <label for="gender">Gender</label>
-78:       <select userId="gender" name="gender" required>
-79:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-80:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-81:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-82:       </select>
-83:     </div>
-
-
-An error occurred at line: [81] in the jsp file: [/edit.jsp]
-user cannot be resolved
-78:       <select userId="gender" name="gender" required>
-79:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-80:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-81:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-82:       </select>
-83:     </div>
-84:     <div style="text-align: center;">
-
-
-Stacktrace:
-		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
-		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
-		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:524)
-		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
-		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
-		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
-		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:603)
-		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:396)
-		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
-		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+26-May-2025 17:28:45.575 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
 		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
@@ -1153,242 +578,12 @@ Stacktrace:
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 02:01:01.627 SEVERE [http-nio-8080-exec-7] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [jsp] in context with path [/ISDProject] threw exception [Unable to compile class for JSP: 
-
-An error occurred at line: [26] in the jsp file: [/edit.jsp]
-The method equalsIgnoreCase(String) is undefined for the type User.UserType
-23:   int userIdToEdit = (idParam != null) ? Integer.parseInt(idParam) : loggedInUser.getId();
-24: 
-25:   // Admin can edit any user; normal users can only edit themselves
-26:   if (!loggedInUser.getType().equalsIgnoreCase("admin") && userIdToEdit != loggedInUser.getId()) {
-27:     out.println("You are not authorized to edit other users' profiles.");
-28:     return;
-29:   }
-
-
-An error occurred at line: [35] in the jsp file: [/edit.jsp]
-The method findById(int) is undefined for the type UserDBManager
-32:   User userToEdit = null;
-33: 
-34:   try {
-35:     userToEdit = db.Users().findById(userIdToEdit);
-36:     if (userToEdit == null) {
-37:       out.println("User not found");
-38:       return;
-
-
-An error occurred at line: [65] in the jsp file: [/header.jsp]
-Duplicate local variable loggedInUser
-62:                     <div>
-63:                         <h2>Logged in user:
-64:                             <%
-65:                                 User loggedInUser = (User) session.getAttribute("user");
-66:                                 if (loggedInUser != null) {
-67:                                     out.print(loggedInUser.getName());
-68:                                 } else {
-
-
-An error occurred at line: [62] in the jsp file: [/edit.jsp]
-user cannot be resolved
-59:   <form action="EditServlet" method="post">
-60:     <div class="form-group">
-61:       <label for="name">Full Name</label>
-62:       <input type="text" userId="name" name="name" value="<%= user.getName() %>" required>
-63:     </div>
-64:     <div class="form-group">
-65:       <label for="email">Email Address</label>
-
-
-An error occurred at line: [66] in the jsp file: [/edit.jsp]
-user cannot be resolved
-63:     </div>
-64:     <div class="form-group">
-65:       <label for="email">Email Address</label>
-66:       <input type="email" userId="email" name="email" value="<%= user.getEmail() %>" required>
-67:     </div>
-68:     <div class="form-group">
-69:       <label for="password">Password</label>
-
-
-An error occurred at line: [70] in the jsp file: [/edit.jsp]
-user cannot be resolved
-67:     </div>
-68:     <div class="form-group">
-69:       <label for="password">Password</label>
-70:       <input type="password" userId="password" name="password" value="<%= user.getPassword() %>" required>
-71:     </div>
-72:     <div class="form-group">
-73:       <label for="dob">Date of Birth</label>
-
-
-An error occurred at line: [74] in the jsp file: [/edit.jsp]
-user cannot be resolved
-71:     </div>
-72:     <div class="form-group">
-73:       <label for="dob">Date of Birth</label>
-74:       <input type="date" userId="dob" name="dob" value="<%= user.getDob() %>" required>
-75:     </div>
-76:     <div class="form-group">
-77:       <label for="gender">Gender</label>
-
-
-An error occurred at line: [79] in the jsp file: [/edit.jsp]
-user cannot be resolved
-76:     <div class="form-group">
-77:       <label for="gender">Gender</label>
-78:       <select userId="gender" name="gender" required>
-79:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-80:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-81:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-82:       </select>
-
-
-An error occurred at line: [80] in the jsp file: [/edit.jsp]
-user cannot be resolved
-77:       <label for="gender">Gender</label>
-78:       <select userId="gender" name="gender" required>
-79:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-80:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-81:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-82:       </select>
-83:     </div>
-
-
-An error occurred at line: [81] in the jsp file: [/edit.jsp]
-user cannot be resolved
-78:       <select userId="gender" name="gender" required>
-79:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-80:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-81:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-82:       </select>
-83:     </div>
-84:     <div style="text-align: center;">
-
-
-Stacktrace:] with root cause
-	org.apache.jasper.JasperException: Unable to compile class for JSP: 
-
-An error occurred at line: [26] in the jsp file: [/edit.jsp]
-The method equalsIgnoreCase(String) is undefined for the type User.UserType
-23:   int userIdToEdit = (idParam != null) ? Integer.parseInt(idParam) : loggedInUser.getId();
-24: 
-25:   // Admin can edit any user; normal users can only edit themselves
-26:   if (!loggedInUser.getType().equalsIgnoreCase("admin") && userIdToEdit != loggedInUser.getId()) {
-27:     out.println("You are not authorized to edit other users' profiles.");
-28:     return;
-29:   }
-
-
-An error occurred at line: [35] in the jsp file: [/edit.jsp]
-The method findById(int) is undefined for the type UserDBManager
-32:   User userToEdit = null;
-33: 
-34:   try {
-35:     userToEdit = db.Users().findById(userIdToEdit);
-36:     if (userToEdit == null) {
-37:       out.println("User not found");
-38:       return;
-
-
-An error occurred at line: [65] in the jsp file: [/header.jsp]
-Duplicate local variable loggedInUser
-62:                     <div>
-63:                         <h2>Logged in user:
-64:                             <%
-65:                                 User loggedInUser = (User) session.getAttribute("user");
-66:                                 if (loggedInUser != null) {
-67:                                     out.print(loggedInUser.getName());
-68:                                 } else {
-
-
-An error occurred at line: [62] in the jsp file: [/edit.jsp]
-user cannot be resolved
-59:   <form action="EditServlet" method="post">
-60:     <div class="form-group">
-61:       <label for="name">Full Name</label>
-62:       <input type="text" userId="name" name="name" value="<%= user.getName() %>" required>
-63:     </div>
-64:     <div class="form-group">
-65:       <label for="email">Email Address</label>
-
-
-An error occurred at line: [66] in the jsp file: [/edit.jsp]
-user cannot be resolved
-63:     </div>
-64:     <div class="form-group">
-65:       <label for="email">Email Address</label>
-66:       <input type="email" userId="email" name="email" value="<%= user.getEmail() %>" required>
-67:     </div>
-68:     <div class="form-group">
-69:       <label for="password">Password</label>
-
-
-An error occurred at line: [70] in the jsp file: [/edit.jsp]
-user cannot be resolved
-67:     </div>
-68:     <div class="form-group">
-69:       <label for="password">Password</label>
-70:       <input type="password" userId="password" name="password" value="<%= user.getPassword() %>" required>
-71:     </div>
-72:     <div class="form-group">
-73:       <label for="dob">Date of Birth</label>
-
-
-An error occurred at line: [74] in the jsp file: [/edit.jsp]
-user cannot be resolved
-71:     </div>
-72:     <div class="form-group">
-73:       <label for="dob">Date of Birth</label>
-74:       <input type="date" userId="dob" name="dob" value="<%= user.getDob() %>" required>
-75:     </div>
-76:     <div class="form-group">
-77:       <label for="gender">Gender</label>
-
-
-An error occurred at line: [79] in the jsp file: [/edit.jsp]
-user cannot be resolved
-76:     <div class="form-group">
-77:       <label for="gender">Gender</label>
-78:       <select userId="gender" name="gender" required>
-79:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-80:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-81:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-82:       </select>
-
-
-An error occurred at line: [80] in the jsp file: [/edit.jsp]
-user cannot be resolved
-77:       <label for="gender">Gender</label>
-78:       <select userId="gender" name="gender" required>
-79:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-80:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-81:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-82:       </select>
-83:     </div>
-
-
-An error occurred at line: [81] in the jsp file: [/edit.jsp]
-user cannot be resolved
-78:       <select userId="gender" name="gender" required>
-79:         <option value="male" <%= "male".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Male</option>
-80:         <option value="female" <%= "female".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Female</option>
-81:         <option value="other" <%= "other".equalsIgnoreCase(user.getGender()) ? "selected" : "" %>>Other</option>
-82:       </select>
-83:     </div>
-84:     <div style="text-align: center;">
-
-
-Stacktrace:
-		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
-		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
-		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:524)
-		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
-		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
-		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
-		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:603)
-		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:396)
-		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
-		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+26-May-2025 17:31:48.378 SEVERE [http-nio-8080-exec-2] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
 		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
@@ -1412,25 +607,12 @@ Stacktrace:
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 02:54:32.393 SEVERE [http-nio-8080-exec-5] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [jsp] in context with path [/ISDProject] threw exception [An exception occurred processing [/edit.jsp] at line [29]
-
-26:     }
-27:   }
-28:   UserDBManager userDbManager = (UserDBManager) application.getAttribute("userDBManager");
-29:   User userToEdit = userDbManager.getById(idToEdit); // Use getById
-30:   if (userToEdit == null) {
-31:     response.sendRedirect("index.jsp?error=User not found");
-32:     return;
-
-
-Stacktrace:] with root cause
-	java.lang.NullPointerException: Cannot invoke "uts.isd.model.dao.UserDBManager.getById(int)" because "userDbManager" is null
-		at org.apache.jsp.edit_jsp._jspService(edit_jsp.java:149)
-		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:67)
-		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
-		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:456)
-		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
-		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+26-May-2025 17:31:51.345 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
 		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
@@ -1454,25 +636,12 @@ Stacktrace:] with root cause
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 02:54:35.069 SEVERE [http-nio-8080-exec-6] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [jsp] in context with path [/ISDProject] threw exception [An exception occurred processing [/edit.jsp] at line [29]
-
-26:     }
-27:   }
-28:   UserDBManager userDbManager = (UserDBManager) application.getAttribute("userDBManager");
-29:   User userToEdit = userDbManager.getById(idToEdit); // Use getById
-30:   if (userToEdit == null) {
-31:     response.sendRedirect("index.jsp?error=User not found");
-32:     return;
-
-
-Stacktrace:] with root cause
-	java.lang.NullPointerException: Cannot invoke "uts.isd.model.dao.UserDBManager.getById(int)" because "userDbManager" is null
-		at org.apache.jsp.edit_jsp._jspService(edit_jsp.java:149)
-		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:67)
-		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
-		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:456)
-		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
-		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+26-May-2025 17:32:00.797 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
 		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
@@ -1496,25 +665,12 @@ Stacktrace:] with root cause
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
-20-May-2025 02:54:37.227 SEVERE [http-nio-8080-exec-9] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [jsp] in context with path [/ISDProject] threw exception [An exception occurred processing [/edit.jsp] at line [29]
-
-26:     }
-27:   }
-28:   UserDBManager userDbManager = (UserDBManager) application.getAttribute("userDBManager");
-29:   User userToEdit = userDbManager.getById(idToEdit); // Use getById
-30:   if (userToEdit == null) {
-31:     response.sendRedirect("index.jsp?error=User not found");
-32:     return;
-
-
-Stacktrace:] with root cause
-	java.lang.NullPointerException: Cannot invoke "uts.isd.model.dao.UserDBManager.getById(int)" because "userDbManager" is null
-		at org.apache.jsp.edit_jsp._jspService(edit_jsp.java:149)
-		at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:67)
-		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
-		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:456)
-		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
-		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+26-May-2025 17:32:09.419 SEVERE [http-nio-8080-exec-2] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
 		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
 		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
@@ -1538,3 +694,258 @@ Stacktrace:] with root cause
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
+26-May-2025 17:32:12.664 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+26-May-2025 17:32:37.811 SEVERE [http-nio-8080-exec-4] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Full name cannot be empty.
+		at uts.isd.model.User.setFullName(User.java:78)
+		at uts.isd.model.User.<init>(User.java:51)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+26-May-2025 17:33:06.523 SEVERE [http-nio-8080-exec-4] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.IllegalArgumentException: Phone number must be 10 digits.
+		at uts.isd.model.User.setPhone(User.java:137)
+		at uts.isd.model.User.<init>(User.java:56)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+26-May-2025 17:33:25.820 SEVERE [http-nio-8080-exec-5] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.NullPointerException: Cannot invoke "String.toUpperCase()" because "role" is null
+		at uts.isd.model.User$UserType.fromString(User.java:12)
+		at uts.isd.model.User.setRole(User.java:154)
+		at uts.isd.model.User.<init>(User.java:57)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+26-May-2025 17:33:46.518 SEVERE [http-nio-8080-exec-6] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.NullPointerException: Cannot invoke "String.toUpperCase()" because "role" is null
+		at uts.isd.model.User$UserType.fromString(User.java:12)
+		at uts.isd.model.User.setRole(User.java:154)
+		at uts.isd.model.User.<init>(User.java:57)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+26-May-2025 17:34:53.207 SEVERE [http-nio-8080-exec-7] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.NullPointerException: Cannot invoke "String.toUpperCase()" because "role" is null
+		at uts.isd.model.User$UserType.fromString(User.java:12)
+		at uts.isd.model.User.setRole(User.java:154)
+		at uts.isd.model.User.<init>(User.java:57)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:36)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+26-May-2025 18:59:51.844 SEVERE [http-nio-8080-exec-7] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.RuntimeException: org.sqlite.SQLiteException: [SQLITE_BUSY] The database file is locked (database is locked)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+	Caused by: org.sqlite.SQLiteException: [SQLITE_BUSY] The database file is locked (database is locked)
+		at org.sqlite.core.DB.newSQLException(DB.java:1179)
+		at org.sqlite.core.DB.newSQLException(DB.java:1190)
+		at org.sqlite.core.DB.execute(DB.java:985)
+		at org.sqlite.core.DB.executeUpdate(DB.java:1054)
+		at org.sqlite.jdbc3.JDBC3PreparedStatement.lambda$executeLargeUpdate$2(JDBC3PreparedStatement.java:129)
+		at org.sqlite.jdbc3.JDBC3Statement.withConnectionTimeout(JDBC3Statement.java:458)
+		at org.sqlite.jdbc3.JDBC3PreparedStatement.executeLargeUpdate(JDBC3PreparedStatement.java:124)
+		at org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:105)
+		at uts.isd.model.dao.UserDBManager.add(UserDBManager.java:35)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:38)
+		... 24 more
+26-May-2025 19:00:09.241 SEVERE [http-nio-8080-exec-8] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.RegisterServlet] in context with path [/ISDProject] threw exception
+	java.lang.RuntimeException: org.sqlite.SQLiteException: [SQLITE_BUSY] The database file is locked (database is locked)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:40)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+	Caused by: org.sqlite.SQLiteException: [SQLITE_BUSY] The database file is locked (database is locked)
+		at org.sqlite.core.DB.newSQLException(DB.java:1179)
+		at org.sqlite.core.DB.newSQLException(DB.java:1190)
+		at org.sqlite.core.DB.execute(DB.java:985)
+		at org.sqlite.core.DB.executeUpdate(DB.java:1054)
+		at org.sqlite.jdbc3.JDBC3PreparedStatement.lambda$executeLargeUpdate$2(JDBC3PreparedStatement.java:129)
+		at org.sqlite.jdbc3.JDBC3Statement.withConnectionTimeout(JDBC3Statement.java:458)
+		at org.sqlite.jdbc3.JDBC3PreparedStatement.executeLargeUpdate(JDBC3PreparedStatement.java:124)
+		at org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:105)
+		at uts.isd.model.dao.UserDBManager.add(UserDBManager.java:35)
+		at uts.isd.controller.RegisterServlet.doPost(RegisterServlet.java:38)
+		... 24 more

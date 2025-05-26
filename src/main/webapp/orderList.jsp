@@ -37,9 +37,9 @@
     <td><%= o.getTotalPrice() %></td>
     <td><%= o.getStatus() %></td>
     <td>
-      <a href="order?action=detail&id=<%= o.getId() %>">Details</a>
+      <a href="order?action=detail&userId=<%= o.getId() %>">Details</a>
       <% if (!"Cancelled".equals(o.getStatus())) { %>
-      | <a href="order?action=cancel&id=<%= o.getId() %>"
+      | <a href="order?action=cancel&userId=<%= o.getId() %>"
            onclick="return confirm('Cancel order #<%= o.getId() %>?');">Cancel</a>
       | <a href="shipment.jsp?orderId=<%= o.getId() %>">Shipment</a> <!-- ✅ 新增 -->
       <!--int orderId = Integer.parseInt(request.getParameter("orderId"));

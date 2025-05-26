@@ -26,9 +26,9 @@ public class OrderDBManager {
             ps.executeUpdate();
             try (ResultSet keys = ps.getGeneratedKeys()) {
                 if (keys.next()) {
-                    int id = keys.getInt(1);
-                    order.setId(id);
-                    return id;
+                    int orderId = keys.getInt(1);
+                    order.setOrderId(orderId);
+                    return orderId;
                 }
             }
         }

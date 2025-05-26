@@ -46,16 +46,16 @@
   </tr>
   <% for (User user : users) { %>
   <tr>
-    <td><%= user.getId() %></td>
-    <td><%= user.getName() %></td>
+    <td><%= user.getUserId() %></td>
+    <td><%= user.getFullName() %></td>
     <td><%= user.getEmail() %></td>
-    <td><%= user.getPhoneNumber() != null ? user.getPhoneNumber() : "" %></td>
+    <td><%= user.getPhone() != null ? user.getPhone() : "" %></td>
     <td><%= user.getType() %></td>
     <td><%= user.getIsActive() ? "Yes" : "No" %></td>
     <td>
-      <a href="edit.jsp?userId=<%= user.getId() %>">Edit</a>
-      <a href="AdminServlet?action=toggle&id=<%= user.getId() %>">Toggle Active</a>
-      <a href="AdminServlet?action=delete&id=<%= user.getId() %>">Delete</a>
+      <a href="edit.jsp?userId=<%= user.getUserId() %>">Edit</a>
+      <a href="AdminServlet?action=toggle&userId=<%= user.getUserId() %>">Toggle Active</a>
+      <a href="AdminServlet?action=delete&userId=<%= user.getUserId() %>">Delete</a>
     </td>
   </tr>
   <% } %>

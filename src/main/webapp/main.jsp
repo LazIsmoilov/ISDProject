@@ -6,7 +6,7 @@
 <%@ page session="true" %>
 
 <%
-    User user = (User) session.getAttribute("user");
+    User user = (User) session.getAttribute("loggedInUser");
     if (user == null) {
         response.sendRedirect("login.jsp");
         return;
@@ -119,8 +119,8 @@
                 <p><strong>Quantity:</strong> ${d.quantity}</p>
 
                 <c:if test="${role eq 'staff'}">
-                    <a href="DeviceServlet?action=edit&id=${d.deviceId}" class="btn btn-warning btn-sm">Edit</a>
-                    <a href="DeviceServlet?action=delete&id=${d.deviceId}" class="btn btn-danger btn-sm"
+                    <a href="DeviceServlet?action=edit&userId=${d.deviceId}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="DeviceServlet?action=delete&userId=${d.deviceId}" class="btn btn-danger btn-sm"
                        onclick="return confirm('Are you sure?')">Delete</a>
                 </c:if>
 

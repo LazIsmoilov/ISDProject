@@ -198,7 +198,7 @@
         <% if (payments.isEmpty()) { %>
             <div class="alert alert-info">No payments found for the selected date range.</div>
         <% } else { %>
-            <table id="paymentTable" class="payment-table">
+            <table userId="paymentTable" class="payment-table">
                 <thead>
                     <tr>
                         <th onclick="sortTable(0)">Payment ID</th>

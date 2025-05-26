@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Payment implements Serializable {
-    private int id;
+    private int paymentId;
+    private int userId;
     private int orderId;
     private String paymentMethod;
     private String cardNumber;
@@ -19,10 +20,11 @@ public class Payment implements Serializable {
         this.status = PaymentStatus.PENDING;
     }
 
-    public Payment(int id, int orderId, String paymentMethod, String cardNumber, 
+    public Payment(int paymentId, int userId, int orderId, String paymentMethod, String cardNumber,
                   String cardHolderName, String expiryDate, String cvv, 
                   double amount, Date paymentDate, PaymentStatus status) {
-        this.id = id;
+        this.paymentId = paymentId;
+        this.userId = userId;
         this.orderId = orderId;
         this.paymentMethod = paymentMethod;
         this.cardNumber = cardNumber;
@@ -35,12 +37,18 @@ public class Payment implements Serializable {
     }
 
     // Getters and Setters
-    public int getId() {
-        return id;
+    public int getPaymentId() {
+        return paymentId;
+    }
+    public void setPaymentId(int paymentId) {
+        this.paymentId = paymentId;
+    }
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getOrderId() {
@@ -122,7 +130,8 @@ public class Payment implements Serializable {
     @Override
     public String toString() {
         return "Payment{" +
-                "id=" + id +
+                "paymentId=" + paymentId +
+                "userId=" + userId +
                 ", orderId=" + orderId +
                 ", paymentMethod='" + paymentMethod + '\'' +
                 ", cardNumber='" + cardNumber + '\'' +

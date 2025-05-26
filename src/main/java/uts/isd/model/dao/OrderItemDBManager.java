@@ -62,7 +62,7 @@ public class OrderItemDBManager {
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, item.getQuantity());
             ps.setDouble(2, item.getUnitPrice());
-            ps.setInt(3, item.getId());
+            ps.setInt(3, item.getOrderId());
             ps.executeUpdate();
         }
     }

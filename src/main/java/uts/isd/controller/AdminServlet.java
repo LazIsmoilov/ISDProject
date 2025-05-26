@@ -45,7 +45,7 @@ public class AdminServlet extends HttpServlet {
             } else if ("delete".equals(action)) {
                 int userId = Integer.parseInt(req.getParameter("id"));
                 User user = new User();
-                user.setId(userId);
+                user.setUserId(userId);
                 db.Users().delete(user);
 
                 // Refresh user list after deletion

@@ -1,7 +1,7 @@
 package uts.isd.controller;
 
-import uts.isd.model.dao.UserDAO;
 import uts.isd.model.User;
+import uts.isd.model.dao.UserDBManager;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,13 +9,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 @WebServlet("/profile")
 public class ProfileServlet extends HttpServlet {
 
-    //    check login or not, if not ,redirect to login
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -24,12 +25,11 @@ public class ProfileServlet extends HttpServlet {
             response.sendRedirect("login.jsp");
             return;
         }
-//        give user to profile for showing detail
+
         request.setAttribute("user", session.getAttribute("user"));
         request.getRequestDispatcher("profile.jsp").forward(request, response);
     }
 
-    //    check login status again
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,35 +39,39 @@ public class ProfileServlet extends HttpServlet {
             return;
         }
 
-//        get new info from web
         User user = (User) session.getAttribute("user");
         String fullName = request.getParameter("fullName");
         String phone = request.getParameter("phone");
         String newPassword = request.getParameter("newPassword");
 
-//update
         user.setFullName(fullName);
         user.setPhone(phone);
 
-        try {
-            UserDAO userDAO = new UserDAO();
+        // Get DB connection from servlet context (make sure it's set up)
+        Connection connection = (Connection) getServletContext().getAttribute("DBConnection");
+        if (connection == null) {
+            throw new ServletException("Database connection not initialized.");
+        }
 
-            // change password
+        try {
+            UserDBManager userDBManager = new UserDBManager(connection);
+
             if (newPassword != null && !newPassword.isEmpty()) {
                 user.setPassword(newPassword);
-                userDAO.updatePassword(user.getUserId(), newPassword);
+                userDBManager.updatePassword(user.getUserId(), newPassword);
             }
 
-            // update other info
-            userDAO.updateUser(user);
-            session.setAttribute("user", user);
+            User oldUser = (User) session.getAttribute("user"); // the old user details from session
+            User newUser = user; // the updated user object you just changed
 
-            // change success  test
+            userDBManager.update(oldUser, newUser);
+
+            // update session with new user info
+            session.setAttribute("user", newUser);
+
             request.setAttribute("success", "Your profile has been updated successfully.");
             request.setAttribute("user", user);
             request.getRequestDispatcher("profile.jsp").forward(request, response);
-            return;
-
         } catch (SQLException e) {
             throw new ServletException("Database error", e);
         }

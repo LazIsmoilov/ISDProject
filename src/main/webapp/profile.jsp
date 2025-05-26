@@ -25,7 +25,7 @@
     </c:if>
 
     <!-- Save Changes Form -->
-    <form action="${pageContext.request.contextPath}/profile" method="post" id="profileForm">
+    <form action="${pageContext.request.contextPath}/profile" method="post" userId="profileForm">
       <input type="hidden" name="userId" value="${user.userId}">
 
       <div class="form-group required">

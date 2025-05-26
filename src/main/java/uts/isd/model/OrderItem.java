@@ -3,7 +3,7 @@ package uts.isd.model;
 import java.io.Serializable;
 
 public class OrderItem implements Serializable {
-    private int id;
+    private int orderItemId;
     private int orderId;
     private int productId;
     private int quantity;
@@ -11,8 +11,8 @@ public class OrderItem implements Serializable {
 
     public OrderItem() { }
 
-    public OrderItem(int id, int orderId, int productId, int quantity, double unitPrice) {
-        this.id = id;
+    public OrderItem(int orderItemId, int orderId, int productId, int quantity, double unitPrice) {
+        this.orderItemId = orderItemId;
         this.orderId = orderId;
         this.productId = productId;
         this.quantity = quantity;
@@ -20,11 +20,9 @@ public class OrderItem implements Serializable {
     }
 
     // —— Getter / Setter ——
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
+    public int getOrderItemId() {return orderItemId;}
+    public void setOrderItemId(int orderItemId) {
+        this.orderItemId = orderItemId;
     }
 
     public int getOrderId() {
@@ -58,7 +56,7 @@ public class OrderItem implements Serializable {
     @Override
     public String toString() {
         return "OrderItem{" +
-                "id=" + id +
+                "id=" + orderItemId +
                 ", orderId=" + orderId +
                 ", productId=" + productId +
                 ", quantity=" + quantity +

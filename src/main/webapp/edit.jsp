@@ -50,7 +50,7 @@
 <html>
 <head>
   <title>Edit Profile</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 </head>
 <body>
 <h2>Edit Your Profile (ID: <%= userToEdit.getUserId() %>, Name: <%= userToEdit.getFullName() %>)</h2>

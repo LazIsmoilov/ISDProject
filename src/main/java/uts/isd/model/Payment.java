@@ -5,7 +5,6 @@ import java.util.Date;
 
 public class Payment implements Serializable {
     private int paymentId;
-    private int userId;
     private int orderId;
     private String paymentMethod;
     private String cardNumber;
@@ -20,11 +19,10 @@ public class Payment implements Serializable {
         this.status = PaymentStatus.PENDING;
     }
 
-    public Payment(int paymentId, int userId, int orderId, String paymentMethod, String cardNumber,
+    public Payment(int paymentId, int orderId, String paymentMethod, String cardNumber,
                   String cardHolderName, String expiryDate, String cvv, 
                   double amount, Date paymentDate, PaymentStatus status) {
         this.paymentId = paymentId;
-        this.userId = userId;
         this.orderId = orderId;
         this.paymentMethod = paymentMethod;
         this.cardNumber = cardNumber;
@@ -42,13 +40,6 @@ public class Payment implements Serializable {
     }
     public void setPaymentId(int paymentId) {
         this.paymentId = paymentId;
-    }
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public int getOrderId() {
@@ -131,7 +122,6 @@ public class Payment implements Serializable {
     public String toString() {
         return "Payment{" +
                 "paymentId=" + paymentId +
-                "userId=" + userId +
                 ", orderId=" + orderId +
                 ", paymentMethod='" + paymentMethod + '\'' +
                 ", cardNumber='" + cardNumber + '\'' +

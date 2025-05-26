@@ -1,3 +1,18 @@
+package uts.isd;
+
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.jsp.*;
+import uts.isd.model.*;
+import java.util.List;
+
+<%--
+  Created by IntelliJ IDEA.
+  User: [Your Name]
+  Date: [Creation Date]
+  Time: [Creation Time]
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ page import="uts.isd.model.Device" %>
@@ -15,7 +30,10 @@
     String role = user.getRole();
     String fullName = user.getFullName();
     List<Device> devices = (List<Device>) request.getAttribute("devices");
-    request.setAttribute("role", role);
+    // Normalize role to lowercase for consistent comparison
+    request.setAttribute("role", role != null ? role.toLowerCase() : "none");
+    // Debug: Store raw role for display
+    request.setAttribute("rawRole", role);
 %>
 
 <!DOCTYPE html>
@@ -67,6 +85,16 @@
             align-items: center;
             margin-bottom: 30px;
         }
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .debug-info {
+            color: blue;
+            text-align: center;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -74,10 +102,21 @@
 <pref-header></pref-header>
 
 <div class="container mt-5 content-box">
-    <!-- ✅ CENTERED Welcome + Role -->
+    <!-- Display error if present -->
+    <c:if test="${not empty error}">
+        <p class="error-message">${error}</p>
+    </c:if>
+
+    <!-- Debug: Show raw and normalized role -->
+    <div class="debug-info">
+        <p>Debug - Raw Role: <%= request.getAttribute("rawRole") != null ? request.getAttribute("rawRole") : "null" %></p>
+        <p>Debug - Normalized Role: ${role}</p>
+    </div>
+
+    <!-- CENTERED Welcome + Role -->
     <div class="text-center mb-4">
         <h2>Welcome, <%= fullName %>!</h2>
-        <p class="text-muted">Role: <%= role %></p>
+        <p class="text-muted">Role: <%= role != null ? role : "Not set" %></p>
     </div>
 
     <!-- DASHBOARD -->
@@ -118,27 +157,27 @@
                 <p><strong>Price:</strong> $${d.price}</p>
                 <p><strong>Quantity:</strong> ${d.quantity}</p>
 
-                <c:if test="${role eq 'staff'}">
-                    <a href="DeviceServlet?action=edit&userId=${d.deviceId}" class="btn btn-warning btn-sm">Edit</a>
-                    <a href="DeviceServlet?action=delete&userId=${d.deviceId}" class="btn btn-danger btn-sm"
-                       onclick="return confirm('Are you sure?')">Delete</a>
-                </c:if>
-
                 <c:if test="${role eq 'customer'}">
                     <form method="post" action="order">
                         <input type="hidden" name="productId" value="${d.deviceId}" />
                         <input type="number" name="quantity" value="1" min="1" required class="form-control mb-2" />
                         <input type="hidden" name="unitPrice" value="${d.price}" />
                         <input type="hidden" name="totalPrice" value="${d.price}" />
-                        <button type="submit" class="btn btn-success btn-sm">🛒 Add to Order</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Add to Order</button>
                     </form>
+                </c:if>
+
+                <c:if test="${role eq 'staff'}">
+                    <a href="DeviceServlet?action=edit&deviceId=${d.deviceId}" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="DeviceServlet?action=delete&deviceId=${d.deviceId}" class="btn btn btn-primary btn-sm"
+                       onclick="return confirm('Are you sure?')">Delete</a>
                 </c:if>
             </div>
         </c:forEach>
     </div>
 
     <c:if test="${empty devices}">
-        <p class="text-muted mt-3">No devices found.</p>
+        <p class="error-message mt-3">No devices found.</p>
     </c:if>
 </div>
 

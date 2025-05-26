@@ -138,7 +138,6 @@ public class PaymentTest {
     @Test
     public void testPaymentDBOperations() throws SQLException {
         Payment payment = new Payment();
-        payment.setUserId(1);
         payment.setOrderId(1);
         payment.setAmount(100.00);
         payment.setPaymentMethod("Credit Card");
@@ -154,7 +153,6 @@ public class PaymentTest {
 
         Payment retrieved = paymentDB.getPaymentById(paymentId);
         assertNotNull(retrieved);
-        assertEquals(payment.getUserId(), retrieved.getUserId());
         assertEquals(payment.getOrderId(), retrieved.getOrderId());
         assertEquals(payment.getAmount(), retrieved.getAmount(), 0.001);
         assertEquals(payment.getPaymentMethod(), retrieved.getPaymentMethod());
@@ -186,7 +184,6 @@ public class PaymentTest {
     @Test
     public void testPaymentReceipt() {
         Payment payment = new Payment();
-        payment.setUserId(1);
         payment.setOrderId(1);
         payment.setAmount(100.00);
         payment.setPaymentMethod("Credit Card");
@@ -269,7 +266,6 @@ public class PaymentTest {
             Date: %s
             """,
                 payment.getPaymentId(),
-                payment.getUserId(),
                 payment.getOrderId(),
                 payment.getAmount(),
                 payment.getPaymentMethod(),

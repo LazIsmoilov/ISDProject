@@ -12,11 +12,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Register - IoT Bay</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 </head>
 <body>
 <%@ include file="header.jsp" %>
-<div class="register-form">
+<div class="container mt-5">
   <h2>Register</h2>
   <form action="RegisterServlet" method="post">
     <label for="fullName">Full Name:</label>
@@ -52,6 +52,7 @@
     <br>
     <input type="submit" value="Register">
   </form>
+  <p class="mt-3">Already have an account? <a href="login.jsp">Login here</a></p>
 </div>
 </body>
 </html>

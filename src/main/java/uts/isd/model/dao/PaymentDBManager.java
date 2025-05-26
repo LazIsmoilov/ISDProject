@@ -16,10 +16,9 @@ public class PaymentDBManager {
     }
 
     public int addPayment(Payment payment) throws SQLException {
-        String sql = "INSERT INTO Payments (userId, orderId, paymentMethod, cardNumber, cardHolderName, " +
-                "expiryDate, cvv, amount, paymentDate, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Payments (orderId, paymentMethod, cardNumber, cardHolderName, " +
+                "expiryDate, cvv, amount, paymentDate, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            ps.setInt(1, payment.getUserId());
             ps.setInt(2, payment.getOrderId());
             ps.setString(3, payment.getPaymentMethod());
             ps.setString(4, payment.getCardNumber());
@@ -51,7 +50,6 @@ public class PaymentDBManager {
                 while (rs.next()) {
                     Payment payment = new Payment(
                             rs.getInt("id"),
-                            rs.getInt("userId"),
                             rs.getInt("orderId"),
                             rs.getString("paymentMethod"),
                             rs.getString("cardNumber"),
@@ -77,7 +75,6 @@ public class PaymentDBManager {
                 if (rs.next()) {
                     return new Payment(
                             rs.getInt("id"),
-                            rs.getInt("userId"),
                             rs.getInt("orderId"),
                             rs.getString("paymentMethod"),
                             rs.getString("cardNumber"),
@@ -95,10 +92,9 @@ public class PaymentDBManager {
     }
 
     public void updatePayment(Payment payment) throws SQLException {
-        String sql = "UPDATE Payments SET userId = ?, orderId = ?, paymentMethod = ?, cardNumber = ?, cardHolderName = ?, " +
+        String sql = "UPDATE Payments SET orderId = ?, paymentMethod = ?, cardNumber = ?, cardHolderName = ?, " +
                 "expiryDate = ?, cvv = ?, amount = ?, paymentDate = ?, status = ? WHERE id = ?";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, payment.getUserId());
             ps.setInt(2, payment.getOrderId());
             ps.setString(3, payment.getPaymentMethod());
             ps.setString(4, payment.getCardNumber());
@@ -131,7 +127,6 @@ public class PaymentDBManager {
                 while (rs.next()) {
                     Payment payment = new Payment(
                             rs.getInt("id"),
-                            rs.getInt("userId"),
                             rs.getInt("orderId"),
                             rs.getString("paymentMethod"),
                             rs.getString("cardNumber"),

@@ -15,7 +15,7 @@
     th { background-color: #f2f2f2; }
 </style>
 
-<h2>Order Details — #<%= ((uts.isd.model.Order)request.getAttribute("order")).getId() %></h2>
+<h2>Order Details — #<%= ((uts.isd.model.Order)request.getAttribute("order")).getOrderId() %></h2>
 
 <%
     uts.isd.model.Order order = (uts.isd.model.Order) request.getAttribute("order");

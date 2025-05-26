@@ -2,14 +2,18 @@ package uts.isd.controller;
 
 import uts.isd.model.Device;
 import uts.isd.model.User;
+import uts.isd.model.dao.DAO;
 import uts.isd.model.dao.DeviceDBManager;
 
-import java.io.IOException;
-import java.util.*;
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
+import java.io.IOException;
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @WebServlet("/DeviceServlet")
 public class DeviceServlet extends HttpServlet {
@@ -22,9 +26,25 @@ public class DeviceServlet extends HttpServlet {
         if (action == null) action = "list";
 
         HttpSession session = request.getSession();
-        ServletContext context = getServletContext();
-        DeviceDBManager db = (DeviceDBManager) context.getAttribute("deviceManager");
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute("loggedInUser");
+        DAO dao = (DAO) session.getAttribute("db");
+
+        if (dao == null) {
+            request.setAttribute("error", "Database access not initialized. Please try logging in again.");
+            request.getRequestDispatcher("main.jsp").forward(request, response);
+            return;
+        }
+
+        DeviceDBManager db;
+        try {
+            Connection conn = dao.getConnection(); // Assumes DAO has getConnection()
+            db = new DeviceDBManager(conn);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("error", "Failed to connect to database: " + e.getMessage());
+            request.getRequestDispatcher("main.jsp").forward(request, response);
+            return;
+        }
 
         try {
             List<Device> devices = new ArrayList<>();
@@ -64,7 +84,7 @@ public class DeviceServlet extends HttpServlet {
             // Set filtered or full device list
             request.setAttribute("devices", devices);
 
-            // Optional: group by type
+            // Group by type
             Map<String, List<Device>> deviceMap = new HashMap<>();
             for (Device d : devices) {
                 deviceMap.computeIfAbsent(d.getType(), k -> new ArrayList<>()).add(d);
@@ -92,9 +112,25 @@ public class DeviceServlet extends HttpServlet {
 
         String action = request.getParameter("action");
         HttpSession session = request.getSession();
-        ServletContext context = getServletContext();
-        DeviceDBManager db = (DeviceDBManager) context.getAttribute("deviceManager");
         User user = (User) session.getAttribute("user");
+        DAO dao = (DAO) session.getAttribute("db");
+
+        if (dao == null) {
+            request.setAttribute("error", "Database access not initialized. Please try logging in again.");
+            request.getRequestDispatcher("main.jsp").forward(request, response);
+            return;
+        }
+
+        DeviceDBManager db;
+        try {
+            Connection conn = dao.getConnection(); // Assumes DAO has getConnection()
+            db = new DeviceDBManager(conn);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("error", "Failed to connect to database: " + e.getMessage());
+            request.getRequestDispatcher("main.jsp").forward(request, response);
+            return;
+        }
 
         try {
             if (user == null || !"staff".equals(user.getRole())) {

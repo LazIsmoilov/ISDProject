@@ -11,6 +11,8 @@ public class DAO {
     private OrderDBManager orderDBManager;
     private OrderItemDBManager orderItemDBManager;
     private PaymentDBManager paymentDBManager;
+    private ShipmentDBManager shipmentDBManager;
+
 
     public DAO() throws SQLException {
         this.connection = new DBConnector().getConnection();
@@ -20,6 +22,8 @@ public class DAO {
             this.orderDBManager = new OrderDBManager(connection);
             this.orderItemDBManager = new OrderItemDBManager(connection);
             this.paymentDBManager = new PaymentDBManager(connection);
+            this.shipmentDBManager = new ShipmentDBManager(connection);
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -44,4 +48,8 @@ public class DAO {
     public PaymentDBManager Payments() {
         return paymentDBManager;
     }
+    public ShipmentDBManager getShipmentManager() {
+        return shipmentDBManager;
+    }
+
 }

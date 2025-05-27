@@ -50,7 +50,7 @@ CREATE TABLE orders (
 -- Create orderItems table
 CREATE TABLE orderItems (
                             id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            orderId INTEGER NOT NULL,
+                    vv        orderId INTEGER NOT NULL,
                             productId INTEGER NOT NULL,
                             quantity INTEGER NOT NULL CHECK(quantity > 0),
                             unitPrice REAL NOT NULL CHECK(unitPrice >= 0),
@@ -96,7 +96,7 @@ CREATE TABLE Devices (
                          price REAL NOT NULL,
                          quantity INTEGER NOT NULL,
                          image TEXT
-);
+);l
 
 -- SAMPLE DEVICES
 INSERT INTO Devices (name, type, description, unit, price, quantity)
@@ -150,6 +150,6 @@ VALUES
     ('Smart Health', 'Health', 'Wearable Blood Pressure Monitor', 'pcs', 253.64, 144),
     ('Plug Energy', 'Energy', 'WiFi Smart Plug for remote control', 'pcs', 165.8, 20),
     ('Motion Security', 'Security', 'Motion Detector with alerts', 'pcs', 197.41, 123);
-
+df\\\\\
 -- Select all users to verify
 SELECT * FROM users;

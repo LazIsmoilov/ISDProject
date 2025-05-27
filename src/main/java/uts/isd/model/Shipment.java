@@ -6,18 +6,20 @@ public class Shipment {
     private String method;
     private String shipmentDate;
     private String address;
+    private boolean finalised;
 
-    public Shipment(int shipmentId, int orderId, String method, String shipmentDate, String address) {
+    public Shipment() {}
+
+    public Shipment(int shipmentId, int orderId, String method, String shipmentDate, String address, boolean finalised) {
         this.shipmentId = shipmentId;
         this.orderId = orderId;
         this.method = method;
         this.shipmentDate = shipmentDate;
         this.address = address;
+        this.finalised = finalised;
     }
 
-    public Shipment() {}
-
-    // Getters and Setters
+    // Getters and setters
     public int getShipmentId() { return shipmentId; }
     public void setShipmentId(int shipmentId) { this.shipmentId = shipmentId; }
 
@@ -32,4 +34,7 @@ public class Shipment {
 
     public String getAddress() { return address; }
     public void setAddress(String address) { this.address = address; }
+
+    public boolean isFinalised() { return finalised; }
+    public void setFinalised(boolean finalised) { this.finalised = finalised; }
 }

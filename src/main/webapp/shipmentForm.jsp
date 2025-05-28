@@ -12,9 +12,20 @@
     </style>
 </head>
 <body>
+
+<%-- Debug --%>
+<p><strong>DEBUG param.orderId:</strong> ${param.orderId}</p>
+<p><strong>DEBUG attribute orderId:</strong> ${orderId}</p>
+
+<%-- Determine orderId value to use --%>
+<c:set var="orderIdVal" value="${not empty param.orderId ? param.orderId : orderId}" />
+
 <form action="AddShipmentServlet" method="post">
     <h2>Add Shipment</h2>
-    <input type="hidden" name="orderId" value="${param.orderId}" />
+
+    <input type="hidden" name="orderId" value="${orderIdVal}" />
+    <p><b>Order ID:</b> ${orderIdVal}</p>
+
     <label>Shipment Method:</label>
     <input type="text" name="method" required />
 
@@ -30,5 +41,6 @@
         <p class="error">${error}</p>
     </c:if>
 </form>
+
 </body>
 </html>

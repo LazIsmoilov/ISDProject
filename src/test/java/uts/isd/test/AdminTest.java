@@ -20,26 +20,27 @@ public class AdminTest {
 
     @Before
     public void setUp() throws SQLException {
-        // Initialize database connection (using an in-memory database for testing)
+        // Connect to an in-memory SQLite database
         connection = DriverManager.getConnection("jdbc:sqlite::memory:");
         dbManager = new UserDBManager(connection);
 
-        // Create the USERS table
+        // Create USERS table matching your production schema
         String createTableSQL = "CREATE TABLE IF NOT EXISTS USERS (" +
-                "Id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "Name TEXT NOT NULL," +
-                "Email TEXT NOT NULL," +
-                "Password TEXT NOT NULL," +
-                "DOB TEXT," +
-                "Gender TEXT," +
-                "PhoneNumber TEXT," +
-                "Type TEXT," +
-                "IsActive INTEGER)";
+                "userId INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "fullName VARCHAR(50) NOT NULL," +
+                "email VARCHAR(100) NOT NULL UNIQUE," +
+                "password VARCHAR(100) NOT NULL," +
+                "dob DATE," +
+                "gender VARCHAR(20) CHECK(gender IN ('Male', 'Female', 'Other'))," +
+                "type VARCHAR(20) NOT NULL CHECK(type IN ('customer', 'staff', 'admin'))," +
+                "phoneNumber VARCHAR(15)," +
+                "isActive INTEGER DEFAULT 1 CHECK(isActive IN (0, 1)))";
         connection.createStatement().execute(createTableSQL);
     }
 
     @After
     public void tearDown() throws SQLException {
+        // Clean up users between tests
         List<User> allUsers = dbManager.getAllUsers();
         for (User user : allUsers) {
             dbManager.delete(user);
@@ -52,7 +53,7 @@ public class AdminTest {
     @Test
     public void testCreateCustomerUser() throws SQLException {
         User user = new User("Customer Name", "customer@example.com", "password123", "1990-01-01",
-                "Male", "1234567890", "CUSTOMER");
+                "Male", "1234567890", "customer");
         User createdUser = dbManager.add(user);
         assertNotNull(createdUser);
         assertTrue(createdUser.getUserId() > 0);
@@ -66,7 +67,7 @@ public class AdminTest {
     @Test
     public void testCreateStaffUser() throws SQLException {
         User user = new User("Staff Name", "staff@example.com", "password123", "1985-05-05",
-                "Female", "0987654321", "STAFF");
+                "Female", "0987654321", "staff");
         User createdUser = dbManager.add(user);
         assertNotNull(createdUser);
         assertTrue(createdUser.getUserId() > 0);
@@ -80,11 +81,11 @@ public class AdminTest {
     @Test
     public void testAdminEditUser() throws SQLException {
         User user = new User("Original Name", "original@example.com", "password123", "1990-01-01",
-                "Male", "1234567890", "CUSTOMER");
+                "Male", "1234567890", "customer");
         User createdUser = dbManager.add(user);
 
         User updatedUser = new User(createdUser.getUserId(), "Updated Name", "updated@example.com",
-                "newpassword123", "1990-01-01", "Male", "1234567890", "CUSTOMER", true);
+                "newpassword123", "1990-01-01", "Male", "1234567890", "customer", true);
         dbManager.update(createdUser, updatedUser);
 
         User found = dbManager.get(createdUser);
@@ -95,7 +96,7 @@ public class AdminTest {
     @Test
     public void testToggleActiveStatus() throws SQLException {
         User user = new User("User Name", "user@example.com", "password123", "1990-01-01",
-                "Male", "1234567890", "CUSTOMER");
+                "Male", "1234567890", "customer");
         User createdUser = dbManager.add(user);
 
         boolean originalStatus = createdUser.getIsActive();
@@ -110,7 +111,7 @@ public class AdminTest {
     @Test
     public void testDeleteUser() throws SQLException {
         User user = new User("User To Delete", "delete@example.com", "password123", "1990-01-01",
-                "Female", "1234567890", "STAFF");
+                "Female", "1234567890", "staff");
         User createdUser = dbManager.add(user);
 
         dbManager.delete(createdUser);

@@ -61,7 +61,7 @@ VALUES (1, 199.97, 'Pending');
 -- Create orderItems table
 CREATE TABLE orderItems (
                             id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            orderId INTEGER NOT NULL,
+                    vv        orderId INTEGER NOT NULL,
                             productId INTEGER NOT NULL,
                             quantity INTEGER NOT NULL CHECK(quantity > 0),
                             unitPrice REAL NOT NULL CHECK(unitPrice >= 0),

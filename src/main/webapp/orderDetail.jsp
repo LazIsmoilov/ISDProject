@@ -21,7 +21,7 @@
     uts.isd.model.Order order = (uts.isd.model.Order) request.getAttribute("order");
 %>
 <p><strong>Order Date:</strong> <%= order.getOrderDate() %></p>
-<p><strong>Total Price:</strong> <%= order.getTotalPrice() %></p>
+<p><strong>Total Price:</strong> <%= order.getTotalAmount() %></p>
 <p><strong>Status:</strong> <%= order.getStatus() %></p>
 
 <h3>Order Items</h3>

@@ -1,5 +1,7 @@
 -- Drop existing tables in the correct order
 DROP TABLE IF EXISTS shipments;
+DROP TABLE IF EXISTS Devices;
+DROP TABLE IF EXISTS access_logs;
 DROP TABLE IF EXISTS payments;
 DROP TABLE IF EXISTS orderItems;
 DROP TABLE IF EXISTS orders;
@@ -55,13 +57,13 @@ CREATE TABLE orders (
 );
 
 -- SAMPLE ORDER
-INSERT INTO Orders (userId, totalAmount, status)
-VALUES (1, 199.97, 'Pending');
+INSERT INTO Orders (orderId, userId, orderDate, status, totalAmount)
+VALUES (1, 1, '2025-10-10', 'Pending', 199.97);
 
 -- Create orderItems table
 CREATE TABLE orderItems (
                             id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    vv        orderId INTEGER NOT NULL,
+                            orderId INTEGER NOT NULL,
                             productId INTEGER NOT NULL,
                             quantity INTEGER NOT NULL CHECK(quantity > 0),
                             unitPrice REAL NOT NULL CHECK(unitPrice >= 0),

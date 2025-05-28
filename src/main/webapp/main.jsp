@@ -154,7 +154,7 @@ import java.util.List;
                         <input type="hidden" name="productId" value="${d.deviceId}" />
                         <input type="number" name="quantity" value="1" min="1" required class="form-control mb-2" />
                         <input type="hidden" name="unitPrice" value="${d.price}" />
-                        <input type="hidden" name="totalPrice" value="${d.price}" />
+                        <input type="hidden" name="totalAmount" value="${d.price}" />
                         <button type="submit" class="btn btn-primary btn-sm">Add to Order</button>
                     </form>
                 </c:if>

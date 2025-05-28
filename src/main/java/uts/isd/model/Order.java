@@ -6,21 +6,21 @@ import java.util.Date;
 public class Order implements Serializable {
     private int orderId;
     private int userId;
-    private double totalPrice;
+    private double totalAmount;
     private String status;
     private Date orderDate;
 
     public Order() { }
 
-    public Order(int orderId, int userId, double totalPrice, String status, Date orderDate) {
+    public Order(int orderId, int userId, double totalAmount, String status, Date orderDate) {
         this.orderId = orderId;
         this.userId = userId;
-        this.totalPrice = totalPrice;
+        this.totalAmount = totalAmount;
         this.status = status;
         this.orderDate = orderDate;
     }
 
-    // —— Getter / Setter ——
+    // Getter / Setter
     public int getOrderId() {
         return orderId;
     }
@@ -35,11 +35,11 @@ public class Order implements Serializable {
         this.userId = userId;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
+    public double getTotalAmount() {
+        return totalAmount;
     }
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
     public String getStatus() {
@@ -61,7 +61,7 @@ public class Order implements Serializable {
         return "Order{" +
                 "id=" + orderId +
                 ", userId=" + userId +
-                ", totalPrice=" + totalPrice +
+                ", totalAmount=" + totalAmount +
                 ", status='" + status + '\'' +
                 ", orderDate=" + orderDate +
                 '}';

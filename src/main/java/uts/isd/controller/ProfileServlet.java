@@ -20,13 +20,13 @@ public class ProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute("user") == null) {
+        if (session == null || session.getAttribute("loggedInUser") == null) {
             response.sendRedirect("login.jsp");
             return;
         }
 
         //        give user to profile for showing detail
-        request.setAttribute("user", session.getAttribute("user"));
+        request.setAttribute("loggedInUser", session.getAttribute("loggedInUser"));
         request.getRequestDispatcher("profile.jsp").forward(request, response);
     }
 
@@ -35,13 +35,13 @@ public class ProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute("user") == null) {
+        if (session == null || session.getAttribute("loggedInUser") == null) {
             response.sendRedirect("login.jsp");
             return;
         }
 
         //        get new info from web
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute("loggedInUser");
         String fullName = request.getParameter("fullName");
         String phone = request.getParameter("phone");
         String newPassword = request.getParameter("newPassword");
@@ -61,11 +61,11 @@ public class ProfileServlet extends HttpServlet {
 
             // update other info
             dao.Users().update(user, user); //
-            session.setAttribute("user", user);
+            session.setAttribute("loggedInUser", user);
 
             // change success  test
             request.setAttribute("success", "Your profile has been updated successfully.");
-            request.setAttribute("user", user);
+            request.setAttribute("loggedInUser", user);
             request.getRequestDispatcher("profile.jsp").forward(request, response);
 
         } catch (SQLException e) {

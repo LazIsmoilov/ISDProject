@@ -3586,3 +3586,301 @@ Stacktrace:
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
+28-May-2025 22:17:44.185 SEVERE [http-nio-8080-exec-8] org.apache.catalina.core.ApplicationDispatcher.invoke Servlet.service() for servlet [jsp] threw exception
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [35] in the jsp file: [/orderList.jsp]
+The method getId() is undefined for the type Order
+32:       for (Order o : orders) {
+33:   %>
+34:   <tr>
+35:     <td><%= o.getId() %></td>
+36:     <td><%= o.getOrderDate() %></td>
+37:     <td><%= o.getTotalPrice() %></td>
+38:     <td><%= o.getStatus() %></td>
+
+
+An error occurred at line: [37] in the jsp file: [/orderList.jsp]
+The method getTotalPrice() is undefined for the type Order
+34:   <tr>
+35:     <td><%= o.getId() %></td>
+36:     <td><%= o.getOrderDate() %></td>
+37:     <td><%= o.getTotalPrice() %></td>
+38:     <td><%= o.getStatus() %></td>
+39:     <td>
+40:       <a href="order?action=detail&id=<%= o.getId() %>">Details</a>
+
+
+An error occurred at line: [40] in the jsp file: [/orderList.jsp]
+The method getId() is undefined for the type Order
+37:     <td><%= o.getTotalPrice() %></td>
+38:     <td><%= o.getStatus() %></td>
+39:     <td>
+40:       <a href="order?action=detail&id=<%= o.getId() %>">Details</a>
+41:       <% if (!"Cancelled".equals(o.getStatus())) { %>
+42:       | <a href="order?action=cancel&id=<%= o.getId() %>"
+43:            onclick="return confirm('Cancel order #<%= o.getId() %>?');">Cancel</a>
+
+
+An error occurred at line: [42] in the jsp file: [/orderList.jsp]
+The method getId() is undefined for the type Order
+39:     <td>
+40:       <a href="order?action=detail&id=<%= o.getId() %>">Details</a>
+41:       <% if (!"Cancelled".equals(o.getStatus())) { %>
+42:       | <a href="order?action=cancel&id=<%= o.getId() %>"
+43:            onclick="return confirm('Cancel order #<%= o.getId() %>?');">Cancel</a>
+44:       <a href="viewShipment?orderId=<%= o.getId() %>">Manage Shipment</a><!-- ✅ 新增 -->
+45:       <!--int orderId = Integer.parseInt(request.getParameter("orderId"));
+
+
+An error occurred at line: [43] in the jsp file: [/orderList.jsp]
+The method getId() is undefined for the type Order
+40:       <a href="order?action=detail&id=<%= o.getId() %>">Details</a>
+41:       <% if (!"Cancelled".equals(o.getStatus())) { %>
+42:       | <a href="order?action=cancel&id=<%= o.getId() %>"
+43:            onclick="return confirm('Cancel order #<%= o.getId() %>?');">Cancel</a>
+44:       <a href="viewShipment?orderId=<%= o.getId() %>">Manage Shipment</a><!-- ✅ 新增 -->
+45:       <!--int orderId = Integer.parseInt(request.getParameter("orderId"));
+46: 
+
+
+An error occurred at line: [44] in the jsp file: [/orderList.jsp]
+The method getId() is undefined for the type Order
+41:       <% if (!"Cancelled".equals(o.getStatus())) { %>
+42:       | <a href="order?action=cancel&id=<%= o.getId() %>"
+43:            onclick="return confirm('Cancel order #<%= o.getId() %>?');">Cancel</a>
+44:       <a href="viewShipment?orderId=<%= o.getId() %>">Manage Shipment</a><!-- ✅ 新增 -->
+45:       <!--int orderId = Integer.parseInt(request.getParameter("orderId"));
+46: 
+47:       <% } else { %>
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:524)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:603)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:396)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:633)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:409)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:331)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:268)
+		at uts.isd.controller.OrderServlet.doGet(OrderServlet.java:88)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+28-May-2025 22:17:44.185 SEVERE [http-nio-8080-exec-8] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [uts.isd.controller.OrderServlet] in context with path [/ISDProject] threw exception [Unable to compile class for JSP: 
+
+An error occurred at line: [35] in the jsp file: [/orderList.jsp]
+The method getId() is undefined for the type Order
+32:       for (Order o : orders) {
+33:   %>
+34:   <tr>
+35:     <td><%= o.getId() %></td>
+36:     <td><%= o.getOrderDate() %></td>
+37:     <td><%= o.getTotalPrice() %></td>
+38:     <td><%= o.getStatus() %></td>
+
+
+An error occurred at line: [37] in the jsp file: [/orderList.jsp]
+The method getTotalPrice() is undefined for the type Order
+34:   <tr>
+35:     <td><%= o.getId() %></td>
+36:     <td><%= o.getOrderDate() %></td>
+37:     <td><%= o.getTotalPrice() %></td>
+38:     <td><%= o.getStatus() %></td>
+39:     <td>
+40:       <a href="order?action=detail&id=<%= o.getId() %>">Details</a>
+
+
+An error occurred at line: [40] in the jsp file: [/orderList.jsp]
+The method getId() is undefined for the type Order
+37:     <td><%= o.getTotalPrice() %></td>
+38:     <td><%= o.getStatus() %></td>
+39:     <td>
+40:       <a href="order?action=detail&id=<%= o.getId() %>">Details</a>
+41:       <% if (!"Cancelled".equals(o.getStatus())) { %>
+42:       | <a href="order?action=cancel&id=<%= o.getId() %>"
+43:            onclick="return confirm('Cancel order #<%= o.getId() %>?');">Cancel</a>
+
+
+An error occurred at line: [42] in the jsp file: [/orderList.jsp]
+The method getId() is undefined for the type Order
+39:     <td>
+40:       <a href="order?action=detail&id=<%= o.getId() %>">Details</a>
+41:       <% if (!"Cancelled".equals(o.getStatus())) { %>
+42:       | <a href="order?action=cancel&id=<%= o.getId() %>"
+43:            onclick="return confirm('Cancel order #<%= o.getId() %>?');">Cancel</a>
+44:       <a href="viewShipment?orderId=<%= o.getId() %>">Manage Shipment</a><!-- ✅ 新增 -->
+45:       <!--int orderId = Integer.parseInt(request.getParameter("orderId"));
+
+
+An error occurred at line: [43] in the jsp file: [/orderList.jsp]
+The method getId() is undefined for the type Order
+40:       <a href="order?action=detail&id=<%= o.getId() %>">Details</a>
+41:       <% if (!"Cancelled".equals(o.getStatus())) { %>
+42:       | <a href="order?action=cancel&id=<%= o.getId() %>"
+43:            onclick="return confirm('Cancel order #<%= o.getId() %>?');">Cancel</a>
+44:       <a href="viewShipment?orderId=<%= o.getId() %>">Manage Shipment</a><!-- ✅ 新增 -->
+45:       <!--int orderId = Integer.parseInt(request.getParameter("orderId"));
+46: 
+
+
+An error occurred at line: [44] in the jsp file: [/orderList.jsp]
+The method getId() is undefined for the type Order
+41:       <% if (!"Cancelled".equals(o.getStatus())) { %>
+42:       | <a href="order?action=cancel&id=<%= o.getId() %>"
+43:            onclick="return confirm('Cancel order #<%= o.getId() %>?');">Cancel</a>
+44:       <a href="viewShipment?orderId=<%= o.getId() %>">Manage Shipment</a><!-- ✅ 新增 -->
+45:       <!--int orderId = Integer.parseInt(request.getParameter("orderId"));
+46: 
+47:       <% } else { %>
+
+
+Stacktrace:] with root cause
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [35] in the jsp file: [/orderList.jsp]
+The method getId() is undefined for the type Order
+32:       for (Order o : orders) {
+33:   %>
+34:   <tr>
+35:     <td><%= o.getId() %></td>
+36:     <td><%= o.getOrderDate() %></td>
+37:     <td><%= o.getTotalPrice() %></td>
+38:     <td><%= o.getStatus() %></td>
+
+
+An error occurred at line: [37] in the jsp file: [/orderList.jsp]
+The method getTotalPrice() is undefined for the type Order
+34:   <tr>
+35:     <td><%= o.getId() %></td>
+36:     <td><%= o.getOrderDate() %></td>
+37:     <td><%= o.getTotalPrice() %></td>
+38:     <td><%= o.getStatus() %></td>
+39:     <td>
+40:       <a href="order?action=detail&id=<%= o.getId() %>">Details</a>
+
+
+An error occurred at line: [40] in the jsp file: [/orderList.jsp]
+The method getId() is undefined for the type Order
+37:     <td><%= o.getTotalPrice() %></td>
+38:     <td><%= o.getStatus() %></td>
+39:     <td>
+40:       <a href="order?action=detail&id=<%= o.getId() %>">Details</a>
+41:       <% if (!"Cancelled".equals(o.getStatus())) { %>
+42:       | <a href="order?action=cancel&id=<%= o.getId() %>"
+43:            onclick="return confirm('Cancel order #<%= o.getId() %>?');">Cancel</a>
+
+
+An error occurred at line: [42] in the jsp file: [/orderList.jsp]
+The method getId() is undefined for the type Order
+39:     <td>
+40:       <a href="order?action=detail&id=<%= o.getId() %>">Details</a>
+41:       <% if (!"Cancelled".equals(o.getStatus())) { %>
+42:       | <a href="order?action=cancel&id=<%= o.getId() %>"
+43:            onclick="return confirm('Cancel order #<%= o.getId() %>?');">Cancel</a>
+44:       <a href="viewShipment?orderId=<%= o.getId() %>">Manage Shipment</a><!-- ✅ 新增 -->
+45:       <!--int orderId = Integer.parseInt(request.getParameter("orderId"));
+
+
+An error occurred at line: [43] in the jsp file: [/orderList.jsp]
+The method getId() is undefined for the type Order
+40:       <a href="order?action=detail&id=<%= o.getId() %>">Details</a>
+41:       <% if (!"Cancelled".equals(o.getStatus())) { %>
+42:       | <a href="order?action=cancel&id=<%= o.getId() %>"
+43:            onclick="return confirm('Cancel order #<%= o.getId() %>?');">Cancel</a>
+44:       <a href="viewShipment?orderId=<%= o.getId() %>">Manage Shipment</a><!-- ✅ 新增 -->
+45:       <!--int orderId = Integer.parseInt(request.getParameter("orderId"));
+46: 
+
+
+An error occurred at line: [44] in the jsp file: [/orderList.jsp]
+The method getId() is undefined for the type Order
+41:       <% if (!"Cancelled".equals(o.getStatus())) { %>
+42:       | <a href="order?action=cancel&id=<%= o.getId() %>"
+43:            onclick="return confirm('Cancel order #<%= o.getId() %>?');">Cancel</a>
+44:       <a href="viewShipment?orderId=<%= o.getId() %>">Manage Shipment</a><!-- ✅ 新增 -->
+45:       <!--int orderId = Integer.parseInt(request.getParameter("orderId"));
+46: 
+47:       <% } else { %>
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:72)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:192)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:524)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:373)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:345)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:331)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:603)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:396)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:633)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:409)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:331)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:268)
+		at uts.isd.controller.OrderServlet.doGet(OrderServlet.java:88)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1583)

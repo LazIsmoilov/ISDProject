@@ -48,6 +48,6 @@
   <input type="hidden" name="quantity" value="<%=ci.getQuantity()%>" />
   <input type="hidden" name="unitPrice" value="<%=ci.getUnitPrice()%>" />
   <% } %>
-  <input type="hidden" name="totalPrice" value="<%=total%>" />
+  <input type="hidden" name="totalAmount" value="<%=total%>" />
   <button type="submit">Place Order</button>
 </form>

@@ -1511,3 +1511,43 @@
 28-May-2025 20:01:22.133 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/laz/Documents/GitHub/ISDProject/conf/Catalina/localhost/ISDProject.xml] has finished in [316] ms
 28-May-2025 20:01:22.134 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
 28-May-2025 20:01:22.138 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [342] milliseconds
+28-May-2025 20:21:38.045 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+28-May-2025 20:21:38.047 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+28-May-2025 20:21:38.051 WARNING [Thread-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ISDProject] registered the JDBC driver [org.sqlite.JDBC] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+28-May-2025 20:21:38.054 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+28-May-2025 20:21:38.057 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+28-May-2025 20:46:32.627 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.36
+28-May-2025 20:46:32.629 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Feb 13 2025 13:13:30 UTC
+28-May-2025 20:46:32.629 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.36.0
+28-May-2025 20:46:32.629 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+28-May-2025 20:46:32.629 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            15.5
+28-May-2025 20:46:32.629 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          aarch64
+28-May-2025 20:46:32.629 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Users/laz/Library/Java/JavaVirtualMachines/temurin-21.0.6/Contents/Home
+28-May-2025 20:46:32.629 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           21.0.6+7-LTS
+28-May-2025 20:46:32.629 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Eclipse Adoptium
+28-May-2025 20:46:32.629 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/laz/Documents/GitHub/ISDProject
+28-May-2025 20:46:32.629 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/laz/Downloads/apache-tomcat-10.1.36
+28-May-2025 20:46:32.634 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+28-May-2025 20:46:32.634 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+28-May-2025 20:46:32.634 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+28-May-2025 20:46:32.634 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+28-May-2025 20:46:32.634 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+28-May-2025 20:46:32.634 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/laz/Downloads/apache-tomcat-10.1.36
+28-May-2025 20:46:32.634 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/laz/Documents/GitHub/ISDProject
+28-May-2025 20:46:32.634 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/laz/Documents/GitHub/ISDProject/temp
+28-May-2025 20:46:32.634 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/laz/Documents/GitHub/ISDProject/conf/logging.properties
+28-May-2025 20:46:32.635 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+28-May-2025 20:46:32.635 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=49956
+28-May-2025 20:46:32.635 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+28-May-2025 20:46:32.635 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stdout.encoding=UTF-8
+28-May-2025 20:46:32.635 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.stderr.encoding=UTF-8
+28-May-2025 20:46:32.640 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/laz/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+28-May-2025 20:46:32.753 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+28-May-2025 20:46:32.759 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [220] milliseconds
+28-May-2025 20:46:32.774 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+28-May-2025 20:46:32.774 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.36]
+28-May-2025 20:46:32.776 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/Users/laz/Documents/GitHub/ISDProject/conf/Catalina/localhost/ISDProject.xml]
+28-May-2025 20:46:33.072 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-May-2025 20:46:33.087 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/Users/laz/Documents/GitHub/ISDProject/conf/Catalina/localhost/ISDProject.xml] has finished in [311] ms
+28-May-2025 20:46:33.088 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+28-May-2025 20:46:33.093 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [333] milliseconds

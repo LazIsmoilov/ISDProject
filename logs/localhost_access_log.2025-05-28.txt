@@ -747,3 +747,10 @@
 0:0:0:0:0:0:0:1 - - [28/May/2025:20:07:33 +1000] "GET /ISDProject/index.jsp HTTP/1.1" 200 3462
 0:0:0:0:0:0:0:1 - - [28/May/2025:20:11:01 +1000] "GET /ISDProject/index.jsp HTTP/1.1" 200 3462
 0:0:0:0:0:0:0:1 - - [28/May/2025:20:14:50 +1000] "GET /ISDProject/index.jsp HTTP/1.1" 200 3462
+0:0:0:0:0:0:0:1 - - [28/May/2025:20:20:23 +1000] "GET /ISDProject/login.jsp HTTP/1.1" 200 3370
+0:0:0:0:0:0:0:1 - - [28/May/2025:20:46:34 +1000] "GET /ISDProject HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [28/May/2025:20:46:35 +1000] "GET /ISDProject/ HTTP/1.1" 200 3462
+0:0:0:0:0:0:0:1 - - [28/May/2025:20:46:35 +1000] "GET /favicon.ico HTTP/1.1" 404 683
+0:0:0:0:0:0:0:1 - - [28/May/2025:20:46:35 +1000] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 683
+0:0:0:0:0:0:0:1 - - [28/May/2025:20:46:35 +1000] "GET /apple-touch-icon.png HTTP/1.1" 404 683
+0:0:0:0:0:0:0:1 - - [28/May/2025:20:46:36 +1000] "GET /ISDProject/login.jsp HTTP/1.1" 200 3370

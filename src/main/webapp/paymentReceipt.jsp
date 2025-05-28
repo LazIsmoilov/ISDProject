@@ -73,7 +73,7 @@
             <table style="width: 100%; border-collapse: collapse;">
                 <tr>
                     <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Receipt Number:</strong></td>
-                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><%= payment.getId() %></td>
+                    <td style="padding: 10px; border-bottom: 1px solid #ddd;"><%= payment.getPaymentId() %></td>
                 </tr>
                 <tr>
                     <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Date:</strong></td>

@@ -37,6 +37,13 @@ CREATE TABLE products (
                           description TEXT
 );
 
+INSERT INTO products (name, price, description)
+VALUES
+    ('Smart Light Bulb', 29.99, 'Color-changing smart bulb with app control'),
+    ('WiFi Smart Plug', 19.99, 'Control devices remotely via smartphone'),
+    ('Smart Thermostat', 199.99, 'Smart home thermostat with scheduling features');
+
+
 -- Create orders table
 CREATE TABLE orders (
                         orderId INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -46,6 +53,10 @@ CREATE TABLE orders (
                         totalAmount REAL DEFAULT 0,
                         FOREIGN KEY (userId) REFERENCES users(userId)
 );
+
+-- SAMPLE ORDER
+INSERT INTO Orders (userId, totalAmount, status)
+VALUES (1, 199.97, 'Pending');
 
 -- Create orderItems table
 CREATE TABLE orderItems (
@@ -57,6 +68,12 @@ CREATE TABLE orderItems (
                             FOREIGN KEY (orderId) REFERENCES orders(orderId),
                             FOREIGN KEY (productId) REFERENCES products(productId)
 );
+
+-- SAMPLE ORDER ITEMS
+INSERT INTO OrderItems (orderId, productId, quantity, unitPrice)
+VALUES
+    (1, 1, 2, 19.99),
+    (1, 2, 1, 9.99);
 
 -- Create payments table
 CREATE TABLE payments (
@@ -75,6 +92,13 @@ CREATE TABLE payments (
                           FOREIGN KEY (userId) REFERENCES users(userId)
 );
 
+INSERT INTO payments (orderId, userId, paymentMethod, cardNumber, cardHolderName, expiryDate, cvv, amount, paymentDate, status)
+VALUES
+    (1, 1, 'Credit Card', '1234567890123456', 'Alice Cooper', '12/26', '123', 89.97, '2025-05-28', 'Completed'),
+    (2, 2, 'PayPal', NULL, NULL, NULL, NULL, 199.99, '2025-05-27', 'Completed'),
+    (3, 3, 'Credit Card', '9876543210987654', 'Charlie Kim', '11/25', '321', 49.98, '2025-05-25', 'Pending');
+
+
 -- Create shipments table
 CREATE TABLE shipments (
                            shipmentId INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -84,6 +108,12 @@ CREATE TABLE shipments (
                            address TEXT NOT NULL,
                            FOREIGN KEY (orderId) REFERENCES orders(orderId)
 );
+
+INSERT INTO shipments (orderId, method, shipmentDate, address)
+VALUES
+    (1, 'Standard', '2025-05-29', '123 George St, Sydney, NSW'),
+    (2, 'Express', '2025-05-28', '456 King St, Newtown, NSW'),
+    (3, 'Overnight', '2025-05-26', '789 Oxford St, Bondi, NSW');
 
 
 -- DEVICES TABLE
@@ -150,6 +180,21 @@ VALUES
     ('Smart Health', 'Health', 'Wearable Blood Pressure Monitor', 'pcs', 253.64, 144),
     ('Plug Energy', 'Energy', 'WiFi Smart Plug for remote control', 'pcs', 165.8, 20),
     ('Motion Security', 'Security', 'Motion Detector with alerts', 'pcs', 197.41, 123);
+
+CREATE TABLE access_logs (
+                             log_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                             user_id INTEGER NOT NULL,
+                             login_time DATETIME NOT NULL,
+                             logout_time DATETIME,
+                             FOREIGN KEY (user_id) REFERENCES users(userId) ON DELETE CASCADE
+);
+
+INSERT INTO access_logs (user_id, login_time, logout_time)
+VALUES
+    (1, '2025-05-28 08:00:00', '2025-05-28 17:00:00'),
+    (2, '2025-05-27 09:00:00', '2025-05-27 18:00:00'),
+    (3, '2025-05-25 10:00:00', NULL); -- still logged in
+
 
 -- Select all users to verify
 SELECT * FROM users;

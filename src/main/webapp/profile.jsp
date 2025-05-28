@@ -12,9 +12,18 @@
 <pref-header></pref-header>
 <div class="container">
 
-
   <div class="profile-container">
     <h2 class="mb-4">Edit Profile</h2>
+
+
+    <%
+      User user = (User) session.getAttribute("user");
+
+      if (user == null) {
+        response.sendRedirect("login.jsp");
+        return;
+      }
+    %>
 
     <!-- Success/Error -->
     <c:if test="${not empty success}">

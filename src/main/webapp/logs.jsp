@@ -25,6 +25,7 @@
   <tr>
     <th>Login Time</th>
     <th>Logout Time</th>
+    <th>Duration</th>
   </tr>
   </thead>
 
@@ -40,6 +41,11 @@
           </c:when>
           <c:otherwise>N/A</c:otherwise>
         </c:choose>
+      </td>
+      <td>
+        <c:if test="${not empty log.logoutTime}">
+          ${(log.logoutTime.time - log.loginTime.time) / (1000 * 60)} mins
+        </c:if>
       </td>
     </tr>
   </c:forEach>

@@ -6,13 +6,16 @@ import jakarta.servlet.http.*;
 import uts.isd.model.Order;
 import uts.isd.model.OrderItem;
 import uts.isd.model.User;
+import uts.isd.model.dao.DAO;
 import uts.isd.model.dao.OrderDBManager;
 import uts.isd.model.dao.OrderItemDBManager;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Timestamp; // Added for orderDate
 import java.util.List;
+import java.util.Date; // Added for current date
 
 @WebServlet("/order")
 public class OrderServlet extends HttpServlet {
@@ -21,21 +24,31 @@ public class OrderServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        // Get the DB connection from context (already initialized by StartupListener)
-        Connection conn = (Connection) getServletContext().getAttribute("conn");
-        if (conn == null) {
-            throw new ServletException("Database connection not found in ServletContext.");
-        }
-
-        // Inject DB managers with the existing connection
-        orderDB = new OrderDBManager(conn);
-        itemDB = new OrderItemDBManager(conn);
+        // Initialization handled in doGet/doPost
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         HttpSession session = req.getSession();
+
+        // Retrieve DAO from session
+        DAO dao = (DAO) session.getAttribute("db");
+        if (dao == null) {
+            try {
+                dao = new DAO();
+                session.setAttribute("db", dao);
+            } catch (SQLException e) {
+                throw new ServletException("Failed to initialize DAO", e);
+            }
+        }
+
+        // Initialize DB managers if not already set
+        if (orderDB == null || itemDB == null) {
+            Connection conn = dao.getConnection();
+            orderDB = new OrderDBManager(conn);
+            itemDB = new OrderItemDBManager(conn);
+        }
 
         // TEMP: Set dummy user if not already set (for testing)
         User user = (User) session.getAttribute("user");
@@ -82,6 +95,24 @@ public class OrderServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = req.getSession();
 
+        // Retrieve DAO from session
+        DAO dao = (DAO) session.getAttribute("db");
+        if (dao == null) {
+            try {
+                dao = new DAO();
+                session.setAttribute("db", dao);
+            } catch (SQLException e) {
+                throw new ServletException("Failed to initialize DAO", e);
+            }
+        }
+
+        // Initialize DB managers if not already set
+        if (orderDB == null || itemDB == null) {
+            Connection conn = dao.getConnection();
+            orderDB = new OrderDBManager(conn);
+            itemDB = new OrderItemDBManager(conn);
+        }
+
         // TEMP: Set dummy user if not already set (for testing)
         User user = (User) session.getAttribute("user");
         if (user == null) {
@@ -97,12 +128,15 @@ public class OrderServlet extends HttpServlet {
 
         try {
             double totalPrice = Double.parseDouble(req.getParameter("totalPrice"));
-            Order order = new Order(0, user.getUserId(), totalPrice, "Pending", null);
+            // Set orderDate to current timestamp
+            Timestamp orderDate = new Timestamp(new Date().getTime());
+            Order order = new Order(0, user.getUserId(), totalPrice, "Pending", orderDate);
+
             int orderId = orderDB.addOrder(order);
 
             String[] prodIds = req.getParameterValues("productId");
-            String[] qtys    = req.getParameterValues("quantity");
-            String[] prices  = req.getParameterValues("unitPrice");
+            String[] qtys = req.getParameterValues("quantity");
+            String[] prices = req.getParameterValues("unitPrice");
 
             if (prodIds != null && qtys != null && prices != null) {
                 for (int i = 0; i < prodIds.length; i++) {

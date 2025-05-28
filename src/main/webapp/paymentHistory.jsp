@@ -213,7 +213,7 @@
                 <tbody>
                     <% for (Payment payment : payments) { %>
                         <tr>
-                            <td><%= payment.getId() %></td>
+                            <td><%= payment.getPaymentId() %></td>
                             <td><%= payment.getOrderId() %></td>
                             <td>$<%= String.format("%.2f", payment.getAmount()) %></td>
                             <td><%= payment.getPaymentMethod() %></td>
@@ -225,12 +225,12 @@
                             </td>
                             <td>
                                 <% if (payment.getStatus() == PaymentStatus.COMPLETED) { %>
-                                    <a href="payment?action=receipt&paymentId=<%= payment.getId() %>" class="buttons">View Receipt</a>
+                                    <a href="payment?action=receipt&paymentId=<%= payment.getPaymentId() %>" class="buttons">View Receipt</a>
                                 <% } %>
                                 <% if (payment.getStatus() == PaymentStatus.PENDING) { %>
                                     <form action="payment" method="post" style="display: inline;">
                                         <input type="hidden" name="action" value="cancel">
-                                        <input type="hidden" name="paymentId" value="<%= payment.getId() %>">
+                                        <input type="hidden" name="paymentId" value="<%= payment.getPaymentId() %>">
                                         <button type="submit" class="buttons" onclick="return confirm('Are you sure you want to cancel this payment?')">Cancel</button>
                                     </form>
                                 <% } %>

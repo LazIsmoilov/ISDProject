@@ -63,7 +63,7 @@
                     <div>
                         <h2>Logged in user:
                             <%
-                                User loggedInUser = (User) session.getAttribute("user");
+                                User loggedInUser = (User) session.getAttribute("loggedInUser");
                                 if (loggedInUser != null) {
                                     out.print(loggedInUser.getEmail());
                                 } else {
@@ -72,10 +72,10 @@
                             %>
                         </h2>
                     </div>
-                    <% if (session.getAttribute("user") != null) { %>
+                    <% if (session.getAttribute("loggedInUser") != null) { %>
                     <div class="user-box">
                         <a href="profile-dashboard.jsp"><button class="header-button">My Info</button></a>
-                        <a href="logout"><button class="header-button">LOGOUT</button></a>
+                        <a href="LogoutServlet"><button class="header-button">LOGOUT</button></a>
                     </div>
                     <% } %>
                 </div>

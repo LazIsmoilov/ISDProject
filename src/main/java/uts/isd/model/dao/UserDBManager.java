@@ -42,7 +42,6 @@ public class UserDBManager extends DBManager<User> {
         return user;
     }
 
-    // READ: Get a user by ID
     public User get(User user) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE userId = ?");
         preparedStatement.setInt(1, user.getUserId());
@@ -108,7 +107,7 @@ public class UserDBManager extends DBManager<User> {
         preparedStatement.executeUpdate();
     }
 
-    // UPDATE: Toggle active status
+    // UPDATE: Toggle active status (Admin feature)
     public User toggleActiveStatus(int userId) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(
                 "UPDATE users SET isActive = CASE WHEN isActive = 1 THEN 0 ELSE 1 END WHERE userId = ?"
@@ -170,7 +169,7 @@ public class UserDBManager extends DBManager<User> {
         }
     }
 
-    // READ: Get a user by ID (new method for JSP compatibility)
+    // READ: Get a user by ID
     public User getById(int id) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE userId = ?");
         preparedStatement.setInt(1, id);

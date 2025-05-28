@@ -32,8 +32,6 @@ import java.util.List;
     List<Device> devices = (List<Device>) request.getAttribute("devices");
     // Normalize role to lowercase for consistent comparison
     request.setAttribute("role", role != null ? role.toLowerCase() : "none");
-    // Debug: Store raw role for display
-    request.setAttribute("rawRole", role);
 %>
 
 <!DOCTYPE html>
@@ -106,12 +104,6 @@ import java.util.List;
     <c:if test="${not empty error}">
         <p class="error-message">${error}</p>
     </c:if>
-
-    <!-- Debug: Show raw and normalized role -->
-    <div class="debug-info">
-        <p>Debug - Raw Role: <%= request.getAttribute("rawRole") != null ? request.getAttribute("rawRole") : "null" %></p>
-        <p>Debug - Normalized Role: ${role}</p>
-    </div>
 
     <!-- CENTERED Welcome + Role -->
     <div class="text-center mb-4">

@@ -7,33 +7,36 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import uts.isd.model.User;
-import uts.isd.model.dao.AccessLogDAO;
+import uts.isd.model.dao.DAO;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/logout")
+@WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-//        get session
-        HttpSession session = request.getSession(false);
-//        session will have user if logged in
+        HttpSession session = request.getSession(false);  // false = don't create if not existing
+
         if (session != null) {
-            User user = (User) session.getAttribute("user");
+            User user = (User) session.getAttribute("loggedInUser");
+            DAO db = (DAO) session.getAttribute("db");
 
-            // update logout time
-
-            if (user != null) {
+            if (user != null && db != null) {
                 try {
-                    new AccessLogDAO().logLogout(user.getUserId());
+                    db.accessLogs().logLogout(user.getUserId());
                 } catch (SQLException e) {
-                    throw new RuntimeException(e);
+                    e.printStackTrace();
+                    throw new ServletException("Error logging logout", e);
                 }
             }
+            // Invalidate session to clear all data and avoid reuse
             session.invalidate();
         }
+
+        // Redirect to login page after logout
         response.sendRedirect("login.jsp");
     }
 }

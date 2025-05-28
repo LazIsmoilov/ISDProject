@@ -44,7 +44,8 @@
     <th>Active</th>
     <th>Actions</th>
   </tr>
-  <% for (User user : users) { %>
+  <% for (User user : users) {
+    if (user.getType() != User.UserType.ADMIN) { %>
   <tr>
     <td><%= user.getUserId() %></td>
     <td><%= user.getFullName() %></td>
@@ -54,22 +55,25 @@
     <td><%= user.getIsActive() ? "Yes" : "No" %></td>
     <td>
       <a href="edit.jsp?userId=<%= user.getUserId() %>">Edit</a>
-      <a href="AdminServlet?action=toggle&userId=<%= user.getUserId() %>">Toggle Active</a>
+      <a href="AdminServlet?action=toggle&userId=<%= user.getUserId() %>"><%= user.getIsActive() ? "Deactivate" : "Activate" %></a>
       <a href="AdminServlet?action=delete&userId=<%= user.getUserId() %>">Delete</a>
     </td>
   </tr>
+  <% } %>
   <% } %>
 </table>
 <% } else { %>
 <p>No users found.</p>
 <% } %>
-<a href="index.jsp">Back to Home</a>
+<a href="LogoutServlet">Logout</a>
 <% } %>
 <% if (session.getAttribute("error") != null) { %>
 <p style="color:red;"><%= session.getAttribute("error") %></p>
 <% session.removeAttribute("error"); %>
 <% } %>
+<% if (session.getAttribute("message") != null) { %>
+<p style="color:green;"><%= session.getAttribute("message") %></p>
+<% session.removeAttribute("message"); %>
+<% } %>
 </body>
 </html>
-
-

@@ -42,7 +42,7 @@
                 <table style="width: 100%; border-collapse: collapse;">
                     <tr>
                         <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Payment ID:</strong></td>
-                        <td style="padding: 10px; border-bottom: 1px solid #ddd;"><%= payment.getId() %></td>
+                        <td style="padding: 10px; border-bottom: 1px solid #ddd;"><%= payment.getPaymentId() %></td>
                     </tr>
                     <tr>
                         <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Order ID:</strong></td>
@@ -72,7 +72,7 @@
             </div>
             
             <div style="text-align: center; margin-top: 20px;">
-                <a href="payment?action=receipt&paymentId=<%= payment.getId() %>"><button class="buttons">View Receipt</button></a>
+                <a href="payment?action=receipt&paymentId=<%= payment.getPaymentId() %>"><button class="buttons">View Receipt</button></a>
                 <a href="payment?action=search"><button class="buttons">View Payment History</button></a>
                 <a href="order?action=list"><button class="buttons">Back to Orders</button></a>
             </div>

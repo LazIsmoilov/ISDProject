@@ -10,19 +10,35 @@
     return;
   }
 
-  int idToEdit = loggedInUser.getUserId();
+  // Check if the user is an admin
+  if (!loggedInUser.isAdmin()) {
+    session.setAttribute("error", "You do not have permission to access this page.");
+    response.sendRedirect("index.jsp");
+    return;
+  }
+
+  // Get userId from URL parameter
+  String userIdParam = request.getParameter("userId");
+  int idToEdit;
+  try {
+    idToEdit = Integer.parseInt(userIdParam);
+  } catch (NumberFormatException e) {
+    session.setAttribute("error", "Invalid user ID provided.");
+    response.sendRedirect("admin.jsp");
+    return;
+  }
 
   DAO dao = (DAO) session.getAttribute("db");
   if (dao == null) {
     session.setAttribute("error", "Database not initialized in session");
-    response.sendRedirect("index.jsp");
+    response.sendRedirect("admin.jsp");
     return;
   }
 
   UserDBManager userDbManager = dao.Users();
   if (userDbManager == null) {
     session.setAttribute("error", "UserDBManager not initialized");
-    response.sendRedirect("index.jsp");
+    response.sendRedirect("admin.jsp");
     return;
   }
 
@@ -31,29 +47,23 @@
     userToEdit = userDbManager.getById(idToEdit);
     if (userToEdit == null) {
       session.setAttribute("error", "User not found for ID: " + idToEdit);
-      response.sendRedirect("index.jsp");
+      response.sendRedirect("admin.jsp");
       return;
     }
   } catch (Exception e) {
     session.setAttribute("error", "Database error: " + e.getMessage());
-    response.sendRedirect("index.jsp");
+    response.sendRedirect("admin.jsp");
     return;
   }
-
-  // Debugging logs
-  System.out.println("DAO: " + dao);
-  System.out.println("UserDBManager: " + userDbManager);
-  System.out.println("LoggedInUser ID: " + loggedInUser.getUserId());
-  System.out.println("UserToEdit: " + userToEdit);
 %>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Edit Profile</title>
+  <title>Edit User Profile</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 </head>
 <body>
-<h2>Edit Your Profile (ID: <%= userToEdit.getUserId() %>, Name: <%= userToEdit.getFullName() %>)</h2>
+<h2>Edit User Profile (ID: <%= userToEdit.getUserId() %>, Name: <%= userToEdit.getFullName() %>)</h2>
 <form action="EditServlet" method="post">
   <input type="hidden" name="userId" value="<%= userToEdit.getUserId() %>">
   <label>Name:</label>
@@ -71,21 +81,26 @@
     <option value="Other" <%= "Other".equalsIgnoreCase(userToEdit.getGender()) ? "selected" : "" %>>Other</option>
   </select><br>
   <label>Phone Number:</label>
-  <input type="text" name="phone" value="<%= userToEdit.getPhone() %>"><br>
+  <input type="text" name="phone" value="<%= userToEdit.getPhone() != null ? userToEdit.getPhone() : "" %>"><br>
   <label>User Type:</label>
   <select name="role">
     <option value="customer" <%= userToEdit.getType() == UserType.CUSTOMER ? "selected" : "" %>>Customer</option>
     <option value="staff" <%= userToEdit.getType() == UserType.STAFF ? "selected" : "" %>>Staff</option>
+    <option value="admin" <%= userToEdit.getType() == UserType.ADMIN ? "selected" : "" %>>Admin</option>
   </select><br>
   <label>Is Active:</label>
   <input type="checkbox" name="isActive" <%= userToEdit.getIsActive() ? "checked" : "" %>><br>
 
   <button type="submit">Update</button>
 </form>
-<a href="index.jsp">Back to Home</a>
+<a href="admin.jsp">Back to Admin Dashboard</a>
 <% if (session.getAttribute("error") != null) { %>
 <p style="color:red;"><%= session.getAttribute("error") %></p>
 <% session.removeAttribute("error"); %>
+<% } %>
+<% if (session.getAttribute("message") != null) { %>
+<p style="color:green;"><%= session.getAttribute("message") %></p>
+<% session.removeAttribute("message"); %>
 <% } %>
 </body>
 </html>

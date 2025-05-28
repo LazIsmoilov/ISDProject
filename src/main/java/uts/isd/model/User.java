@@ -27,9 +27,7 @@ public class User implements Serializable {
     private boolean isActive;
 
     // Default constructor
-    public User() {
-        this.isActive = true;
-    }
+    public User() {}
 
     // Constructor with all fields
     public User(int userId, String fullName, String email, String password, String dob, String gender,

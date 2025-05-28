@@ -15,11 +15,24 @@
     form { margin-bottom: 20px; text-align: center; }
     input[type="text"] { padding: 8px; width: 300px; }
     input[type="submit"] { padding: 8px 15px; background: #007BFF; color: white; border: none; border-radius: 5px; }
+    .add-shipment { display: block; text-align: right; margin-bottom: 10px; }
+    .add-shipment a {
+      background: #28a745;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
 <div class="container">
   <h2>Shipment List for Order #${orderId}</h2>
+
+  <!-- ✅ Add Shipment Button -->
+  <div class="add-shipment">
+    <a href="shipmentForm.jsp?orderId=${orderId}">➕ Add Shipment</a>
+  </div>
 
   <form action="searchShipment" method="get">
     <input type="text" name="keyword" placeholder="Search by ID or Date" />

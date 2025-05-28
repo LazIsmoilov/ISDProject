@@ -15,7 +15,7 @@
     th { background-color: #f2f2f2; }
 </style>
 
-<h2>Order Details — #<%= ((uts.isd.model.Order)request.getAttribute("order")).getOrderId() %></h2>
+<h2>Order Details — #<%= ((uts.isd.model.Order)request.getAttribute("order")).getId() %></h2>
 
 <%
     uts.isd.model.Order order = (uts.isd.model.Order) request.getAttribute("order");
@@ -23,6 +23,10 @@
 <p><strong>Order Date:</strong> <%= order.getOrderDate() %></p>
 <p><strong>Total Price:</strong> <%= order.getTotalPrice() %></p>
 <p><strong>Status:</strong> <%= order.getStatus() %></p>
+<p>
+    <a href="viewShipment?orderId=<%= order.getId() %>">📦 Manage Shipment for this Order</a>
+</p>
+
 
 <h3>Order Items</h3>
 <table>

@@ -32,16 +32,16 @@
       for (Order o : orders) {
   %>
   <tr>
-    <td><%= o.getOrderId() %></td>
+    <td><%= o.getId() %></td>
     <td><%= o.getOrderDate() %></td>
-    <td><%= o.getTotalAmount() %></td>
+    <td><%= o.getTotalPrice() %></td>
     <td><%= o.getStatus() %></td>
     <td>
-      <a href="order?action=detail&userId=<%= o.getOrderId() %>">Details</a>
+      <a href="order?action=detail&id=<%= o.getId() %>">Details</a>
       <% if (!"Cancelled".equals(o.getStatus())) { %>
-      | <a href="order?action=cancel&userId=<%= o.getOrderId() %>"
-           onclick="return confirm('Cancel order #<%= o.getOrderId() %>?');">Cancel</a>
-      | <a href="shipmentList.jsp?orderId=<%= o.getOrderId() %>">Shipment</a> <!-- ✅ 新增 -->
+      | <a href="order?action=cancel&id=<%= o.getId() %>"
+           onclick="return confirm('Cancel order #<%= o.getId() %>?');">Cancel</a>
+      <a href="viewShipment?orderId=<%= o.getId() %>">Manage Shipment</a><!-- ✅ 新增 -->
       <!--int orderId = Integer.parseInt(request.getParameter("orderId"));
 
       <% } else { %>

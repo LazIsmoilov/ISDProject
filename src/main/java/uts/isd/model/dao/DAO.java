@@ -14,6 +14,7 @@ public class DAO {
     private AccessLogDBManager accessLogManager;
     private ShipmentDBManager shipmentDBManager;
 
+
     public DAO() throws SQLException {
         this.connection = new DBConnector().getConnection();
         try {
@@ -24,6 +25,7 @@ public class DAO {
             this.paymentDBManager = new PaymentDBManager(connection);
             this.accessLogManager = new AccessLogDBManager(connection);
             this.shipmentDBManager = new ShipmentDBManager(connection);
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -54,4 +56,5 @@ public class DAO {
     public ShipmentDBManager getShipmentManager() {
         return shipmentDBManager;
     }
+
 }

@@ -747,17 +747,3 @@
 0:0:0:0:0:0:0:1 - - [28/May/2025:20:07:33 +1000] "GET /ISDProject/index.jsp HTTP/1.1" 200 3462
 0:0:0:0:0:0:0:1 - - [28/May/2025:20:11:01 +1000] "GET /ISDProject/index.jsp HTTP/1.1" 200 3462
 0:0:0:0:0:0:0:1 - - [28/May/2025:20:14:50 +1000] "GET /ISDProject/index.jsp HTTP/1.1" 200 3462
-0:0:0:0:0:0:0:1 - - [28/May/2025:21:01:28 +1000] "GET /ISDProject HTTP/1.1" 302 -
-0:0:0:0:0:0:0:1 - - [28/May/2025:21:01:29 +1000] "GET /ISDProject/ HTTP/1.1" 200 3462
-0:0:0:0:0:0:0:1 - - [28/May/2025:21:01:30 +1000] "GET /ISDProject/login.jsp HTTP/1.1" 200 3370
-0:0:0:0:0:0:0:1 - - [28/May/2025:21:01:48 +1000] "POST /ISDProject/LoginServlet HTTP/1.1" 302 -
-0:0:0:0:0:0:0:1 - - [28/May/2025:21:01:48 +1000] "GET /ISDProject/welcome.jsp HTTP/1.1" 200 3385
-0:0:0:0:0:0:0:1 - - [28/May/2025:21:01:51 +1000] "GET /ISDProject/main.jsp HTTP/1.1" 200 6228
-0:0:0:0:0:0:0:1 - - [28/May/2025:21:01:52 +1000] "GET /ISDProject/DeviceServlet?action=search&search=&type= HTTP/1.1" 200 50859
-0:0:0:0:0:0:0:1 - - [28/May/2025:21:01:53 +1000] "POST /ISDProject/order HTTP/1.1" 302 -
-0:0:0:0:0:0:0:1 - - [28/May/2025:21:01:53 +1000] "GET /ISDProject/order?action=list HTTP/1.1" 200 4515
-0:0:0:0:0:0:0:1 - - [28/May/2025:21:01:57 +1000] "GET /ISDProject/order?action=detail&userId=2 HTTP/1.1" 404 740
-0:0:0:0:0:0:0:1 - - [28/May/2025:21:02:00 +1000] "GET /ISDProject/shipmentList.jsp?orderId=2 HTTP/1.1" 200 1024
-0:0:0:0:0:0:0:1 - - [28/May/2025:21:02:02 +1000] "GET /ISDProject/searchShipment?keyword= HTTP/1.1" 200 1095
-0:0:0:0:0:0:0:1 - - [28/May/2025:21:02:05 +1000] "GET /ISDProject/searchShipment?keyword=2 HTTP/1.1" 200 1095
-0:0:0:0:0:0:0:1 - - [28/May/2025:21:02:08 +1000] "GET /ISDProject/searchShipment?keyword=2 HTTP/1.1" 200 1095
